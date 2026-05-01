@@ -15,3 +15,9 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# MacOS
+*.dSYM/
+*.DS_STORE
+
+.vscode
