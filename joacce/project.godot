@@ -17,3 +17,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="joacce"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080

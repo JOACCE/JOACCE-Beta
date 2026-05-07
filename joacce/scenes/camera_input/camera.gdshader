@@ -4,9 +4,11 @@ uniform sampler2D camera_y;
 uniform sampler2D camera_CbCr;
 
 void fragment() {
+	vec2 flipped_uv = vec2(1.0 - UV.x, UV.y);
+	
 	vec3 color;
-	color.r = texture(camera_y, UV).r;
-	color.gb = texture(camera_CbCr, UV).rg - vec2(0.5, 0.5);
+	color.r = texture(camera_y, flipped_uv).r;
+	color.gb = texture(camera_CbCr, flipped_uv).rg - vec2(0.5, 0.5);
 	
 	// YCbCr -> SRGB conversion
 	// Using BT.709 which is the standard for HDTV

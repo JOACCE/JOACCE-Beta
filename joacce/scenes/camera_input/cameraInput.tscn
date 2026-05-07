@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bof2voiae41lt" path="res://scenes/camera_input/camera_input.gd" id="1_hm0su"]
 [ext_resource type="Shader" uid="uid://bm38gx43qi467" path="res://scenes/camera_input/camera.gdshader" id="2_ep72f"]
 [ext_resource type="Texture2D" uid="uid://i5qjdsyxb7iy" path="res://assets/background.png" id="3_2wv7b"]
+[ext_resource type="Texture2D" uid="uid://bxjnuvayyd2be" path="res://assets/stencils/tmp_stencil.png" id="4_s80x4"]
 
 [sub_resource type="CameraTexture" id="CameraTexture_ep72f"]
 which_feed = 1
@@ -14,11 +15,34 @@ shader = ExtResource("2_ep72f")
 shader_parameter/camera_y = SubResource("CameraTexture_2wv7b")
 shader_parameter/camera_CbCr = SubResource("CameraTexture_ep72f")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s80x4"]
+bg_color = Color(0.93823606, 0.4257641, 0.18307462, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="CameraInput" type="Node2D" unique_id=1315409302]
 script = ExtResource("1_hm0su")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=341122756]
 material = SubResource("ShaderMaterial_2wv7b")
-position = Vector2(576.625, 323.90625)
-scale = Vector2(17.980469, 10.065431)
+position = Vector2(962.12506, 539.70844)
+scale = Vector2(30.027346, 16.809248)
 texture = ExtResource("3_2wv7b")
+
+[node name="Stencil" type="Sprite2D" parent="." unique_id=310979596]
+position = Vector2(961.75, 538.75)
+scale = Vector2(0.81461865, 0.65640247)
+texture = ExtResource("4_s80x4")
+
+[node name="Button" type="Button" parent="." unique_id=811301188]
+offset_left = 852.0
+offset_top = 978.0
+offset_right = 1104.0
+offset_bottom = 1053.0
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_s80x4")
+text = "Capture"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
