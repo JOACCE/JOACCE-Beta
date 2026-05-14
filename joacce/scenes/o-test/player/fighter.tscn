@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://dwr8ifl6e0vvj"]
+
+[ext_resource type="Texture2D" uid="uid://cfs47eepg36ms" path="res://icon.svg" id="1_16k5x"]
+[ext_resource type="Script" uid="uid://twf31shv83c2" path="res://scenes/o-test/player/fighter.gd" id="1_18uai"]
+[ext_resource type="Script" uid="uid://cv3u61nreii4v" path="res://scenes/o-test/player/attack.gd" id="3_t6ydl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16k5x"]
+radius = 22.0
+height = 162.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18uai"]
+radius = 12.0
+height = 70.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t6ydl"]
+radius = 12.0
+height = 84.00337
+
+[node name="Fighter" type="CharacterBody2D" unique_id=1512274704]
+script = ExtResource("1_18uai")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=448263837]
+scale = Vector2(0.453125, 1.25)
+texture = ExtResource("1_16k5x")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1022065581]
+shape = SubResource("CapsuleShape2D_16k5x")
+
+[node name="Punch" type="Node2D" parent="." unique_id=1646976795]
+script = ExtResource("3_t6ydl")
+
+[node name="ColorRect" type="ColorRect" parent="Punch" unique_id=53954590]
+offset_left = 21.0
+offset_top = -24.0
+offset_right = 92.0
+color = Color(0.70670056, 0, 0.1611616, 1)
+
+[node name="Hitarea" type="Area2D" parent="Punch" unique_id=1855460985]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Punch/Hitarea" unique_id=2119894823]
+position = Vector2(57, -12)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_18uai")
+
+[node name="Kick" type="Node2D" parent="." unique_id=1080015205]
+script = ExtResource("3_t6ydl")
+
+[node name="ColorRect" type="ColorRect" parent="Kick" unique_id=908994361]
+offset_left = 25.730412
+offset_top = 33.78686
+offset_right = 108.9102
+offset_bottom = 57.07716
+rotation = 0.2617994
+color = Color(0.70670056, 0, 0.1611616, 1)
+
+[node name="Hitarea" type="Area2D" parent="Kick" unique_id=897711681]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Kick/Hitarea" unique_id=283928191]
+position = Vector2(62.999992, 55.999996)
+rotation = -1.3089969
+shape = SubResource("CapsuleShape2D_t6ydl")
+
+[connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]
+[connection signal="body_entered" from="Kick/Hitarea" to="." method="_on_hitarea_body_entered"]
