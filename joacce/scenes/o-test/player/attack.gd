@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var hitbox: CollisionShape2D = $Hitarea/Hitbox
+@export var damage : int
 
 var in_action = false
 const linger = 0.3

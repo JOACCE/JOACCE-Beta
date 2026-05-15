@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var SPEED = 400.0
-var JUMP_VELOCITY = -800.0
+var JUMP_VELOCITY = -600.0
 
 @onready var progress_bar: ProgressBar = $Healthbar/ProgressBar
 @onready var punch: Node2D = $Punch

@@ -28,6 +28,7 @@ shape = SubResource("CapsuleShape2D_16k5x")
 
 [node name="Punch" type="Node2D" parent="." unique_id=1646976795]
 script = ExtResource("3_t6ydl")
+damage = 7
 
 [node name="ColorRect" type="ColorRect" parent="Punch" unique_id=53954590]
 offset_left = 21.0
@@ -44,6 +45,7 @@ shape = SubResource("CapsuleShape2D_18uai")
 
 [node name="Kick" type="Node2D" parent="." unique_id=1080015205]
 script = ExtResource("3_t6ydl")
+damage = 6
 
 [node name="ColorRect" type="ColorRect" parent="Kick" unique_id=908994361]
 offset_left = 25.730412
