@@ -1,17 +1,24 @@
 extends CharacterBody2D
 
 var SPEED = 400.0
-var JUMP_VELOCITY = -400.0
+var JUMP_VELOCITY = -800.0
 
+@onready var progress_bar: ProgressBar = $Healthbar/ProgressBar
 @onready var punch: Node2D = $Punch
 @onready var kick: Node2D = $Kick
+@onready var alt_marker: Marker2D = $Healthbar/AltMarker
 
 var health = 100
 
 func _ready() -> void:
+	progress_bar.max_value = health
+	progress_bar.value = health
+	
 	if "2" in name:
 		SPEED = 0
 		JUMP_VELOCITY = 0
+		progress_bar.position = alt_marker.position
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -36,8 +43,11 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func apply_damage(damage) -> void:
+	health -= damage
+	progress_bar.value  = health
+	print(name," took ", damage, " damage")
 
 func _on_hitarea_body_entered(body: Node2D) -> void:
 	if name != body.name:
-		print(body, " -", body.health)
-		body.health -= 10
+		body.apply_damage(5)

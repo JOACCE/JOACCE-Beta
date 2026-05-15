@@ -60,5 +60,16 @@ position = Vector2(62.999992, 55.999996)
 rotation = -1.3089969
 shape = SubResource("CapsuleShape2D_t6ydl")
 
+[node name="Healthbar" type="CanvasLayer" parent="." unique_id=1235444386]
+
+[node name="AltMarker" type="Marker2D" parent="Healthbar" unique_id=2107103072]
+position = Vector2(722, 64)
+
+[node name="ProgressBar" type="ProgressBar" parent="Healthbar" unique_id=356258286]
+offset_left = 63.0
+offset_top = 64.0
+offset_right = 437.0
+offset_bottom = 91.0
+
 [connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]
 [connection signal="body_entered" from="Kick/Hitarea" to="." method="_on_hitarea_body_entered"]
