@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://jtuygkdyyogi"]
 
 [ext_resource type="Texture2D" uid="uid://i5qjdsyxb7iy" path="res://assets/background.png" id="1_wpbxj"]
+[ext_resource type="PackedScene" uid="uid://c0t8baf72a4tj" path="res://scenes/character_creation/camera/camera.tscn" id="2_3waco"]
 
 [node name="CameraSelect" type="Node2D" unique_id=1706868323]
 
@@ -21,6 +22,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/VBoxContainer" unique_id=1721138079]
+layout_mode = 2
+
+[node name="Camera" parent="UI/VBoxContainer/PanelContainer" unique_id=1170137919 instance=ExtResource("2_3waco")]
+layout_mode = 2
 
 [node name="ButtonContainer" type="HBoxContainer" parent="UI/VBoxContainer" unique_id=2136127819]
 layout_mode = 2
