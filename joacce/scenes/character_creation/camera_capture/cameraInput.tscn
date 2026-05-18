@@ -1,19 +1,8 @@
-[gd_scene format=3 uid="uid://bd7b3c8floa40"]
+[gd_scene format=3 uid="uid://d4l4oiqpgnw84"]
 
-[ext_resource type="Script" uid="uid://bof2voiae41lt" path="res://scenes/character_creation/camera_input/cameraInput.gd" id="1_hm0su"]
-[ext_resource type="Shader" uid="uid://bm38gx43qi467" path="res://scenes/character_creation/camera_input/camera.gdshader" id="2_ep72f"]
-[ext_resource type="Texture2D" uid="uid://i5qjdsyxb7iy" path="res://assets/background.png" id="3_2wv7b"]
+[ext_resource type="Script" uid="uid://bof2voiae41lt" path="res://scenes/character_creation/camera_capture/cameraInput.gd" id="1_hm0su"]
+[ext_resource type="PackedScene" uid="uid://c0t8baf72a4tj" path="res://scenes/character_creation/camera/camera.tscn" id="2_rse71"]
 [ext_resource type="Texture2D" uid="uid://bxjnuvayyd2be" path="res://assets/stencils/tmp_stencil.png" id="4_s80x4"]
-
-[sub_resource type="CameraTexture" id="CameraTexture_ep72f"]
-which_feed = 1
-
-[sub_resource type="CameraTexture" id="CameraTexture_2wv7b"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wv7b"]
-shader = ExtResource("2_ep72f")
-shader_parameter/camera_y = SubResource("CameraTexture_2wv7b")
-shader_parameter/camera_CbCr = SubResource("CameraTexture_ep72f")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmlu"]
 bg_color = Color(0.9372549, 0.42745098, 0.18431373, 1)
@@ -48,11 +37,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Camera" type="TextureRect" parent="UI/CameraContainer" unique_id=597533931]
-texture_filter = 1
-material = SubResource("ShaderMaterial_2wv7b")
+[node name="Camera" parent="UI/CameraContainer" unique_id=384450534 instance=ExtResource("2_rse71")]
 layout_mode = 2
-texture = ExtResource("3_2wv7b")
 
 [node name="Stencil" type="TextureRect" parent="UI/CameraContainer" unique_id=814568141]
 layout_mode = 2

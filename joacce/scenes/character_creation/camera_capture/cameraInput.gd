@@ -33,7 +33,7 @@ func _ready() -> void:
 	# Will need player to choose from these options	
 	for feed in CameraServer.feeds():
 		var feed_name : String = feed.get_name()
-		
+		print(feed_name)
 		# Right now just picking a set camera
 		if (cam == null and feed_name == camera_name):
 			cam = feed
