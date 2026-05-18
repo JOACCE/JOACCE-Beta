@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dgtooqgpb5nd2"
+path.s3tc="res://.godot/imported/untitled1_2acb116199434214b26a7cc8e9a086d9_RGB_I_VolumeIronGateA_Co_2_001.jpg-c00952dfa0f156800ebf45029d19f4b6.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "677c707a4df1d5ac2f94b7945676c2c6"
+}
+
+[deps]
+
+source_file="res://assets/models/city/source/untitled1_2acb116199434214b26a7cc8e9a086d9_RGB_I_VolumeIronGateA_Co_2_001.jpg"
+dest_files=["res://.godot/imported/untitled1_2acb116199434214b26a7cc8e9a086d9_RGB_I_VolumeIronGateA_Co_2_001.jpg-c00952dfa0f156800ebf45029d19f4b6.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
