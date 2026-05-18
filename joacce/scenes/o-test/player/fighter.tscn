@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cfs47eepg36ms" path="res://icon.svg" id="1_16k5x"]
 [ext_resource type="Script" uid="uid://twf31shv83c2" path="res://scenes/o-test/player/fighter.gd" id="1_18uai"]
 [ext_resource type="Script" uid="uid://cv3u61nreii4v" path="res://scenes/o-test/player/attack.gd" id="3_t6ydl"]
+[ext_resource type="PackedScene" uid="uid://f8f8aiv3cw3a" path="res://scenes/o-test/player/healthbar.tscn" id="4_o146k"]
+[ext_resource type="PackedScene" uid="uid://dvh60o0ld4ael" path="res://scenes/o-test/player/meterbar.tscn" id="5_7utpr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16k5x"]
 radius = 22.0
@@ -67,11 +69,17 @@ shape = SubResource("CapsuleShape2D_t6ydl")
 [node name="AltMarker" type="Marker2D" parent="Healthbar" unique_id=2107103072]
 position = Vector2(722, 64)
 
-[node name="ProgressBar" type="ProgressBar" parent="Healthbar" unique_id=356258286]
+[node name="Healthbar" parent="Healthbar" unique_id=1444926826 instance=ExtResource("4_o146k")]
 offset_left = 63.0
 offset_top = 64.0
-offset_right = 437.0
-offset_bottom = 91.0
+offset_right = 463.0
+offset_bottom = 89.0
+
+[node name="Meterbar" parent="Healthbar" unique_id=24493788 instance=ExtResource("5_7utpr")]
+offset_left = 63.0
+offset_top = 95.0
+offset_right = 329.0
+offset_bottom = 115.0
 
 [connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]
 [connection signal="body_entered" from="Kick/Hitarea" to="." method="_on_hitarea_body_entered"]

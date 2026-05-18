@@ -9,7 +9,9 @@ var JUMP_VELOCITY = -600.0
 @onready var punch: Node2D = $Punch
 @onready var kick: Node2D = $Kick
 @onready var charge_bar = $ProgressBar 
-var charge_speed = 20.0
+@onready var health_bar = $Healthbar/Healthbar
+@onready var meter_bar = $Healthbar/Meterbar
+var charge_speed = 70.0
 var current_charge = 0.0
 var max_charge = 100
 
@@ -20,12 +22,11 @@ var player ={}
 var health = 100
 
 func _ready() -> void:
-	progress_bar.max_value = health
-	progress_bar.value = health
-	
 	if "2" in name:
 		SPEED = SPEED
 		JUMP_VELOCITY = JUMP_VELOCITY
+	# Initialize healthbar UI
+	health_bar.init_health(health)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -60,6 +61,10 @@ func _physics_process(delta: float) -> void:
 				$ProgressBar.visible = true
 				current_charge += charge_speed * delta
 				charge_bar.value = current_charge
+				if current_charge > 100:
+					print("Fully Charged")
+					# WILL CHANGE CURRENTLY HARD CODED
+					meter_bar.update_charges(5)
 		if Input.is_action_just_released("p1_charge"):
 			$ProgressBar.visible = false
 			print("Charged")
@@ -86,7 +91,8 @@ func _physics_process(delta: float) -> void:
 
 func apply_damage(damage) -> void:
 	health -= damage
-	progress_bar.value  = health
+	# Update healthbar UI state
+	health_bar.health = health
 	print(name," took ", damage, " damage")
 
 func _on_hitarea_body_entered(body: Node2D) -> void:
