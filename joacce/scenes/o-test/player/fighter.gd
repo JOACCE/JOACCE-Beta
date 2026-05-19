@@ -14,6 +14,7 @@ var JUMP_VELOCITY = -600.0
 var charge_speed = 70.0
 var current_charge = 0.0
 var max_charge = 100
+var charge_stack = 0
 
 var player ={}
 #player distinct by player_id
@@ -58,15 +59,16 @@ func _physics_process(delta: float) -> void:
 			kick.attack()
 		if Input.is_action_pressed("p1_charge"):
 			if current_charge < max_charge:
-				$ProgressBar.visible = true
+				charge_bar.visible = true
 				current_charge += charge_speed * delta
 				charge_bar.value = current_charge
 				if current_charge > 100:
 					print("Fully Charged")
-					# WILL CHANGE CURRENTLY HARD CODED
-					meter_bar.update_charges(5)
+					# WILL CHANGE CURRENTLY HARD CODED MAX OF 5
+					charge_stack = min(charge_stack + 1, 5)
+					meter_bar.update_charges(charge_stack)
 		if Input.is_action_just_released("p1_charge"):
-			$ProgressBar.visible = false
+			charge_bar.visible = false
 			print("Charged")
 			current_charge = 0
 			charge_bar.value = current_charge
