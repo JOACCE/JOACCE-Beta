@@ -12,15 +12,21 @@ var JUMP_VELOCITY = -600.0
 @onready var punch_frame: Sprite2D = $Sprites/Punch
 @onready var kick_frame: Sprite2D = $Sprites/Kick
 @onready var damage_frame: Sprite2D = $Sprites/Damage
+@onready var special_1: AnimatedSprite2D = $Sprites/Special1
+@onready var special_2: AnimatedSprite2D = $Sprites/Special2
+@onready var charge: AnimatedSprite2D = $Sprites/Charge
+@onready var charge_effect: GPUParticles2D = $Sprites/Charge/ChargeEffect
 
 
 var health = 100
 var attacking = false
 var animation_playing = false
+var charge_time = 0.0
 
 func _ready() -> void:
 	progress_bar.max_value = health
 	progress_bar.value = health
+	
 	
 	if "2" in name:
 		SPEED = 0
@@ -29,41 +35,63 @@ func _ready() -> void:
 		$Sprites.scale.x = -1
 
 
+
 func _physics_process(delta: float) -> void:
 	if "2" in name:
 		move_and_slide()
 		return
-		
-	# Add the gravity.
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		
-	# Handle jump.
+
+	# If a special/attack animation is running, skip all other input handling
+	if animation_playing:
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
+		move_and_slide()
+		return
+
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-		
+	if Input.is_action_just_pressed("special1"):
+		play_special(special_1)
+		return
+	if Input.is_action_just_pressed("special2"):
+		play_special(special_2)
+		return
+
 	if Input.is_action_just_pressed("punch"):
 		punch.attack()
 		show_frame(punch_frame, 1.0)
-		
-		
 	if Input.is_action_just_pressed("kick"):
 		kick.attack()
 		show_frame(kick_frame, 1.0)
-		
+
+	# Charge only if not also pressing a direction (avoids Shift+Right ambiguity)
+	var charging = Input.is_action_pressed("charge")
+	if charging:
+		charge_time += delta
+	else:
+		charge_time = 0.0
+
+	var show_charge = charging and charge_time >= 0.5 and is_on_floor()
+	charge.visible = show_charge
+	if show_charge:
+		idle.visible = false
+
 	var direction := Input.get_axis("left", "right")
-	if direction:
+	if direction and not charging:
 		walk.visible = true
 		walk.play()
 		idle.visible = false
 		velocity.x = direction * SPEED
+			
 	else:
 		walk.visible = false
 		walk.stop()
-		idle.visible = not attacking
+		if not charging and not attacking:
+			idle.visible = true
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
 	move_and_slide()
 
 func apply_damage(damage) -> void:
@@ -84,5 +112,20 @@ func show_frame(frame: Sprite2D, duration: float) -> void:
 	await get_tree().create_timer(duration).timeout
 	attacking = false
 	frame.visible = false
+	idle.visible = true
+	animation_playing = false
+	
+func play_special(sprite: AnimatedSprite2D) -> void:
+	animation_playing = true
+	idle.visible = false
+	charge.visible = false
+	sprite.visible = true
+	sprite.play()
+	if sprite == special_2:
+		var dir = -1 if $Sprites.scale.x < 0 else 1
+		velocity.x = dir * 200
+		velocity.y = -600  # the "up" of uppercut
+	await sprite.animation_finished
+	sprite.visible = false
 	idle.visible = true
 	animation_playing = false
