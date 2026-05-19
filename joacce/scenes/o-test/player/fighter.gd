@@ -16,15 +16,17 @@ var JUMP_VELOCITY = -600.0
 @onready var special_2: AnimatedSprite2D = $Sprites/Special2
 @onready var charge: AnimatedSprite2D = $Sprites/Charge
 @onready var charge_effect: GPUParticles2D = $Sprites/Charge/ChargeEffect
-
+@onready var sprites: Node2D = $Sprites
 @onready var charge_bar = $ProgressBar 
+
+#player distinct by player_id
+@export var id := 1
+
 var charge_speed = 20.0
 var current_charge = 0.0
 var max_charge = 100
 
 var player ={}
-#player distinct by player_id
-@export var player_id := 1
 
 var health = 100
 var attacking = false
@@ -34,15 +36,6 @@ var charge_time = 0.0
 func _ready() -> void:
 	progress_bar.max_value = health
 	progress_bar.value = health
-	
-	
-	if "2" in name:
-		SPEED = SPEED
-		JUMP_VELOCITY = JUMP_VELOCITY
-		progress_bar.position = alt_marker.position
-		$Sprites.scale.x = -1
-
-
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -54,87 +47,66 @@ func _physics_process(delta: float) -> void:
 	# If a special/attack animation is running, skip all other input handling
 	if animation_playing:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
-		move_and_slide()
+		#move_and_slide()
 		return
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("p"+str(id)+"_jump") and is_on_floor_only():
 		velocity.y = JUMP_VELOCITY
 
-	if Input.is_action_just_pressed("special1"):
+	if Input.is_action_just_pressed("p"+str(id)+"_special1"):
 		play_special(special_1)
 		return
-	if Input.is_action_just_pressed("special2"):
+	if Input.is_action_just_pressed("p"+str(id)+"_special2"):
 		play_special(special_2)
 		return
 
-	if Input.is_action_just_pressed("punch"):
+	if Input.is_action_just_pressed("p"+str(id)+"_punch"):
 		punch.attack()
-		#
-	
-		
-	
-	if player_id == 1:
-		if Input.is_action_pressed("p1_move_left"):
-			direction -=1
-		if Input.is_action_pressed("p1_move_right"):
-			direction +=1
-			print("Player 1 is moving")
-
-		if Input.is_action_pressed("p1_jump") and is_on_floor_only():
-			velocity.y = JUMP_VELOCITY
-		if Input.is_action_just_pressed("kick"):
-			kick.attack()
-		if Input.is_action_pressed("p1_charge"):
-			if current_charge < max_charge:
-				$ProgressBar.visible = true
-				current_charge += charge_speed * delta
-				charge_bar.value = current_charge
-		if Input.is_action_just_released("p1_charge"):
-			$ProgressBar.visible = false
-			print("Charged")
-			current_charge = 0
-			charge_bar.value = current_charge
-	if player_id == 2:
-		if Input.is_action_pressed("p2_move_left"):
-			direction -=1
-			print("Player 2 is moving")
-
-		if Input.is_action_pressed("p2_move_right"):
-			direction +=1
-			print("Player 2 is moving")
-
-		if Input.is_action_pressed("p2_jump") and is_on_floor_only():
-			
-			velocity.y = JUMP_VELOCITY
-	if direction:
 		show_frame(punch_frame, 1.0)
-	if Input.is_action_just_pressed("kick"):
+		return
+		
+	if Input.is_action_just_pressed("p"+str(id)+"_kick"):
 		kick.attack()
 		show_frame(kick_frame, 1.0)
-
-	# Charge only if not also pressing a direction (avoids Shift+Right ambiguity)
-	var charging = Input.is_action_pressed("charge")
-	if charging:
-		charge_time += delta
-	else:
-		charge_time = 0.0
-
-	var show_charge = charging and charge_time >= 0.5 and is_on_floor()
-	charge.visible = show_charge
-	if show_charge:
-		idle.visible = false
-
-	direction = Input.get_axis("left", "right")
-	if direction and not charging:
+		return
+	
+	if Input.is_action_pressed("p"+str(id)+"_left"):
+		direction -=1
+		print("p",id," is moving")
+		
+	if Input.is_action_pressed("p"+str(id)+"_right"):
+		direction +=1
+		print("p",id," is moving")
+	
+	if Input.is_action_pressed("p"+str(id)+"_charge") and is_on_floor():
+		if current_charge < max_charge:
+			charge_bar.visible = true
+			charge_time += delta
+			if charge_time >= 0.5:
+				current_charge += charge_speed * delta
+				charge_bar.value = current_charge
+				charge.visible = true
+				idle.visible = false
+				
+	
+	if Input.is_action_just_released("p"+str(id)+"_charge"):
+		charge_bar.visible = false
+		print("Charged")
+		charge_time = 0
+		current_charge = 0
+		charge_bar.value = current_charge
+		charge.visible = false
+		idle.visible = true
+	
+	if direction and not animation_playing:
 		walk.visible = true
 		walk.play()
 		idle.visible = false
 		velocity.x = direction * SPEED
-			
 	else:
 		walk.visible = false
 		walk.stop()
-		if not charging and not attacking:
+		if  not attacking:
 			idle.visible = true
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
@@ -167,7 +139,7 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	sprite.visible = true
 	sprite.play()
 	if sprite == special_2:
-		var dir = -1 if $Sprites.scale.x < 0 else 1
+		var dir = -1 if sprites.scale.x < 0 else 1
 		velocity.x = dir * 200
 		velocity.y = -600  # the "up" of uppercut
 	await sprite.animation_finished

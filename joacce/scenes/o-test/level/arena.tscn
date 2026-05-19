@@ -47,4 +47,24 @@ rounded = true
 
 [node name="Fighter2" parent="Fighters" unique_id=650291903 instance=ExtResource("1_hn76v")]
 position = Vector2(844, 535)
-player_id = 2
+id = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Fighters/Fighter2" unique_id=1465664563]
+visible = false
+modulate = Color(0.08235294, 1, 1, 1)
+show_behind_parent = true
+light_mask = 8
+visibility_layer = 8
+z_as_relative = false
+y_sort_enabled = true
+custom_minimum_size = Vector2(40, 75)
+layout_direction = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 65.0
+offset_bottom = 100.0
+grow_vertical = 0
+rounded = true
