@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bwwno4dwke15k" path="res://assets/stencils/default/punch.png" id="5_0olyo"]
 [ext_resource type="Texture2D" uid="uid://bf1l6tmh33ovo" path="res://assets/stencils/default/kick.png" id="6_jr3a8"]
 [ext_resource type="Texture2D" uid="uid://bmyu2fsrkd68v" path="res://assets/stencils/default/damage.png" id="7_jr3a8"]
+[ext_resource type="Texture2D" uid="uid://bsyoowgknwx6y" path="res://assets/stencils/default/special1-1.png" id="8_3ttc0"]
+[ext_resource type="Texture2D" uid="uid://h2mikka8j41b" path="res://assets/stencils/default/special1-2.png" id="9_nne8j"]
+[ext_resource type="Texture2D" uid="uid://buh2lrpn2gcrp" path="res://assets/stencils/default/special2-1.png" id="10_j2mfq"]
+[ext_resource type="Texture2D" uid="uid://dbdtxdifimkjd" path="res://assets/stencils/default/special2-2.png" id="11_7pges"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18uai"]
 radius = 12.0
@@ -29,6 +33,42 @@ animations = [{
 "name": &"default",
 "speed": 2.0
 }]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j2mfq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3ttc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nne8j")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_truya"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_j2mfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7pges")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_6nna0"]
+resource_name = "uppercut"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_duly7"]
+_data = {
+&"uppercut": SubResource("Animation_6nna0")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16k5x"]
 radius = 30.0
@@ -106,6 +146,25 @@ visible = false
 position = Vector2(-7, -4)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("7_jr3a8")
+
+[node name="Special1" type="AnimatedSprite2D" parent="Sprites" unique_id=593912497]
+visible = false
+position = Vector2(-1, -27)
+scale = Vector2(0.23, 0.23)
+sprite_frames = SubResource("SpriteFrames_j2mfq")
+frame = 1
+frame_progress = 1.0
+
+[node name="Special2" type="AnimatedSprite2D" parent="Sprites" unique_id=1775015784]
+visible = false
+position = Vector2(-1, -21)
+scale = Vector2(0.23, 0.23)
+sprite_frames = SubResource("SpriteFrames_truya")
+frame = 1
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Special2" unique_id=499392011]
+libraries/ = SubResource("AnimationLibrary_duly7")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1022065581]
 position = Vector2(-2, -18)

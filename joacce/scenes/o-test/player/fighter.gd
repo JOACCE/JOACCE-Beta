@@ -16,6 +16,7 @@ var JUMP_VELOCITY = -600.0
 
 var health = 100
 var attacking = false
+var animation_playing = false
 
 func _ready() -> void:
 	progress_bar.max_value = health
@@ -32,14 +33,16 @@ func _physics_process(delta: float) -> void:
 	if "2" in name:
 		move_and_slide()
 		return
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
+		
 	if Input.is_action_just_pressed("punch"):
 		punch.attack()
 		show_frame(punch_frame, 1.0)
@@ -74,6 +77,7 @@ func _on_hitarea_body_entered(body: Node2D) -> void:
 		body.apply_damage(5)
 
 func show_frame(frame: Sprite2D, duration: float) -> void:
+	animation_playing = true
 	attacking = true
 	idle.visible = false
 	frame.visible = true
@@ -81,3 +85,4 @@ func show_frame(frame: Sprite2D, duration: float) -> void:
 	attacking = false
 	frame.visible = false
 	idle.visible = true
+	animation_playing = false
