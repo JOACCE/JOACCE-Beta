@@ -3,6 +3,11 @@ extends HBoxContainer
 @export var max_charges : int = 5
 var current_charges : int = 0
 
+func _ready() -> void:
+	# Init charges
+	update_charges(0)
+
+
 func update_charges(value: int) -> void:
 	current_charges = value
 	
@@ -17,6 +22,6 @@ func update_charges(value: int) -> void:
 		style = style.duplicate()
 		charge.add_theme_stylebox_override("panel", style)
 		if i < current_charges:
-			style.bg_color = Color(0.002, 1, 1, 1)
+			style.bg_color = Color(0.2, 1, 1, 1)
 		else:
-			style.bg_color = Color(0, 0, 0, 0.3372)
+			style.bg_color = Color(0, 0, 0, 0.092)
