@@ -18,6 +18,7 @@ var JUMP_VELOCITY = -600.0
 @onready var charge_effect: GPUParticles2D = $Sprites/Charge/ChargeEffect
 @onready var sprites: Node2D = $Sprites
 @onready var charge_bar = $ProgressBar 
+@onready var state_machine = $StateMachine
 
 #player distinct by player_id
 @export var id := 1
@@ -52,51 +53,6 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("p"+str(id)+"_jump") and is_on_floor_only():
 		velocity.y = JUMP_VELOCITY
-
-	if Input.is_action_just_pressed("p"+str(id)+"_special1"):
-		play_special(special_1)
-		return
-	if Input.is_action_just_pressed("p"+str(id)+"_special2"):
-		play_special(special_2)
-		return
-
-	if Input.is_action_just_pressed("p"+str(id)+"_punch"):
-		punch.attack()
-		show_frame(punch_frame, 1.0)
-		return
-		
-	if Input.is_action_just_pressed("p"+str(id)+"_kick"):
-		kick.attack()
-		show_frame(kick_frame, 1.0)
-		return
-	
-	if Input.is_action_pressed("p"+str(id)+"_left"):
-		direction -=1
-		print("p",id," is moving")
-		
-	if Input.is_action_pressed("p"+str(id)+"_right"):
-		direction +=1
-		print("p",id," is moving")
-	
-	if Input.is_action_pressed("p"+str(id)+"_charge") and is_on_floor():
-		if current_charge < max_charge:
-			charge_bar.visible = true
-			charge_time += delta
-			if charge_time >= 0.5:
-				current_charge += charge_speed * delta
-				charge_bar.value = current_charge
-				charge.visible = true
-				idle.visible = false
-				
-	
-	if Input.is_action_just_released("p"+str(id)+"_charge"):
-		charge_bar.visible = false
-		print("Charged")
-		charge_time = 0
-		current_charge = 0
-		charge_bar.value = current_charge
-		charge.visible = false
-		idle.visible = true
 	
 	if direction and not animation_playing:
 		walk.visible = true
@@ -109,7 +65,10 @@ func _physics_process(delta: float) -> void:
 		if  not attacking:
 			idle.visible = true
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if state_machine:
+		state_machine.physics_update(delta)
 	move_and_slide()
+	
 
 func apply_damage(damage) -> void:
 	show_frame(damage_frame, 0.7)
@@ -146,3 +105,13 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	sprite.visible = false
 	idle.visible = true
 	animation_playing = false
+	
+func get_sprite(sprite_name) -> Node:
+	match sprite_name:
+		"idle": return $Sprites/Idle
+		"walk": return $Sprites/Walk
+		"punch": return $Sprites/Punch
+		"kick": return $Sprites/Kick
+		"charge": return $Sprites/Charge
+		
+	return null

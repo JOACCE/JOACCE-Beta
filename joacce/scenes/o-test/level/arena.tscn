@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://r4ntglcsh4uq"]
 
 [ext_resource type="PackedScene" uid="uid://dwr8ifl6e0vvj" path="res://scenes/o-test/player/fighter.tscn" id="1_hn76v"]
+[ext_resource type="Script" uid="uid://bie32sa0pgecn" path="res://scenes/o-test/player/StateMachine/StateMachine.gd" id="2_pq3kf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3m8qi"]
 size = Vector2(1192, 20)
@@ -45,6 +46,9 @@ offset_bottom = 100.0
 grow_vertical = 0
 rounded = true
 
+[node name="StateMachine" type="Node2D" parent="Fighters/Fighter" unique_id=1585892513]
+script = ExtResource("2_pq3kf")
+
 [node name="Fighter2" parent="Fighters" unique_id=650291903 instance=ExtResource("1_hn76v")]
 position = Vector2(844, 535)
 id = 2
@@ -68,3 +72,6 @@ offset_right = 65.0
 offset_bottom = 100.0
 grow_vertical = 0
 rounded = true
+
+[node name="StateMachine" type="Node2D" parent="Fighters/Fighter2" unique_id=1344101781]
+script = ExtResource("2_pq3kf")
