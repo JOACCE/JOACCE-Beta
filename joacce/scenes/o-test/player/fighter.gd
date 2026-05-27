@@ -3,10 +3,8 @@ extends CharacterBody2D
 var SPEED = 400.0
 var JUMP_VELOCITY = -600.0
 
-@onready var progress_bar: ProgressBar = $Healthbar/ProgressBar
 @onready var punch: Node2D = $Punch
 @onready var kick: Node2D = $Kick
-@onready var alt_marker: Marker2D = $Healthbar/AltMarker
 @onready var idle: Sprite2D = $Sprites/Idle
 @onready var walk: AnimatedSprite2D = $Sprites/Walk
 @onready var punch_frame: Sprite2D = $Sprites/Punch
@@ -20,13 +18,19 @@ var JUMP_VELOCITY = -600.0
 @onready var charge_bar = $ProgressBar 
 @onready var state_machine = $StateMachine
 
+# UI related references
+@onready var health_bar = $Canvas/Bars/Healthbar
+@onready var meter_bar = $Canvas/Bars/Meterbar
+@onready var bar_layer = $Canvas/Bars
+
 #player distinct by player_id
 @export var id := 1
 
-var charge_speed = 20.0
+var charge_speed = 70.0
 var current_charge = 0.0
 var max_charge = 100
 var charge_stack = 0
+const max_stack = 5
 
 var player ={}
 
@@ -36,8 +40,8 @@ var animation_playing = false
 var charge_time = 0.0
 
 func _ready() -> void:
-	progress_bar.max_value = health
-	progress_bar.value = health
+	# Initialize UI elements
+	health_bar.init_health(health)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

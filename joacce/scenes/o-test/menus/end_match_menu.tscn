@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cey75pesa6i1s"]
+
+[node name="EndMatchMenu" type="Control" unique_id=265643823]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
