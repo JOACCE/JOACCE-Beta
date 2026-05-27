@@ -1,9 +1,42 @@
 [gd_scene format=3 uid="uid://jtuygkdyyogi"]
 
+[ext_resource type="Script" uid="uid://c4get2wcunqf1" path="res://scenes/character_creation/camera_select/camera_select.gd" id="1_u0q77"]
 [ext_resource type="Texture2D" uid="uid://i5qjdsyxb7iy" path="res://assets/background.png" id="1_wpbxj"]
 [ext_resource type="PackedScene" uid="uid://c0t8baf72a4tj" path="res://scenes/character_creation/camera/camera.tscn" id="2_3waco"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0q77"]
+bg_color = Color(0.4117647, 0.18039216, 0.21960784, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_u0q77"]
+default_font_size = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rum6p"]
+bg_color = Color(0.8392157, 0.6313726, 0.29411766, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8tfnd"]
+bg_color = Color(0.8392157, 0.6313726, 0.29411766, 0.78431374)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_homjw"]
+bg_color = Color(0.31764707, 0.6117647, 0.40392157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [node name="CameraSelect" type="Node2D" unique_id=1706868323]
+script = ExtResource("1_u0q77")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=173375674]
 
@@ -23,17 +56,78 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/VBoxContainer" unique_id=1721138079]
+[node name="Margin1" type="Control" parent="UI/VBoxContainer" unique_id=520700333]
+custom_minimum_size = Vector2(0, 95)
 layout_mode = 2
 
-[node name="Camera" parent="UI/VBoxContainer/PanelContainer" unique_id=1170137919 instance=ExtResource("2_3waco")]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer" unique_id=1352765881]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin1" type="Control" parent="UI/VBoxContainer/HBoxContainer" unique_id=665856994]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="ButtonContainer" type="HBoxContainer" parent="UI/VBoxContainer" unique_id=2136127819]
+[node name="CameraContainer" type="PanelContainer" parent="UI/VBoxContainer/HBoxContainer" unique_id=1721138079]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Camera" parent="UI/VBoxContainer/HBoxContainer/CameraContainer" unique_id=1170137919 instance=ExtResource("2_3waco")]
 layout_mode = 2
 
-[node name="CameraDropdown" type="OptionButton" parent="UI/VBoxContainer/ButtonContainer" unique_id=787117264]
+[node name="Margin2" type="Control" parent="UI/VBoxContainer/HBoxContainer" unique_id=1370675213]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+
+[node name="Margin2" type="Control" parent="UI/VBoxContainer" unique_id=292274323]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/VBoxContainer" unique_id=1231703701]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="UI/VBoxContainer/CenterContainer" unique_id=2136127819]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="UI/VBoxContainer/CenterContainer/ButtonContainer" unique_id=779530820]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_u0q77")
+text = "BACK"
+
+[node name="Margin1" type="Control" parent="UI/VBoxContainer/CenterContainer/ButtonContainer" unique_id=27467387]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="CameraDropdown" type="OptionButton" parent="UI/VBoxContainer/CenterContainer/ButtonContainer" unique_id=787117264]
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 2
+theme = SubResource("Theme_u0q77")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rum6p")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8tfnd")
+alignment = 1
+autowrap_trim_flags = 0
+selected = 0
 item_count = 1
-popup/item_0/text = "Select Camera"
+popup/item_0/text = "SELECT CAMERA"
 popup/item_0/id = 0
+
+[node name="Margin2" type="Control" parent="UI/VBoxContainer/CenterContainer/ButtonContainer" unique_id=757804256]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NextButton" type="Button" parent="UI/VBoxContainer/CenterContainer/ButtonContainer" unique_id=1448792739]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_homjw")
+text = "NEXT"
+
+[node name="Margin3" type="Control" parent="UI/VBoxContainer" unique_id=435863273]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[connection signal="pressed" from="UI/VBoxContainer/CenterContainer/ButtonContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_selected" from="UI/VBoxContainer/CenterContainer/ButtonContainer/CameraDropdown" to="." method="_on_camera_dropdown_item_selected"]
+[connection signal="pressed" from="UI/VBoxContainer/CenterContainer/ButtonContainer/NextButton" to="." method="_on_next_button_pressed"]

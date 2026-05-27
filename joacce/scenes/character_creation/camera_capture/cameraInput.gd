@@ -9,27 +9,34 @@ extends Node2D
 const imageProcessing = preload("res://scenes/character_creation/imageProcessing.gd")
 
 # Camera
-var camera_name : String = "FaceTime HD Camera" # Hard-coding this for now
-var camera : CameraFeed
-@onready var display : TextureRect = $UI/CameraContainer/Camera
+var camera_name : String
+@onready var camera : Control = $UI/VBoxContainer/HBoxContainer/CameraContainer/Camera
 
 # Buttons
-@onready var button_container : HBoxContainer = $UI/ButtonContainer
-@onready var ready_button : Button = $UI/ButtonContainer/ReadyButton
-@onready var plus_button : Button = $UI/ButtonContainer/PlusButton
-@onready var minus_button : Button = $UI/ButtonContainer/MinusButton
+@onready var button_container : HBoxContainer = $UI/VBoxContainer/CenterContainer/ButtonContainer
+@onready var ready_button : Button = $UI/VBoxContainer/CenterContainer/ButtonContainer/ReadyButton
+@onready var plus_button : Button = $UI/VBoxContainer/CenterContainer/ButtonContainer/PlusButton
+@onready var minus_button : Button = $UI/VBoxContainer/CenterContainer/ButtonContainer/MinusButton
 
 # Directories
-const CHARACTER_DIR : String = "res://assets/characters/"
-const STENCIL_DIR : String = "res://assets/stencils/"
+var CHARACTER_DIR : String
+var STENCIL_DIR : String
+
+# Resource
+var camera_res = preload("res://scenes/character_creation/CharacterCreationData.tres")
 
 func _ready() -> void:
+	# Setup resources
+	camera_name = camera_res.camera_name
+	CHARACTER_DIR = camera_res.CHARACTER_DIR
+	STENCIL_DIR = camera_res.STENCIL_DIR
+	
 	# Allow CameraServer to monitor feeds
 	CameraServer.monitoring_feeds = true
 	
-	var cam: CameraFeed = null
-	
 	# Get currently connected camera feeds
+	var cam = null
+	
 	# Will need player to choose from these options	
 	for feed in CameraServer.feeds():
 		var feed_name : String = feed.get_name()
@@ -38,37 +45,7 @@ func _ready() -> void:
 		if (cam == null and feed_name == camera_name):
 			cam = feed
 	
-	_turn_on_camera_feed(cam)
-
-
-##
-## Turn on/switch active camera input
-##
-## @param cam The camera to turn on/switch to
-##
-func _turn_on_camera_feed(cam: CameraFeed):
-	# Turn off existing camera if exists
-	if (camera):
-		camera.feed_is_active = false
-
-	# If no camera, do nothing
-	if (!cam):
-		return
-
-	# Set and turn on camera feed
-	camera = cam
-	camera.feed_is_active = true
-	
-	print("Using Camera: ", camera.get_name())
-	
-	var cam_tex_y = display.material.get_shader_parameter("camera_y")
-	var cam_tex_CbCr = display.material.get_shader_parameter("camera_CbCr")
-	
-	cam_tex_y.camera_feed_id = camera.get_id()
-	cam_tex_CbCr.camera_feed_id = camera.get_id()
-	
-	display.material.set_shader_parameter("camera_y", cam_tex_y)
-	display.material.set_shader_parameter("camera_CbCr", cam_tex_CbCr)
+	camera.turn_on_camera_feed(cam)
 
 
 ##

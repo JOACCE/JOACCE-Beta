@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c0t8baf72a4tj"]
 
-[ext_resource type="Shader" uid="uid://bm38gx43qi467" path="res://scenes/character_creation/camera_capture/camera.gdshader" id="1_3thg3"]
+[ext_resource type="Script" uid="uid://bkripenbcr0lr" path="res://scenes/character_creation/camera/camera.gd" id="1_3f81m"]
+[ext_resource type="Shader" uid="uid://bm38gx43qi467" path="res://scenes/character_creation/camera/camera.gdshader" id="1_3thg3"]
 [ext_resource type="Texture2D" uid="uid://i5qjdsyxb7iy" path="res://assets/background.png" id="2_3f81m"]
 
 [sub_resource type="CameraTexture" id="CameraTexture_ep72f"]
@@ -12,11 +13,26 @@ which_feed = 1
 shader = ExtResource("1_3thg3")
 shader_parameter/camera_y = SubResource("CameraTexture_2wv7b")
 shader_parameter/camera_CbCr = SubResource("CameraTexture_ep72f")
+shader_parameter/visibility = 0.0
 
-[node name="Camera" type="TextureRect" unique_id=1170137919]
+[node name="Camera" type="Control" unique_id=1780501676]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_3f81m")
 
 [node name="Camera" type="TextureRect" parent="." unique_id=892746685]
 texture_filter = 1
 material = SubResource("ShaderMaterial_oqhii")
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_3f81m")

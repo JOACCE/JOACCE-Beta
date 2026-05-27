@@ -4,6 +4,8 @@ shader_type canvas_item;
 uniform sampler2D camera_y;
 uniform sampler2D camera_CbCr;
 
+uniform float visibility : hint_range(0.0, 1.0) = 0.0;
+
 void fragment() {
 	vec2 flipped_uv = vec2(1.0 - UV.x, UV.y);
 	
@@ -19,5 +21,5 @@ void fragment() {
 						vec3(1.57481, -0.46813, 0.00000)) *
 				color.rgb;
 	
-	COLOR = vec4(color, 1.0);	
+	COLOR = vec4(color * visibility, 1.0);
 }
