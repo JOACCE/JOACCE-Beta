@@ -4,10 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://dao8xo1tkwxgr" path="res://assets/models/city/source/untitled1.glb" id="1_uda3f"]
 [ext_resource type="PackedScene" uid="uid://dl2ftogqrswy1" path="res://assets/models/alley/abandoned_alley_3.glb" id="2_c4hh3"]
 [ext_resource type="FontFile" uid="uid://7ccxja4diiis" path="res://assets/fonts/Iceland-Regular.ttf" id="4_gmqsq"]
+[ext_resource type="PackedScene" uid="uid://36o1vhtip1xf" path="res://assets/models/warehouse/abandoned_warehouse_-_interior_scene.glb" id="5_g0ov8"]
+[ext_resource type="PackedScene" uid="uid://cniwobg058vxw" path="res://assets/models/ring/boxing_ring.glb" id="6_h0136"]
 
 [sub_resource type="Curve3D" id="Curve3D_uda3f"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -31.427109, 1.9868622, -172.97887, -0.7, -2, -12.8, 0.7, 2, 12.8, -30.1, 3.2, -97.9, -3.3, -0.2, 0.2, 3.3, 0.2, -0.2, -6, -7, -89),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -31.427109, 1.9868622, -172.97887, -1.5560493, -1.3873036, -10.606049, 1.5560493, 1.3873036, 10.606049, -30.1, 2.301976, -97.9, -4.7138405, -0.7024145, -0.03705597, 4.7138405, 0.7024145, 0.03705597, -8.157356, -5.391197, -88.43235),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
@@ -17,33 +19,30 @@ albedo_color = Color(0.15109316, 0.12468795, 0.11148708, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h0136"]
 
-[node name="IntroScene" type="Node3D" unique_id=1289364331 node_paths=PackedStringArray("path_follow", "title_label")]
+[sub_resource type="Environment" id="Environment_h0136"]
+background_mode = 1
+background_color = Color(0.15457436, 0.096875854, 0.09102965, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+
+[node name="IntroScene" type="Node3D" unique_id=1289364331 node_paths=PackedStringArray("path_follow", "title_label", "character_label")]
 script = ExtResource("1_c4hh3")
 path_follow = NodePath("CameraPath/PathFollow3D")
 title_label = NodePath("CanvasLayer/TitleLabel")
-
-[node name="City2" parent="." unique_id=837076346 instance=ExtResource("1_uda3f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -135)
-
-[node name="Alley" parent="." unique_id=336989077 instance=ExtResource("2_c4hh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.575203, 0.0032595396, -92.44213)
-
-[node name="City" parent="." unique_id=248860241 instance=ExtResource("1_uda3f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -43)
+character_label = NodePath("CanvasLayer/CharacterLabel")
 
 [node name="CameraPath" type="Path3D" parent="." unique_id=76872645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45370102, 0)
 curve = SubResource("Curve3D_uda3f")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPath" unique_id=1444291044]
-transform = Transform3D(-0.23990825, 0.39739764, -0.88562363, -0.2587645, 0.8530434, 0.45290828, 0.9355429, 0.33785337, -0.10183589, -18.95119, -1.262743, -88.56641)
-progress = 92.11509
+transform = Transform3D(-0.007859594, -0.14736393, -0.988988, 0, 0.9890072, -0.14737017, 0.99980783, -0.0011584433, -0.007774538, -8.157355, -5.391198, -88.43234)
+progress = 103.323784
+rotation_mode = 2
 
 [node name="Camera3D" type="Camera3D" parent="CameraPath/PathFollow3D" unique_id=405584696]
-transform = Transform3D(0.9939375, -0.107006766, -0.026772903, 0.11023826, 0.972216, 0.20682243, 0.003889136, -0.20850183, 0.97803867, 0, 0, 0)
+transform = Transform3D(0.9996498, 0.0057579256, -0.027322285, 0, 0.9785713, 0.20620956, 0.027922748, -0.20613693, 0.97815293, 0, 0, 0)
 fov = 67.5
-
-[node name="Sketchfab_Scene" parent="CameraPath" unique_id=842330426 instance=ExtResource("2_c4hh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.575203, 0.0032595396, -92.44213)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1141026769]
 
@@ -68,7 +67,236 @@ text = "FIGHTOSCOPE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RoadPatch" type="MeshInstance3D" parent="." unique_id=1063540931]
+[node name="CharacterLabel" type="Label" parent="CanvasLayer" unique_id=1341668598]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_gmqsq")
+theme_override_font_sizes/font_size = 55
+text = "MENU PLACEHOLDER"
+horizontal_alignment = 1
+
+[node name="PlayArea" type="Node3D" parent="." unique_id=1203188174]
+
+[node name="Warehouse" parent="PlayArea" unique_id=1497711868 instance=ExtResource("5_g0ov8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.915598, -4, -94)
+
+[node name="Ring" parent="PlayArea/Warehouse" unique_id=189678489 instance=ExtResource("6_h0136")]
+transform = Transform3D(-0.9, 0, 1.3589622e-07, 0, 0.9, 0, -1.3589622e-07, 0, -0.9, 0.33382893, -3.0849566, -5.6551285)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="PlayArea/Warehouse" unique_id=1887196560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0036969185, 0.8610215, -2.3395233)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="PlayArea/Warehouse" unique_id=1267833531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.004953, 1.0859289, -5.637108)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="PlayArea/Warehouse" unique_id=300388532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.749653, -0.8609996, -5.6164474)
+light_energy = 0.5
+omni_range = 5.6196537
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="PlayArea/Warehouse" unique_id=382074834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.505175, 1.1930976, -2.3893585)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="PlayArea/Warehouse" unique_id=532499264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8309197, 1.0530219, -8.800095)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="PlayArea/Warehouse" unique_id=450556595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10578585, 0.6240413, -8.874275)
+
+[node name="Warehouse2" parent="PlayArea" unique_id=1015192951 instance=ExtResource("5_g0ov8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -27.090004, -4.130352, -83.770065)
+
+[node name="CityArea" type="Node3D" parent="." unique_id=1612295974]
+
+[node name="City2" parent="CityArea" unique_id=837076346 instance=ExtResource("1_uda3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -135)
+
+[node name="Alley" parent="CityArea" unique_id=336989077 instance=ExtResource("2_c4hh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.575203, -0.12418151, -92.44213)
+
+[node name="City3" parent="CityArea" unique_id=1083880346 instance=ExtResource("1_uda3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.970703, 0, 32.411064)
+
+[node name="City" parent="CityArea" unique_id=248860241 instance=ExtResource("1_uda3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -43)
+
+[node name="RoadPatch" type="MeshInstance3D" parent="CityArea" unique_id=1063540931]
 transform = Transform3D(8.448001, 0, 0, 0, 1, 0, 0, 0, 4.62, -33, -0.19114304, -87)
 material_override = SubResource("StandardMaterial3D_gmqsq")
 mesh = SubResource("PlaneMesh_h0136")
+skeleton = NodePath("../..")
+
+[node name="StreetLights" type="Node3D" parent="CityArea" unique_id=1329115072]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=428231066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -173.37338)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=33429471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -173.37338)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=51229456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -158.54173)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=1763270375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -158.54173)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=1156775486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -146.1471)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=681539009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -146.1471)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=360801786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -131.31543)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=1215578166]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -131.31543)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=750393852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -116.80909)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=731498890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -116.80909)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=1549329037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -101.97744)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=929752867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -101.97744)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=643802872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -89.5828)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 0.5
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=2588974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -89.5828)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D15" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=489121803]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -74.75114)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D16" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=1078972041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -74.75114)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D17" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=2020791491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -60.89288)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D18" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=699447586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -60.89288)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D19" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=1358038879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -46.06123)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D20" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=582219078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -46.06123)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D21" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=890888468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -33.66659)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D22" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=1779572086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -33.66659)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D23" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=1572826086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -18.834927)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D24" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=711116976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -18.834927)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D25" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=12682186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, -4.3285866)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D26" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=639614394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, -4.3285866)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D27" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=1534453806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, 10.503063)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D28" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=473887270]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, 10.503063)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D29" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=577308132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, 22.897701)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D30" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=729508958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, 22.897701)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D31" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=2104105611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.42273, 2.3913074, 37.729366)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D32" type="OmniLight3D" parent="CityArea/StreetLights" unique_id=420568155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.821762, 2.3913074, 37.729366)
+light_color = Color(1, 1, 0.92941177, 1)
+light_energy = 2.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1995677920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.435959, 74.33026, 212.58542)
+light_color = Color(1, 1, 0.8627451, 1)
+light_energy = 0.001
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1353547271]
+environment = SubResource("Environment_h0136")
