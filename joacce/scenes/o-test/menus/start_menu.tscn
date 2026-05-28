@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsbuulqjjpyev" path="res://scenes/o-test/menus/start_menu.gd" id="1_wcgbl"]
 [ext_resource type="FontFile" uid="uid://bphypfln80nsy" path="res://assets/fonts/Pricedown Bl.otf" id="2_i3wqb"]
-[ext_resource type="Texture2D" uid="uid://bnb23ug205aku" path="res://assets/menus/TEMP title.png" id="2_lrk34"]
+[ext_resource type="Texture2D" uid="uid://b71upxtsdqr3k" path="res://assets/menus/arena.png" id="2_lrk34"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrk34"]
 atlas = ExtResource("2_lrk34")
@@ -21,7 +21,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 520.0
+offset_right = 506.5713
 offset_bottom = 293.0
 grow_horizontal = 2
 grow_vertical = 2
