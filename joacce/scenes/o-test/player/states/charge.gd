@@ -8,6 +8,7 @@ func enter():
 	var anim = player.switch_frame("charge")
 	anim.play()
 	player.velocity.x =0
+	stack_inputted = false
 
 func exit():
 	player.charge_bar.visible = false
