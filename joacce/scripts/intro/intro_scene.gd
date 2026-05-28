@@ -2,7 +2,7 @@ extends Node3D
 
 @export var path_follow: PathFollow3D
 @export var title_label: Label
-@export var duration: float = 10.0
+@export var duration: float = 16.0
 
 func _ready() -> void:
 	path_follow.progress_ratio = 0.0
