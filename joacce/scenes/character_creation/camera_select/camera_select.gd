@@ -41,4 +41,4 @@ func _on_next_button_pressed() -> void:
 	ResourceSaver.save(camera_res, "res://scenes/character_creation/CharacterCreationData.tres")
 	
 	# Change scene
-	get_tree().change_scene_to_file("res://scenes/character_creation/camera_capture/cameraInput.tscn")
+	get_tree().change_scene_to_file("res://scenes/character_creation/camera_capture/camera_input.tscn")

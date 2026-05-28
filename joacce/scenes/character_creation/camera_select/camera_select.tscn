@@ -65,7 +65,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Margin1" type="Control" parent="UI/VBoxContainer/HBoxContainer" unique_id=665856994]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="CameraContainer" type="PanelContainer" parent="UI/VBoxContainer/HBoxContainer" unique_id=1721138079]
@@ -77,7 +77,7 @@ size_flags_vertical = 3
 layout_mode = 2
 
 [node name="Margin2" type="Control" parent="UI/VBoxContainer/HBoxContainer" unique_id=1370675213]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
 [node name="Margin2" type="Control" parent="UI/VBoxContainer" unique_id=292274323]
@@ -112,6 +112,10 @@ selected = 0
 item_count = 1
 popup/item_0/text = "SELECT CAMERA"
 popup/item_0/id = 0
+
+[node name="Margin1" type="Control" parent="UI/VBoxContainer/CenterContainer/ButtonContainer/CameraDropdown" unique_id=643626832]
+custom_minimum_size = Vector2(20, 0)
+anchors_preset = 0
 
 [node name="Margin2" type="Control" parent="UI/VBoxContainer/CenterContainer/ButtonContainer" unique_id=757804256]
 custom_minimum_size = Vector2(20, 0)

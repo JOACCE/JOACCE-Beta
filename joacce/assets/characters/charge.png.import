@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvgrok768ebe1"
-path="res://.godot/imported/tmp_mask.png-44494a0c649c68ce5e50ad336cde84a1.ctex"
+uid="uid://da5gfg00pwcf0"
+path="res://.godot/imported/charge.png-8a8f01eb678cc340a176710d3faa472b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stencils/tmp_mask.png"
-dest_files=["res://.godot/imported/tmp_mask.png-44494a0c649c68ce5e50ad336cde84a1.ctex"]
+source_file="res://assets/characters/charge.png"
+dest_files=["res://.godot/imported/charge.png-8a8f01eb678cc340a176710d3faa472b.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterCreationData" format=3 uid="uid://cylqsbwqgl1pk"]
+[gd_resource type="Resource" script_class="CharacterCreationData" format=3 uid="uid://dbset333qtyei"]
 
 [ext_resource type="Script" uid="uid://boms7fr154gxo" path="res://scenes/character_creation/character_creation_data.gd" id="1_ctoij"]
 

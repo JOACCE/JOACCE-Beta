@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dwdor3mbqe8rs"]
+
+[ext_resource type="Script" uid="uid://c22ent0ndt5mt" path="res://scenes/character_creation/countdown/countdown.gd" id="1_3m1um"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3m1um"]
+font_size = 128
+
+[node name="Countdown" type="Node" unique_id=1642255454]
+script = ExtResource("1_3m1um")
+
+[node name="Label" type="Label" parent="." unique_id=312369138]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_3m1um")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1472286860]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
