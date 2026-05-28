@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bwj8kgqdxgl4j" path="res://scripts/intro/intro_scene.gd" id="1_c4hh3"]
 [ext_resource type="PackedScene" uid="uid://dao8xo1tkwxgr" path="res://assets/models/city/source/untitled1.glb" id="1_uda3f"]
 [ext_resource type="PackedScene" uid="uid://dl2ftogqrswy1" path="res://assets/models/alley/abandoned_alley_3.glb" id="2_c4hh3"]
-[ext_resource type="FontFile" uid="uid://7ccxja4diiis" path="res://assets/fonts/Iceland-Regular.ttf" id="4_gmqsq"]
+[ext_resource type="FontFile" uid="uid://bphypfln80nsy" path="res://assets/fonts/Pricedown Bl.otf" id="4_gmqsq"]
 
 [sub_resource type="Curve3D" id="Curve3D_uda3f"]
 _data = {
