@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://jsjuhonb7wka"]
 
 [ext_resource type="PackedScene" uid="uid://be8fgmdt6yakd" path="res://scenes/o-test/player/fighter.tscn" id="1_hn76v"]
+[ext_resource type="Script" uid="uid://b7o4j16agbpsf" path="res://scenes/o-test/level/match_manager.gd" id="1_iw1hm"]
+[ext_resource type="Texture2D" uid="uid://b71upxtsdqr3k" path="res://assets/menus/arena.png" id="2_j50fx"]
 [ext_resource type="Script" uid="uid://bie32sa0pgecn" path="res://scenes/o-test/player/StateMachine/StateMachine.gd" id="2_pq3kf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3m8qi"]
 size = Vector2(1192, 20)
 
 [node name="Arena" type="Node2D" unique_id=102359838]
+script = ExtResource("1_iw1hm")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1449089816]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=1186860121]
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(1, 0.7250052, 0.51184094, 1)
+texture = ExtResource("2_j50fx")
 
 [node name="Environment" type="Node2D" parent="." unique_id=1426574357]
 

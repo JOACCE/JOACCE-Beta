@@ -29,7 +29,7 @@ var JUMP_VELOCITY = -600.0
 var charge_speed = 70.0
 var current_charge = 0.0
 var max_charge = 100
-var charge_stack = 0
+var charge_stack = 1
 const max_stack = 5
 
 var player ={}
@@ -38,6 +38,7 @@ var health = 100
 var attacking = false
 var animation_playing = false
 var charge_time = 0.0
+
 
 func _ready() -> void:
 	# Initialize UI elements
