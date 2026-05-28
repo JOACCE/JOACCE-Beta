@@ -39,44 +39,46 @@ var attacking = false
 var animation_playing = false
 var charge_time = 0.0
 
+var current_sprite
+
+var anim_lock : bool
+
 func _ready() -> void:
 	# Initialize UI elements
 	health_bar.init_health(health)
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	var direction = 0
-
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
-	# If a special/attack animation is running, skip all other input handling
-	if animation_playing:
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-		#move_and_slide()
-		return
-
-	if Input.is_action_just_pressed("p"+str(id)+"_jump") and is_on_floor_only():
-		velocity.y = JUMP_VELOCITY
 	
-	if direction and not animation_playing:
-		walk.visible = true
-		walk.play()
-		idle.visible = false
-		velocity.x = direction * SPEED
-	else:
-		walk.visible = false
-		walk.stop()
-		if  not attacking:
-			idle.visible = true
-		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if state_machine:
 		state_machine.physics_update(delta)
 	move_and_slide()
 	
 
+func lock():
+	if anim_lock:
+		print("already locked")
+		return false
+	anim_lock = true
+	return true
+
+func unlock():
+	if not anim_lock:
+		print("already unlocked")
+		return false
+	anim_lock = false
+	return true 
+
+func get_movement():
+	var direction = Input.get_axis(
+		"p"+str(id)+"_left",
+		"p"+str(id)+"_right"
+	)
+	velocity.x = direction * SPEED
+
 func apply_damage(damage) -> void:
-	show_frame(damage_frame, 0.7)
+	state_machine.change_state("damage")
 	health -= damage
 	# Update healthbar UI state
 	health_bar.health = health
@@ -86,21 +88,8 @@ func _on_hitarea_body_entered(body: Node2D) -> void:
 	if name != body.name:
 		body.apply_damage(5)
 
-func show_frame(frame: Sprite2D, duration: float) -> void:
-	animation_playing = true
-	attacking = true
-	idle.visible = false
-	frame.visible = true
-	await get_tree().create_timer(duration).timeout
-	attacking = false
-	frame.visible = false
-	idle.visible = true
-	animation_playing = false
-	
 func play_special(sprite: AnimatedSprite2D) -> void:
-	animation_playing = true
-	idle.visible = false
-	charge.visible = false
+	current_sprite.visible = false
 	sprite.visible = true
 	sprite.play()
 	if sprite == special_2:
@@ -109,15 +98,33 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 		velocity.y = -600  # the "up" of uppercut
 	await sprite.animation_finished
 	sprite.visible = false
-	idle.visible = true
-	animation_playing = false
-	
-func get_sprite(sprite_name) -> Node:
+	current_sprite.visible = true
+
+
+func switch_frame(sprite_name, duration = 0):
+	if current_sprite:
+		print(current_sprite)
+		current_sprite.visible = false
 	match sprite_name:
-		"idle": return $Sprites/Idle
-		"walk": return $Sprites/Walk
-		"punch": return $Sprites/Punch
-		"kick": return $Sprites/Kick
-		"charge": return $Sprites/Charge
-		
-	return null
+		"idle": 
+			idle.visible = true
+			current_sprite = idle
+		"walk": 
+			walk.visible = true
+			current_sprite = walk
+		"punch": 
+			punch_frame.visible = true
+			current_sprite = punch_frame
+		"kick": 
+			kick_frame.visible = true
+			current_sprite = kick_frame
+		"charge": 
+			charge.visible = true
+			current_sprite = charge
+		"damage": 
+			damage_frame.visible = true
+			current_sprite = damage_frame
+	if duration > 0: 
+		await get_tree().create_timer(duration).timeout
+		print("waited ", duration, " seconds")
+	return current_sprite

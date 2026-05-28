@@ -1,5 +1,5 @@
 extends Node
-
+class_name State
 
 var player
 var state_machine
@@ -10,5 +10,3 @@ func exit():
 	pass
 func physics_update(_delta):
 	pass
-	
-	

@@ -1,23 +1,24 @@
-extends "res://scenes/o-test/player/states/state.gd"
+extends State
 class_name chargeState
 var stack_inputted : bool = false
 
 func enter():
-	player.get_sprite("charge").visible = true
-	player.get_sprite("idle").visible = false
-	player.charge.play()
+	if not player.lock():
+		return
+	var anim = player.switch_frame("charge")
+	anim.play()
 	player.velocity.x =0
-	stack_inputted = false
+
 func exit():
 	player.charge_bar.visible = false
-	player.charge_time =0
+	player.charge_time = 0
 	player.current_charge = 0
-	player.charge_bar.value =0
-	player.get_sprite("charge").visible = false
-	player.get_sprite("idle").visible = true
-
+	player.charge_bar.value = 0
 	player.charge.stop()
-	stack_inputted = true
+	
+	player.switch_frame("idle")
+	
+	player.unlock()
 	
 func physics_update(delta):
 	if Input.is_action_pressed("p"+str(player.id)+"_charge") and player.is_on_floor():
@@ -38,5 +39,5 @@ func physics_update(delta):
 	else:
 		state_machine.change_state("idle")
 		
-	
-	
+		
+		

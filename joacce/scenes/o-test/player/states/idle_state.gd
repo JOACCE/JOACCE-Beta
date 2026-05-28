@@ -1,28 +1,22 @@
-extends "state.gd"
-
+extends State
 class_name IdleState
 
 func enter():
-	
-	print(player)
-	print(player.idle)
-	print(player.walk)
-	if player.animation_playing:
-		return
-	player.get_sprite("idle").visible = true
-	player.get_sprite("walk").visible = false
-	player.velocity.x =0
+	if not player.lock():
+		return 
+	player.switch_frame("idle")
+	player.velocity.x = 0
+
 func exit():
+	player.unlock()
 	pass
+
 func physics_update(_delta):
+	player.get_movement()
 	
-	var direction = Input.get_axis(
-	"p"+str(player.id)+"_left",
-	"p"+str(player.id)+"_right"
-	)
-	if direction != 0:
-		state_machine.change_state("walk")
-	
+	if Input.is_action_just_pressed("p"+str(player.id)+"_jump") and player.is_on_floor_only():
+		player.velocity.y = player.JUMP_VELOCITY
+		
 	if Input.is_action_just_pressed("p"+str(player.id)+"_charge") and player.is_on_floor():
 		state_machine.change_state("charge")
 	if Input.is_action_just_pressed("p"+str(player.id)+"_punch"):
@@ -33,6 +27,5 @@ func physics_update(_delta):
 		state_machine.change_state("special_1")
 	if Input.is_action_just_pressed("p"+str(player.id)+"_special2"):
 		state_machine.change_state("special_2")
-
 		
 	

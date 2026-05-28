@@ -1,25 +1,24 @@
-extends "res://scenes/o-test/player/states/state.gd"
+extends State
 
-var has_kicked = false
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
-	has_kicked = false
-	#trying to pucnh int the correct direction. 
-	#if player.sprites.scale.x < 0:
-		#player.punch.scale.x = -1
-	#else:
-		#player.punch.scale.x = 1
+	if not player.lock():
+		print("no lock")
+		return
+
 	player.kick.attack()
-	player.show_frame(player.kick_frame, 1.0)
-	
+	await player.switch_frame("kick", 1.0)
+	player.unlock()
+
 func exit():
-	has_kicked = false
-	
+	pass
 
 func physics_update(_delta):
-	if not has_kicked:
-		has_kicked = true
-		return 
-	if not player.animation_playing:
-		state_machine.change_state("idle")
+	if player.is_on_floor_only():
+		player.velocity.x = 0
+	else:
+		player.get_movement()
 	
+	if player.lock():
+		player.unlock()
+		state_machine.change_state("idle")
