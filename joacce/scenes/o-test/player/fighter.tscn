@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://twf31shv83c2" path="res://scenes/o-test/player/fighter.gd" id="1_18uai"]
 [ext_resource type="Texture2D" uid="uid://bkf3oldoxu56x" path="res://assets/stencils/default/idle.png" id="2_t6ydl"]
-[ext_resource type="Texture2D" uid="uid://drxgsrkdn1dtc" path="res://assets/stencils/default/walk.png" id="3_o146k"]
 [ext_resource type="Script" uid="uid://cv3u61nreii4v" path="res://scenes/o-test/player/attack.gd" id="3_t6ydl"]
 [ext_resource type="Texture2D" uid="uid://bwwno4dwke15k" path="res://assets/stencils/default/punch.png" id="5_0olyo"]
+[ext_resource type="Texture2D" uid="uid://b3ljsk0m0g05h" path="res://assets/stencils/default/walk_atlas.tres" id="5_jjgo2"]
 [ext_resource type="Texture2D" uid="uid://bf1l6tmh33ovo" path="res://assets/stencils/default/kick.png" id="6_jr3a8"]
 [ext_resource type="Texture2D" uid="uid://bmyu2fsrkd68v" path="res://assets/stencils/default/damage.png" id="7_jr3a8"]
 [ext_resource type="Texture2D" uid="uid://bsyoowgknwx6y" path="res://assets/stencils/default/special1-1.png" id="8_3ttc0"]
@@ -32,7 +32,7 @@ animations = [{
 "texture": ExtResource("2_t6ydl")
 }, {
 "duration": 0.5,
-"texture": ExtResource("3_o146k")
+"texture": ExtResource("5_jjgo2")
 }],
 "loop": true,
 "name": &"default",
@@ -152,11 +152,10 @@ texture = ExtResource("2_t6ydl")
 
 [node name="Walk" type="AnimatedSprite2D" parent="Sprites" unique_id=1221412688]
 visible = false
-position = Vector2(0, -19.999998)
+position = Vector2(0, -3.8146973e-06)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_7utpr")
-frame = 1
-frame_progress = 0.41832566
+frame_progress = 0.88584214
 
 [node name="Punch" type="Sprite2D" parent="Sprites" unique_id=1020174422]
 visible = false

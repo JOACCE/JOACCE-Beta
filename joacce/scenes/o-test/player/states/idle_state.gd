@@ -14,6 +14,9 @@ func exit():
 func physics_update(_delta):
 	player.get_movement()
 	
+	if player.velocity.x:
+		state_machine.change_state("walk")
+		
 	if Input.is_action_just_pressed("p"+str(player.id)+"_jump") and player.is_on_floor():
 		player.velocity.y = player.JUMP_VELOCITY
 		

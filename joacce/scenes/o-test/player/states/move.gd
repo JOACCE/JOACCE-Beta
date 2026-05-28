@@ -14,6 +14,17 @@ func exit():
 
 func physics_update(_delta):
 	player.get_movement()
+	if player.velocity.x == 0:
+		state_machine.change_state("idle")
+	
+	if player.is_on_floor():
+		anim.play()
+	else:
+		anim.pause()
+		
+		
+	if Input.is_action_just_pressed("p"+str(player.id)+"_jump") and player.is_on_floor():
+		player.velocity.y = player.JUMP_VELOCITY
 	
 	if Input.is_action_just_pressed("p"+str(player.id)+"_punch"):
 		state_machine.change_state("punch")
