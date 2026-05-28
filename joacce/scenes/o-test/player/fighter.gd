@@ -23,6 +23,10 @@ var JUMP_VELOCITY = -600.0
 @onready var meter_bar = $Canvas/Bars/Meterbar
 @onready var bar_layer = $Canvas/Bars
 
+# SFX variables
+@export var fireball_scene: PackedScene
+
+
 #player distinct by player_id
 @export var id := 1
 
@@ -89,6 +93,16 @@ func _on_hitarea_body_entered(body: Node2D) -> void:
 		body.apply_damage(5)
 
 func play_special(sprite: AnimatedSprite2D) -> void:
+	charge_stack -= 1
+	if charge_stack < 0:
+		charge_stack = 0
+		
+	meter_bar.update_charges(charge_stack)
+	if sprite != special_2:
+		special_fireball()
+	animation_playing = true
+	idle.visible = false
+	charge.visible = false
 	current_sprite.visible = false
 	sprite.visible = true
 	sprite.play()
@@ -101,6 +115,7 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	current_sprite.visible = true
 
 
+	
 func switch_frame(sprite_name, duration = 0):
 	if current_sprite:
 		print(current_sprite)
@@ -128,3 +143,27 @@ func switch_frame(sprite_name, duration = 0):
 		await get_tree().create_timer(duration).timeout
 		print("waited ", duration, " seconds")
 	return current_sprite
+	
+func special_fireball() -> void:
+	if not fireball_scene:
+		return
+	
+	#if animation.frame < 1:
+		#while animation.frame != 1:
+			#await animation.frame_changed
+	await get_tree().create_timer(0.5).timeout
+		
+	var fireball_fx = fireball_scene.instantiate()
+	
+	# who created the fireball so it doesn't hurt them
+	fireball_fx.source_player = self
+	
+	fireball_fx.ball_direction = Vector2.LEFT if sprites.scale.x < 0 else Vector2.RIGHT
+	fireball_fx.ball_speed = 600.0
+	fireball_fx.scale = Vector2(0.2, 0.2) 
+	
+	var spawn_offset = Vector2(fireball_fx.ball_direction.x * 60.0, 0.0)
+	
+	fireball_fx.global_position = global_position + spawn_offset
+	
+	get_tree().current_scene.add_child(fireball_fx)

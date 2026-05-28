@@ -1,3 +1,4 @@
+class_name Attack
 extends Node2D
 @onready var hitarea: Area2D = $Hitarea
 
@@ -5,12 +6,17 @@ extends Node2D
 @onready var hitbox: CollisionShape2D = $Hitarea/Hitbox
 @export var damage : int
 
+@export var speed: float = 600.0
+var direction: Vector2 = Vector2.RIGHT
+
 var in_action = false
 const linger = 0.3
 var time_out = 0
 
 func _ready() -> void:
 	_disable_hit()
+	# rotates the whole fireball (including particles) to face the travel direction
+	rotation = direction.angle()
 
 func _process(delta: float) -> void:
 	if in_action:
@@ -31,3 +37,8 @@ func _disable_hit():
 	in_action = false
 	hitbox.disabled = true
 	color_rect.visible = false
+	
+
+func _physics_process(delta: float) -> void:
+	# Moves the fireball forward horizontally
+	global_position += direction * speed * delta
