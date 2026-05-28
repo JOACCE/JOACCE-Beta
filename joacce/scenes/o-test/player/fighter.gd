@@ -26,7 +26,6 @@ var JUMP_VELOCITY = -600.0
 # SFX variables
 @export var fireball_scene: PackedScene
 
-
 #player distinct by player_id
 @export var id := 1
 
@@ -62,14 +61,12 @@ func _physics_process(delta: float) -> void:
 
 func lock():
 	if anim_lock:
-		print("already locked")
 		return false
 	anim_lock = true
 	return true
 
 func unlock():
 	if not anim_lock:
-		print("already unlocked")
 		return false
 	anim_lock = false
 	return true 
@@ -86,7 +83,6 @@ func apply_damage(damage) -> void:
 	health -= damage
 	# Update healthbar UI state
 	health_bar.health = health
-	print(name," took ", damage, " damage")
 
 func _on_hitarea_body_entered(body: Node2D) -> void:
 	if name != body.name:
@@ -107,7 +103,7 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	sprite.visible = true
 	sprite.play()
 	if sprite == special_2:
-		var dir = -1 if sprites.scale.x < 0 else 1
+		var dir = -1 if get_parent().facing_left == self else 1
 		velocity.x = dir * 200
 		velocity.y = -600  # the "up" of uppercut
 	await sprite.animation_finished
@@ -118,7 +114,6 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	
 func switch_frame(sprite_name, duration = 0):
 	if current_sprite:
-		print(current_sprite)
 		current_sprite.visible = false
 	match sprite_name:
 		"idle": 
@@ -141,7 +136,6 @@ func switch_frame(sprite_name, duration = 0):
 			current_sprite = damage_frame
 	if duration > 0: 
 		await get_tree().create_timer(duration).timeout
-		print("waited ", duration, " seconds")
 	return current_sprite
 	
 func special_fireball() -> void:
@@ -158,7 +152,7 @@ func special_fireball() -> void:
 	# who created the fireball so it doesn't hurt them
 	fireball_fx.source_player = self
 	
-	fireball_fx.ball_direction = Vector2.LEFT if sprites.scale.x < 0 else Vector2.RIGHT
+	fireball_fx.ball_direction = Vector2.LEFT if get_parent().facing_left == self else Vector2.RIGHT
 	fireball_fx.ball_speed = 600.0
 	fireball_fx.scale = Vector2(0.2, 0.2) 
 	

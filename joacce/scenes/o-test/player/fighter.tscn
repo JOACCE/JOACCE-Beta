@@ -105,15 +105,16 @@ script = ExtResource("1_18uai")
 fireball_scene = ExtResource("16_jjgo2")
 
 [node name="Punch" type="Node2D" parent="." unique_id=1646976795]
-position = Vector2(0.99999976, -22)
+position = Vector2(-13.000001, -22.000006)
 rotation = -0.18181063
 script = ExtResource("3_t6ydl")
 damage = 7
 
 [node name="ColorRect" type="ColorRect" parent="Punch" unique_id=53954590]
-offset_left = 21.0
-offset_top = -24.0
-offset_right = 92.0
+offset_left = 21.44276
+offset_top = -33.677998
+offset_right = 92.442764
+offset_bottom = -9.677998
 color = Color(0.70670056, 0, 0.1611616, 1)
 
 [node name="Hitarea" type="Area2D" parent="Punch" unique_id=1855460985]
@@ -124,7 +125,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_18uai")
 
 [node name="Kick" type="Node2D" parent="." unique_id=1080015205]
-position = Vector2(1, -36)
+position = Vector2(-17, -34)
 script = ExtResource("3_t6ydl")
 damage = 6
 
@@ -151,6 +152,7 @@ texture = ExtResource("2_t6ydl")
 
 [node name="Walk" type="AnimatedSprite2D" parent="Sprites" unique_id=1221412688]
 visible = false
+position = Vector2(0, -19.999998)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_7utpr")
 frame = 1
@@ -164,13 +166,13 @@ texture = ExtResource("5_0olyo")
 
 [node name="Kick" type="Sprite2D" parent="Sprites" unique_id=720777712]
 visible = false
-position = Vector2(5, -27)
+position = Vector2(5, -20)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("6_jr3a8")
 
 [node name="Damage" type="Sprite2D" parent="Sprites" unique_id=395197532]
 visible = false
-position = Vector2(-7, -4)
+position = Vector2(-7, -21.999998)
 scale = Vector2(0.22, 0.22)
 texture = ExtResource("7_jr3a8")
 

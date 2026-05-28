@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b7o4j16agbpsf" path="res://scenes/o-test/level/match_manager.gd" id="1_iw1hm"]
 [ext_resource type="Texture2D" uid="uid://b71upxtsdqr3k" path="res://assets/menus/arena.png" id="2_j50fx"]
 [ext_resource type="Script" uid="uid://bie32sa0pgecn" path="res://scenes/o-test/player/StateMachine/StateMachine.gd" id="2_pq3kf"]
+[ext_resource type="Script" uid="uid://dedtppyrp6wpi" path="res://scenes/o-test/level/fighters.gd" id="3_27urd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3m8qi"]
 size = Vector2(1192, 20)
@@ -25,6 +26,7 @@ position = Vector2(582, 634)
 shape = SubResource("RectangleShape2D_3m8qi")
 
 [node name="Fighters" type="Node2D" parent="." unique_id=1147875794]
+script = ExtResource("3_27urd")
 
 [node name="Fighter" parent="Fighters" unique_id=1512274704 instance=ExtResource("1_hn76v")]
 position = Vector2(75, 531)

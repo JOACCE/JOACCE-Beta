@@ -38,7 +38,3 @@ func _disable_hit():
 	hitbox.disabled = true
 	color_rect.visible = false
 	
-
-func _physics_process(delta: float) -> void:
-	# Moves the fireball forward horizontally
-	global_position += direction * speed * delta
