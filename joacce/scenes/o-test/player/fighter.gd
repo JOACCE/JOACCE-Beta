@@ -37,7 +37,16 @@ const max_stack = 5
 
 var player ={}
 
-var health = 100
+# Takes in the fighter id that reaches 0 hp
+signal health_depleted(loser_id: int)
+# As a setter, will run the function for every health change
+var health = 100:
+	set(value):
+		health = value
+		# 3. Check for the condition and emit
+		if health <= 0:
+			health_depleted.emit(id)
+
 var attacking = false
 var animation_playing = false
 var charge_time = 0.0
@@ -49,6 +58,7 @@ var anim_lock : bool
 func _ready() -> void:
 	# Initialize UI elements
 	health_bar.init_health(health)
+	meter_bar.update_charges(charge_stack)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -80,7 +90,7 @@ func get_movement():
 
 func apply_damage(damage) -> void:
 	state_machine.change_state("damage")
-	health -= damage
+	health -= 50
 	# Update healthbar UI state
 	health_bar.health = health
 

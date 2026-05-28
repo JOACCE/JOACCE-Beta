@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://cey75pesa6i1s"]
 
+[ext_resource type="Script" uid="uid://beibowm3l82s3" path="res://scenes/o-test/menus/end_match_menu.gd" id="1_1n8i6"]
+[ext_resource type="FontFile" uid="uid://bphypfln80nsy" path="res://assets/fonts/Pricedown Bl.otf" id="1_pi28e"]
+
 [node name="EndMatchMenu" type="Control" unique_id=265643823]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +10,51 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1n8i6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1984525934]
+
+[node name="Text" type="Label" parent="CanvasLayer" unique_id=1029197645]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -260.0
+offset_right = 578.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_pi28e")
+theme_override_font_sizes/font_size = 150
+text = "Fighter x Wins"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=2032829855]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 143.0
+offset_right = 100.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Rematch" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1301901245]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "REMATCH"
+
+[node name="Main Menu" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=1852572058]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "MAIN MENU"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Rematch" to="." method="_on_rematch_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
