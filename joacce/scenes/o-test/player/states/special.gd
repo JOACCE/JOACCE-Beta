@@ -18,6 +18,8 @@ func exit():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func physics_update(_delta):
+	if special_number == 1:
+		player.velocity.x = 0
 	if player.lock():
 		player.unlock()
 		state_machine.change_state("idle")
