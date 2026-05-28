@@ -90,7 +90,7 @@ func get_movement():
 
 func apply_damage(damage) -> void:
 	state_machine.change_state("damage")
-	health -= 50
+	health -= damage
 	# Update healthbar UI state
 	health_bar.health = health
 
