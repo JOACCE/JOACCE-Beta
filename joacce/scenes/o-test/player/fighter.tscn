@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dgnm4n15pgu4e" path="res://assets/stencils/default/white_sphere.png" id="13_truya"]
 [ext_resource type="PackedScene" uid="uid://f8f8aiv3cw3a" path="res://scenes/o-test/player/healthbar.tscn" id="14_duly7"]
 [ext_resource type="PackedScene" uid="uid://dvh60o0ld4ael" path="res://scenes/o-test/player/meterbar.tscn" id="15_jjgo2"]
+[ext_resource type="PackedScene" uid="uid://chgtl54tos6oy" path="res://scenes/specials/fireball.tscn" id="16_jjgo2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18uai"]
 radius = 12.0
@@ -101,6 +102,7 @@ floor_stop_on_slope = false
 floor_block_on_wall = false
 floor_max_angle = 0.0
 script = ExtResource("1_18uai")
+fireball_scene = ExtResource("16_jjgo2")
 
 [node name="Punch" type="Node2D" parent="." unique_id=1646976795]
 position = Vector2(0.99999976, -22)
@@ -231,6 +233,11 @@ offset_left = 40.0
 offset_top = 90.0
 offset_right = 306.0
 offset_bottom = 110.0
+
+[node name="fireball" parent="." unique_id=1812506723 instance=ExtResource("16_jjgo2")]
+visible = false
+position = Vector2(152.00002, -11)
+scale = Vector2(0.2, 0.2)
 
 [connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]
 [connection signal="body_entered" from="Kick/Hitarea" to="." method="_on_hitarea_body_entered"]
