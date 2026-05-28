@@ -15,9 +15,17 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="joacce"
-run/main_scene="uid://jsjuhonb7wka"
+run/main_scene="uid://c67t7qnh2fh8v"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://bp0xri7mfbdul"
+
+[autoload]
+
+AudioManager="*uid://b6y36451kk2o6"
 
 [display]
 
