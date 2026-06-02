@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dsidagivclabq"
+path.s3tc="res://.godot/imported/untitled1_782d995696e445379cd192f1450e617a_N_BakedTexture_GRYVYZMFNVMAP.jpg-013ef52fe99cf56a832f3348e5a62786.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "faf069edc2b8a93bba3dd3fe03cb66d1"
+}
+
+[deps]
+
+source_file="res://assets/models/city/source/untitled1_782d995696e445379cd192f1450e617a_N_BakedTexture_GRYVYZMFNVMAP.jpg"
+dest_files=["res://.godot/imported/untitled1_782d995696e445379cd192f1450e617a_N_BakedTexture_GRYVYZMFNVMAP.jpg-013ef52fe99cf56a832f3348e5a62786.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://assets/models/city/source/untitled1_782d995696e445379cd192f1450e617a_N_BakedTexture_GRYVYZMFNVMAP.jpg"
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
