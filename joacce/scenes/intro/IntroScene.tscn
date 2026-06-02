@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cueuhh3v2xrg"]
+
+[ext_resource type="Script" uid="uid://bwj8kgqdxgl4j" path="res://scripts/intro/intro_scene.gd" id="1_c4hh3"]
+[ext_resource type="PackedScene" uid="uid://dao8xo1tkwxgr" path="res://assets/models/city/source/untitled1.glb" id="1_uda3f"]
+[ext_resource type="PackedScene" uid="uid://dl2ftogqrswy1" path="res://assets/models/alley/abandoned_alley_3.glb" id="2_c4hh3"]
+[ext_resource type="FontFile" uid="uid://bphypfln80nsy" path="res://assets/fonts/Pricedown Bl.otf" id="4_gmqsq"]
+
+[sub_resource type="Curve3D" id="Curve3D_uda3f"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -31.427109, 1.9868622, -172.97887, -0.7, -2, -12.8, 0.7, 2, 12.8, -30.1, 3.2, -97.9, -3.3, -0.2, 0.2, 3.3, 0.2, -0.2, -6, -7, -89),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmqsq"]
+albedo_color = Color(0.15109316, 0.12468795, 0.11148708, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h0136"]
+
+[node name="IntroScene" type="Node3D" unique_id=1289364331 node_paths=PackedStringArray("path_follow", "title_label")]
+script = ExtResource("1_c4hh3")
+path_follow = NodePath("CameraPath/PathFollow3D")
+title_label = NodePath("CanvasLayer/TitleLabel")
+
+[node name="City2" parent="." unique_id=837076346 instance=ExtResource("1_uda3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -135)
+
+[node name="Alley" parent="." unique_id=336989077 instance=ExtResource("2_c4hh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.575203, 0.0032595396, -92.44213)
+
+[node name="City" parent="." unique_id=248860241 instance=ExtResource("1_uda3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -43)
+
+[node name="CameraPath" type="Path3D" parent="." unique_id=76872645]
+curve = SubResource("Curve3D_uda3f")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="CameraPath" unique_id=1444291044]
+transform = Transform3D(-0.23990825, 0.39739764, -0.88562363, -0.2587645, 0.8530434, 0.45290828, 0.9355429, 0.33785337, -0.10183589, -18.95119, -1.262743, -88.56641)
+progress = 92.11509
+
+[node name="Camera3D" type="Camera3D" parent="CameraPath/PathFollow3D" unique_id=405584696]
+transform = Transform3D(0.9939375, -0.107006766, -0.026772903, 0.11023826, 0.972216, 0.20682243, 0.003889136, -0.20850183, 0.97803867, 0, 0, 0)
+fov = 67.5
+
+[node name="Sketchfab_Scene" parent="CameraPath" unique_id=842330426 instance=ExtResource("2_c4hh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.575203, 0.0032595396, -92.44213)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1141026769]
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer" unique_id=1546239264]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -49.5
+offset_right = 245.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("4_gmqsq")
+theme_override_font_sizes/font_size = 108
+text = "FIGHTOSCOPE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoadPatch" type="MeshInstance3D" parent="." unique_id=1063540931]
+transform = Transform3D(8.448001, 0, 0, 0, 1, 0, 0, 0, 4.62, -33, -0.19114304, -87)
+material_override = SubResource("StandardMaterial3D_gmqsq")
+mesh = SubResource("PlaneMesh_h0136")

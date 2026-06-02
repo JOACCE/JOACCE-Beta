@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dy4er8hqbd43y"]
+
+[ext_resource type="PackedScene" uid="uid://f8f8aiv3cw3a" path="res://scenes/o-test/player/healthbar.tscn" id="1_0geus"]
+[ext_resource type="PackedScene" uid="uid://dvh60o0ld4ael" path="res://scenes/o-test/player/meterbar.tscn" id="1_hdutu"]
+
+[node name="FighterUi" type="Control" unique_id=1682713853]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Healthbar" parent="." unique_id=1444926826 instance=ExtResource("1_0geus")]
+layout_mode = 1
+
+[node name="Meterbar" parent="." unique_id=1714744655 instance=ExtResource("1_hdutu")]
+layout_mode = 1
+offset_top = 31.0
+offset_bottom = 56.0
