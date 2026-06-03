@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dsanxomchbcgh" path="res://assets/audio/ambience street.ogg" id="3_3uslp"]
 
 [node name="AudioManager" type="Node2D" unique_id=779044383]
+process_mode = 3
 script = ExtResource("1_hilj8")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=1074566483]
