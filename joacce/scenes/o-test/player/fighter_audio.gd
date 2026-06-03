@@ -6,12 +6,15 @@ extends Node2D
 @onready var kick_sfx : AudioStreamPlayer2D = $Kick
 @onready var fireball_sfx : AudioStreamPlayer2D = $Fireball
 
-var sfx_table = {
-	"punch" : punch_sfx,
-	"impact" : impact_sfx,
-	"kick" : kick_sfx,
-	"fireball" : fireball_sfx
-}
+var sfx_table = {}
+
+func _ready() ->void:
+	sfx_table = {
+		"punch" : punch_sfx,
+		"impact" : impact_sfx,
+		"kick" : kick_sfx,
+		"fireball" : fireball_sfx
+	}
 
 func play_sfx(sfx: String) -> void:
 	punch_sfx.play()

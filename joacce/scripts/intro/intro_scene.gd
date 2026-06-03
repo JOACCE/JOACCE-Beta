@@ -5,8 +5,6 @@ extends Node3D
 @export var duration: float = 16.0
 
 func _ready() -> void:
-	if OS.is_debug_build():
-		duration = 2.0
 	
 	path_follow.progress_ratio = 0.0
 	title_label.modulate.a = 0.0
@@ -52,3 +50,7 @@ func _ready() -> void:
 	title_tween.tween_callback(func():
 		title_label.visible = false
 	)
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/o-test/menus/start_menu.tscn")
