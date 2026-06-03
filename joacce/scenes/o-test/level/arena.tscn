@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://bie32sa0pgecn" path="res://scenes/o-test/player/StateMachine/StateMachine.gd" id="2_pq3kf"]
 [ext_resource type="Script" uid="uid://dedtppyrp6wpi" path="res://scenes/o-test/level/fighters.gd" id="3_27urd"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27urd"]
+size = Vector2(53, 645)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3m8qi"]
 size = Vector2(1192, 20)
 
@@ -22,6 +25,16 @@ position = Vector2(564, 467)
 
 [node name="Environment" type="Node2D" parent="." unique_id=1426574357]
 
+[node name="Walls" type="StaticBody2D" parent="Environment" unique_id=797057926]
+
+[node name="LeftCollision" type="CollisionShape2D" parent="Environment/Walls" unique_id=1751140799]
+position = Vector2(12.5, 321.5)
+shape = SubResource("RectangleShape2D_27urd")
+
+[node name="RightCollision" type="CollisionShape2D" parent="Environment/Walls" unique_id=504709883]
+position = Vector2(1148, 327)
+shape = SubResource("RectangleShape2D_27urd")
+
 [node name="Floor" type="StaticBody2D" parent="Environment" unique_id=1284747627]
 
 [node name="Collision" type="CollisionShape2D" parent="Environment/Floor" unique_id=1685492071]
@@ -32,7 +45,7 @@ shape = SubResource("RectangleShape2D_3m8qi")
 script = ExtResource("3_27urd")
 
 [node name="Fighter" parent="Fighters" unique_id=1512274704 instance=ExtResource("1_hn76v")]
-position = Vector2(75, 531)
+position = Vector2(129, 535)
 
 [node name="ProgressBar" type="ProgressBar" parent="Fighters/Fighter" unique_id=568693552]
 visible = false
@@ -58,7 +71,7 @@ rounded = true
 script = ExtResource("2_pq3kf")
 
 [node name="Fighter2" parent="Fighters" unique_id=650291903 instance=ExtResource("1_hn76v")]
-position = Vector2(839, 528)
+position = Vector2(1007, 539)
 id = 2
 
 [node name="Bars" parent="Fighters/Fighter2/Canvas" parent_id_path=PackedInt32Array(650291903, 1235444386) index="0" unique_id=235110853]
