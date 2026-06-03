@@ -190,6 +190,7 @@ frame = 1
 frame_progress = 1.0
 
 [node name="Charge" type="AnimatedSprite2D" parent="Sprites" unique_id=1129322675]
+visible = false
 position = Vector2(-7, -32)
 scale = Vector2(0.23, 0.23)
 sprite_frames = SubResource("SpriteFrames_6nna0")
