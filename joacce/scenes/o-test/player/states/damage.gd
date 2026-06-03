@@ -12,4 +12,5 @@ func exit():
 	
 func physics_update(_delta):
 	# stop any hitboxes or actions
+	
 	pass
