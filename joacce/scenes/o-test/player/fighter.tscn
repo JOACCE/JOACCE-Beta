@@ -78,20 +78,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_6nna0"]
-colors = PackedColorArray(0, 0, 0.96862745, 1, 0, 0.91764706, 1, 1)
+[sub_resource type="Curve" id="Curve_jjgo2"]
+_data = [Vector2(0.007936507, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_duly7"]
-gradient = SubResource("Gradient_6nna0")
+[sub_resource type="Curve" id="Curve_o7sv6"]
+_data = [Vector2(0.05820106, 0.14619881), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jjgo2"]
-particle_flag_disable_z = true
-spread = 180.0
-initial_velocity_max = 476.91998
-gravity = Vector3(0, -900, 0)
-color_ramp = SubResource("GradientTexture1D_duly7")
-turbulence_enabled = true
-turbulence_noise_strength = 0.0
+[sub_resource type="Gradient" id="Gradient_q215x"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.030864198, 1)
+colors = PackedColorArray(0.4117647, 0.18039216, 0.21960784, 1, 0.95, 0.38760003, 0.247, 1, 1, 0.75083333, 0.35000002, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16k5x"]
 radius = 30.0
@@ -192,20 +190,28 @@ frame = 1
 frame_progress = 1.0
 
 [node name="Charge" type="AnimatedSprite2D" parent="Sprites" unique_id=1129322675]
-visible = false
 position = Vector2(-7, -32)
 scale = Vector2(0.23, 0.23)
 sprite_frames = SubResource("SpriteFrames_6nna0")
 
-[node name="ChargeEffect" type="GPUParticles2D" parent="Sprites/Charge" unique_id=549831510]
+[node name="ChargeEffect" type="CPUParticles2D" parent="Sprites/Charge" unique_id=323290807]
 modulate = Color(1, 1, 1, 0.16078432)
 show_behind_parent = true
-position = Vector2(30.434782, 400)
+position = Vector2(17.391304, 417.39133)
 scale = Vector2(0.1, 0.1)
+amount = 100
 texture = ExtResource("13_truya")
-trail_enabled = true
-trail_lifetime = 1.0
-process_material = SubResource("ParticleProcessMaterial_jjgo2")
+lifetime = 1.25
+speed_scale = 1.5
+draw_order = 1
+direction = Vector2(0, 1)
+gravity = Vector2(0, -450)
+tangential_accel_min = -400.0
+tangential_accel_max = 400.0
+split_scale = true
+scale_curve_x = SubResource("Curve_jjgo2")
+scale_curve_y = SubResource("Curve_o7sv6")
+color_ramp = SubResource("Gradient_q215x")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1022065581]
 position = Vector2(-2, -18)
