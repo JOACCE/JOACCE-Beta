@@ -18,3 +18,7 @@ config/name="joacce"
 run/main_scene="uid://cueuhh3v2xrg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
