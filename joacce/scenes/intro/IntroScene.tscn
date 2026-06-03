@@ -68,7 +68,25 @@ text = "FIGHTOSCOPE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=392527506]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -77.0
+offset_right = -28.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_gmqsq")
+theme_override_font_sizes/font_size = 32
+text = "SKIP"
+
 [node name="RoadPatch" type="MeshInstance3D" parent="." unique_id=1063540931]
 transform = Transform3D(8.448001, 0, 0, 0, 1, 0, 0, 0, 4.62, -33, -0.19114304, -87)
 material_override = SubResource("StandardMaterial3D_gmqsq")
 mesh = SubResource("PlaneMesh_h0136")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

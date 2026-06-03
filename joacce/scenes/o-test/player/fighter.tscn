@@ -14,8 +14,13 @@
 [ext_resource type="Texture2D" uid="uid://fkk7wkyecc8k" path="res://assets/stencils/default/charge.png" id="12_7pges"]
 [ext_resource type="Texture2D" uid="uid://dgnm4n15pgu4e" path="res://assets/stencils/default/white_sphere.png" id="13_truya"]
 [ext_resource type="PackedScene" uid="uid://f8f8aiv3cw3a" path="res://scenes/o-test/player/healthbar.tscn" id="14_duly7"]
+[ext_resource type="Gradient" uid="uid://d0m2os7mfjdcb" path="res://assets/vfx/flame_gradient.tres" id="14_o7sv6"]
 [ext_resource type="PackedScene" uid="uid://dvh60o0ld4ael" path="res://scenes/o-test/player/meterbar.tscn" id="15_jjgo2"]
 [ext_resource type="PackedScene" uid="uid://chgtl54tos6oy" path="res://scenes/specials/fireball.tscn" id="16_jjgo2"]
+[ext_resource type="Script" uid="uid://bxi7ymttrmscj" path="res://scenes/o-test/player/fighter_audio.gd" id="18_q215x"]
+[ext_resource type="AudioStream" uid="uid://bxv8l3272cl6i" path="res://assets/audio/sfx/punch-kick.ogg" id="19_oyjmv"]
+[ext_resource type="AudioStream" uid="uid://cci0jiregn245" path="res://assets/audio/sfx/impact.ogg" id="20_ml0lt"]
+[ext_resource type="AudioStream" uid="uid://kaiylpba4lj8" path="res://assets/audio/sfx/fireball.ogg" id="21_y643t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18uai"]
 radius = 12.0
@@ -56,7 +61,7 @@ animations = [{
 [sub_resource type="SpriteFrames" id="SpriteFrames_truya"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.25,
 "texture": ExtResource("10_j2mfq")
 }, {
 "duration": 1.0,
@@ -64,8 +69,18 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 3.0
+"speed": 1.0
 }]
+
+[sub_resource type="Curve" id="Curve_q215x"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_hkhs2"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6nna0"]
 animations = [{
@@ -78,20 +93,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_6nna0"]
-colors = PackedColorArray(0, 0, 0.96862745, 1, 0, 0.91764706, 1, 1)
+[sub_resource type="Curve" id="Curve_jjgo2"]
+_data = [Vector2(0.007936507, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_duly7"]
-gradient = SubResource("Gradient_6nna0")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jjgo2"]
-particle_flag_disable_z = true
-spread = 180.0
-initial_velocity_max = 476.91998
-gravity = Vector3(0, -900, 0)
-color_ramp = SubResource("GradientTexture1D_duly7")
-turbulence_enabled = true
-turbulence_noise_strength = 0.0
+[sub_resource type="Curve" id="Curve_o7sv6"]
+_data = [Vector2(0.05820106, 0.14619881), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16k5x"]
 radius = 30.0
@@ -111,10 +119,10 @@ script = ExtResource("3_t6ydl")
 damage = 7
 
 [node name="ColorRect" type="ColorRect" parent="Punch" unique_id=53954590]
-offset_left = 21.44276
-offset_top = -33.677998
-offset_right = 92.442764
-offset_bottom = -9.677998
+offset_left = 21.782501
+offset_top = -24.464714
+offset_right = 92.7825
+offset_bottom = -0.46471405
 color = Color(0.70670056, 0, 0.1611616, 1)
 
 [node name="Hitarea" type="Area2D" parent="Punch" unique_id=1855460985]
@@ -191,21 +199,49 @@ sprite_frames = SubResource("SpriteFrames_truya")
 frame = 1
 frame_progress = 1.0
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprites/Special2" unique_id=907113989]
+show_behind_parent = true
+position = Vector2(200, -317.3913)
+amount = 30
+texture = ExtResource("13_truya")
+speed_scale = 4.0
+gravity = Vector2(0, -100)
+damping_max = 79.208
+angle_min = -900.0
+angle_max = 900.0
+scale_amount_min = 0.0
+scale_amount_max = 0.6
+split_scale = true
+scale_curve_x = SubResource("Curve_q215x")
+scale_curve_y = SubResource("Curve_hkhs2")
+color_ramp = ExtResource("14_o7sv6")
+color_initial_ramp = ExtResource("14_o7sv6")
+
 [node name="Charge" type="AnimatedSprite2D" parent="Sprites" unique_id=1129322675]
 visible = false
 position = Vector2(-7, -32)
 scale = Vector2(0.23, 0.23)
 sprite_frames = SubResource("SpriteFrames_6nna0")
 
-[node name="ChargeEffect" type="GPUParticles2D" parent="Sprites/Charge" unique_id=549831510]
+[node name="ChargeEffect" type="CPUParticles2D" parent="Sprites/Charge" unique_id=323290807]
 modulate = Color(1, 1, 1, 0.16078432)
 show_behind_parent = true
-position = Vector2(30.434782, 400)
+position = Vector2(17.391304, 417.39133)
 scale = Vector2(0.1, 0.1)
+amount = 100
 texture = ExtResource("13_truya")
-trail_enabled = true
-trail_lifetime = 1.0
-process_material = SubResource("ParticleProcessMaterial_jjgo2")
+lifetime = 1.25
+speed_scale = 1.5
+draw_order = 1
+direction = Vector2(0, 1)
+gravity = Vector2(0, -450)
+tangential_accel_min = -400.0
+tangential_accel_max = 400.0
+split_scale = true
+scale_curve_x = SubResource("Curve_jjgo2")
+scale_curve_y = SubResource("Curve_o7sv6")
+color_ramp = ExtResource("14_o7sv6")
+color_initial_ramp = ExtResource("14_o7sv6")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1022065581]
 position = Vector2(-2, -18)
@@ -239,6 +275,33 @@ offset_bottom = 110.0
 visible = false
 position = Vector2(152.00002, -11)
 scale = Vector2(0.2, 0.2)
+
+[node name="Audio" type="Node2D" parent="." unique_id=131253413]
+script = ExtResource("18_q215x")
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Audio" unique_id=1635389911]
+stream = ExtResource("19_oyjmv")
+max_distance = 1034.0
+panning_strength = 2.27
+bus = &"SFX"
+
+[node name="Impact" type="AudioStreamPlayer2D" parent="Audio" unique_id=1488091203]
+stream = ExtResource("20_ml0lt")
+max_distance = 1034.0
+panning_strength = 2.27
+bus = &"SFX"
+
+[node name="Kick" type="AudioStreamPlayer2D" parent="Audio" unique_id=283196698]
+stream = ExtResource("19_oyjmv")
+max_distance = 1034.0
+panning_strength = 2.27
+bus = &"SFX"
+
+[node name="Fireball" type="AudioStreamPlayer2D" parent="Audio" unique_id=1032516677]
+stream = ExtResource("21_y643t")
+max_distance = 1034.0
+panning_strength = 2.27
+bus = &"SFX"
 
 [connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]
 [connection signal="body_entered" from="Kick/Hitarea" to="." method="_on_hitarea_body_entered"]
