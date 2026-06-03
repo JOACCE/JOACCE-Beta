@@ -99,9 +99,9 @@ func _on_hitarea_body_entered(body: Node2D) -> void:
 		body.apply_damage(5)
 
 func play_special(sprite: AnimatedSprite2D) -> void:
+	if charge_stack<=0:
+		return
 	charge_stack -= 1
-	if charge_stack < 0:
-		charge_stack = 0
 		
 	meter_bar.update_charges(charge_stack)
 	if sprite != special_2:
