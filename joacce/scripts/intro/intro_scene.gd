@@ -5,6 +5,9 @@ extends Node3D
 @export var duration: float = 16.0
 
 func _ready() -> void:
+	if OS.is_debug_build():
+		duration = 2.0
+	
 	path_follow.progress_ratio = 0.0
 	title_label.modulate.a = 0.0
 	title_label.visible = true

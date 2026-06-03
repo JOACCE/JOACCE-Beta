@@ -14,7 +14,9 @@ var sfx_table = {
 }
 
 func play_sfx(sfx: String) -> void:
+	punch_sfx.play()
 	var sfx_to_play = sfx_table.get(sfx)
+	print(sfx)
 	if (!sfx_to_play):
 		print("SFX NOT FOUND!")
 		return
