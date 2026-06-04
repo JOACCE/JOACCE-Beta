@@ -282,31 +282,32 @@ script = ExtResource("18_q215x")
 
 [node name="Punch" type="AudioStreamPlayer2D" parent="Audio" unique_id=1635389911]
 stream = ExtResource("19_oyjmv")
-max_distance = 1034.0
+attenuation = 0.07966009
 panning_strength = 2.27
 bus = &"SFX"
 
 [node name="Impact" type="AudioStreamPlayer2D" parent="Audio" unique_id=1488091203]
 stream = ExtResource("20_ml0lt")
-max_distance = 1034.0
+attenuation = 0.07966009
 panning_strength = 2.27
 bus = &"SFX"
 
 [node name="Kick" type="AudioStreamPlayer2D" parent="Audio" unique_id=283196698]
 stream = ExtResource("19_oyjmv")
-max_distance = 1034.0
+attenuation = 0.07966009
 panning_strength = 2.27
 bus = &"SFX"
 
 [node name="Fireball" type="AudioStreamPlayer2D" parent="Audio" unique_id=1032516677]
 stream = ExtResource("21_y643t")
-max_distance = 1034.0
+attenuation = 0.07966009
 panning_strength = 2.27
 bus = &"SFX"
 
 [node name="Charge" type="AudioStreamPlayer2D" parent="Audio" unique_id=1088187506]
 stream = ExtResource("22_ml0lt")
-max_distance = 1034.0
+volume_db = 4.54
+attenuation = 0.07966009
 panning_strength = 2.27
 
 [connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]

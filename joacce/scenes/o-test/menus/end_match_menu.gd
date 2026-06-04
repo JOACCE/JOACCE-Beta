@@ -17,6 +17,7 @@ func _on_rematch_pressed() -> void:
 	queue_free()
 
 func _on_main_menu_pressed() -> void:
+	AudioManager.play_music("menu")
 	get_tree().change_scene_to_file("res://scenes/o-test/menus/start_menu.tscn")
 	get_tree().paused = false
 	queue_free()

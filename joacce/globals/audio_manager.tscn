@@ -16,7 +16,7 @@ parameters/looping = true
 
 [node name="FightMusic" type="AudioStreamPlayer" parent="." unique_id=1111228563]
 stream = ExtResource("1_exsf0")
-volume_db = -10.477
+volume_db = -17.85
 bus = &"Music"
 parameters/looping = true
 
