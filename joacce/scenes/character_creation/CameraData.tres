@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterCreationData" format=3 uid="uid://cv52vqc0jrbqx"]
+
+[ext_resource type="Script" uid="uid://boms7fr154gxo" path="res://scenes/character_creation/CameraData.gd" id="1_ctoij"]
+
+[resource]
+script = ExtResource("1_ctoij")
+camera_name = "FaceTime HD Camera"
+zoom = 1.6999999999999988
+metadata/_custom_type_script = "uid://boms7fr154gxo"
