@@ -11,7 +11,7 @@ script = ExtResource("1_hilj8")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=1074566483]
 stream = ExtResource("2_dd2wf")
-volume_db = -6.622
+volume_db = -9.11
 parameters/looping = true
 
 [node name="FightMusic" type="AudioStreamPlayer" parent="." unique_id=1111228563]

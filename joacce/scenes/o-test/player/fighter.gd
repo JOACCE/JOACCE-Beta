@@ -143,7 +143,7 @@ func switch_frame(sprite_name, duration = 0):
 			fighter_audio.play_sfx("kick")
 			kick_frame.visible = true
 			current_sprite = kick_frame
-		"charge": 
+		"charge":
 			charge.visible = true
 			current_sprite = charge
 		"damage": 

@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bxv8l3272cl6i" path="res://assets/audio/sfx/punch-kick.ogg" id="19_oyjmv"]
 [ext_resource type="AudioStream" uid="uid://cci0jiregn245" path="res://assets/audio/sfx/impact.ogg" id="20_ml0lt"]
 [ext_resource type="AudioStream" uid="uid://kaiylpba4lj8" path="res://assets/audio/sfx/fireball.ogg" id="21_y643t"]
+[ext_resource type="AudioStream" uid="uid://btvxeanqp638p" path="res://assets/audio/sfx/charge.ogg" id="22_ml0lt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18uai"]
 radius = 12.0
@@ -302,6 +303,11 @@ stream = ExtResource("21_y643t")
 max_distance = 1034.0
 panning_strength = 2.27
 bus = &"SFX"
+
+[node name="Charge" type="AudioStreamPlayer2D" parent="Audio" unique_id=1088187506]
+stream = ExtResource("22_ml0lt")
+max_distance = 1034.0
+panning_strength = 2.27
 
 [connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]
 [connection signal="body_entered" from="Kick/Hitarea" to="." method="_on_hitarea_body_entered"]

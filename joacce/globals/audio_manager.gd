@@ -12,3 +12,6 @@ func _ready() -> void:
 		menu_music.play()
 	if ambience_player:
 		ambience_player.play()
+
+# func play_music(new_song: String) -> void:
+	
