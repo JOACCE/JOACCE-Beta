@@ -60,7 +60,6 @@ var anim_lock : bool
 
 func _ready() -> void:
 	# Initialize UI elements
-	health_bar.init_health(health)
 	meter_bar.update_charges(charge_stack)
 
 func _physics_process(delta: float) -> void:
@@ -95,10 +94,10 @@ func apply_damage(damage) -> void:
 	state_machine.change_state("damage")
 	health -= damage
 	# Update healthbar UI state
-	health_bar.health = health
+	health_bar.take_damage(damage)
 
 func _on_hitarea_body_entered(body: Node2D) -> void:
-	if name != body.name:
+	if name != body.name and body.has_method("apply_damage"):
 		body.apply_damage(5)
 
 func play_special(sprite: AnimatedSprite2D) -> void:
@@ -107,6 +106,7 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	charge_stack -= 1
 		
 	meter_bar.update_charges(charge_stack)
+	
 	if sprite != special_2:
 		special_fireball()
 	animation_playing = true
@@ -119,6 +119,7 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 		var dir = -1 if get_parent().facing_left == self else 1
 		velocity.x = dir * 200
 		velocity.y = -600  # the "up" of uppercut
+		special_2.attack()
 	await sprite.animation_finished
 	sprite.visible = false
 	current_sprite.visible = true
@@ -158,9 +159,6 @@ func special_fireball() -> void:
 	if not fireball_scene:
 		return
 	
-	#if animation.frame < 1:
-		#while animation.frame != 1:
-			#await animation.frame_changed
 	await get_tree().create_timer(0.5).timeout
 		
 	var fireball_fx = fireball_scene.instantiate()
