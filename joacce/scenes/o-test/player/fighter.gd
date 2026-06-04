@@ -98,7 +98,7 @@ func apply_damage(damage) -> void:
 	health_bar.health = health
 
 func _on_hitarea_body_entered(body: Node2D) -> void:
-	if name != body.name:
+	if name != body.name and body.has_method("apply_damage"):
 		body.apply_damage(5)
 
 func play_special(sprite: AnimatedSprite2D) -> void:
