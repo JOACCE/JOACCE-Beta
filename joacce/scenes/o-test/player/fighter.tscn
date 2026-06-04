@@ -17,6 +17,10 @@
 [ext_resource type="Gradient" uid="uid://d0m2os7mfjdcb" path="res://assets/vfx/flame_gradient.tres" id="14_o7sv6"]
 [ext_resource type="PackedScene" uid="uid://dvh60o0ld4ael" path="res://scenes/o-test/player/meterbar.tscn" id="15_jjgo2"]
 [ext_resource type="PackedScene" uid="uid://chgtl54tos6oy" path="res://scenes/specials/fireball.tscn" id="16_jjgo2"]
+[ext_resource type="Script" uid="uid://bxi7ymttrmscj" path="res://scenes/o-test/player/fighter_audio.gd" id="18_q215x"]
+[ext_resource type="AudioStream" uid="uid://bxv8l3272cl6i" path="res://assets/audio/sfx/punch-kick.ogg" id="19_oyjmv"]
+[ext_resource type="AudioStream" uid="uid://cci0jiregn245" path="res://assets/audio/sfx/impact.ogg" id="20_ml0lt"]
+[ext_resource type="AudioStream" uid="uid://kaiylpba4lj8" path="res://assets/audio/sfx/fireball.ogg" id="21_y643t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18uai"]
 radius = 12.0
@@ -275,6 +279,33 @@ scale = Vector2(0.25, 0.25)
 
 [node name="fireball" parent="." unique_id=1812506723 instance=ExtResource("16_jjgo2")]
 position = Vector2(152.00002, -11)
+
+[node name="Audio" type="Node2D" parent="." unique_id=131253413]
+script = ExtResource("18_q215x")
+
+[node name="Punch" type="AudioStreamPlayer2D" parent="Audio" unique_id=1635389911]
+stream = ExtResource("19_oyjmv")
+max_distance = 1034.0
+panning_strength = 2.27
+bus = &"SFX"
+
+[node name="Impact" type="AudioStreamPlayer2D" parent="Audio" unique_id=1488091203]
+stream = ExtResource("20_ml0lt")
+max_distance = 1034.0
+panning_strength = 2.27
+bus = &"SFX"
+
+[node name="Kick" type="AudioStreamPlayer2D" parent="Audio" unique_id=283196698]
+stream = ExtResource("19_oyjmv")
+max_distance = 1034.0
+panning_strength = 2.27
+bus = &"SFX"
+
+[node name="Fireball" type="AudioStreamPlayer2D" parent="Audio" unique_id=1032516677]
+stream = ExtResource("21_y643t")
+max_distance = 1034.0
+panning_strength = 2.27
+bus = &"SFX"
 
 [connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]
 [connection signal="body_entered" from="Kick/Hitarea" to="." method="_on_hitarea_body_entered"]

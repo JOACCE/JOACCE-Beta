@@ -26,6 +26,9 @@ var JUMP_VELOCITY = -600.0
 # SFX variables
 @export var fireball_scene: PackedScene
 
+# Audio related references
+@onready var fighter_audio = $Audio
+
 #player distinct by player_id
 @export var id := 1
 
@@ -98,9 +101,9 @@ func _on_hitarea_body_entered(body: Node2D) -> void:
 		body.apply_damage(5)
 
 func play_special(sprite: AnimatedSprite2D) -> void:
+	if charge_stack<=0:
+		return
 	charge_stack -= 1
-	if charge_stack < 0:
-		charge_stack = 0
 		
 	meter_bar.update_charges(charge_stack)
 	
@@ -133,15 +136,18 @@ func switch_frame(sprite_name, duration = 0):
 			walk.visible = true
 			current_sprite = walk
 		"punch": 
+			fighter_audio.play_sfx("punch")
 			punch_frame.visible = true
 			current_sprite = punch_frame
 		"kick": 
+			fighter_audio.play_sfx("kick")
 			kick_frame.visible = true
 			current_sprite = kick_frame
 		"charge": 
 			charge.visible = true
 			current_sprite = charge
 		"damage": 
+			fighter_audio.play_sfx("impact")
 			damage_frame.visible = true
 			current_sprite = damage_frame
 	if duration > 0: 
@@ -166,5 +172,8 @@ func special_fireball() -> void:
 	var spawn_offset = Vector2(fireball_fx.ball_direction.x * 60.0, 0.0)
 	
 	fireball_fx.global_position = global_position + spawn_offset
+	
+	# Play fireball SFX
+	fighter_audio.play_sfx("fireball")
 	
 	get_tree().current_scene.add_child(fireball_fx)

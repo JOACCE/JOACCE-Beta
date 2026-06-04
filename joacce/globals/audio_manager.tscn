@@ -2,19 +2,27 @@
 
 [ext_resource type="AudioStream" uid="uid://bp1beg7o3gm23" path="res://assets/audio/FIGHTOSCOPE-INTRO.ogg" id="1_exsf0"]
 [ext_resource type="Script" uid="uid://dosfa70ffqayq" path="res://globals/audio_manager.gd" id="1_hilj8"]
-[ext_resource type="AudioStream" uid="uid://dw3wdj07xdjmi" path="res://assets/audio/street_ambience.ogg" id="3_3uslp"]
+[ext_resource type="AudioStream" uid="uid://bmkve7pxjkf2w" path="res://assets/audio/menu music.ogg" id="2_dd2wf"]
+[ext_resource type="AudioStream" uid="uid://dsanxomchbcgh" path="res://assets/audio/ambience street.ogg" id="3_3uslp"]
 
 [node name="AudioManager" type="Node2D" unique_id=779044383]
+process_mode = 3
 script = ExtResource("1_hilj8")
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1111228563]
+[node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=1074566483]
+stream = ExtResource("2_dd2wf")
+volume_db = -6.622
+parameters/looping = true
+
+[node name="FightMusic" type="AudioStreamPlayer" parent="." unique_id=1111228563]
 stream = ExtResource("1_exsf0")
 volume_db = -10.477
-autoplay = true
 bus = &"Music"
 parameters/looping = true
 
 [node name="AmbiencePlayer" type="AudioStreamPlayer" parent="." unique_id=1869956584]
 stream = ExtResource("3_3uslp")
-volume_db = -1.164
+volume_db = -10.089
+pitch_scale = 0.93
 bus = &"Ambience"
+parameters/looping = true
