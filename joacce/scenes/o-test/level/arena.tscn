@@ -5,9 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://b71upxtsdqr3k" path="res://assets/menus/arena.png" id="2_j50fx"]
 [ext_resource type="Script" uid="uid://bie32sa0pgecn" path="res://scenes/o-test/player/StateMachine/StateMachine.gd" id="2_pq3kf"]
 [ext_resource type="Script" uid="uid://dedtppyrp6wpi" path="res://scenes/o-test/level/fighters.gd" id="3_27urd"]
+[ext_resource type="Texture2D" uid="uid://24a6baynxq43" path="res://assets/ui/progress_healthbar.png" id="6_e2g0h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3m8qi"]
 size = Vector2(1192, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2g0h"]
+atlas = ExtResource("6_e2g0h")
+region = Rect2(906, 588, 882, 126)
 
 [node name="Arena" type="Node2D" unique_id=102359838]
 script = ExtResource("1_iw1hm")
@@ -66,6 +71,12 @@ offset_left = -40.0
 offset_right = 0.0
 grow_horizontal = 0
 scale = Vector2(-1, 1)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Healthbar" parent="Fighters/Fighter2/Canvas/Bars" index="0" unique_id=486555453]
+value = 100.0
+texture_progress = SubResource("AtlasTexture_e2g0h")
 
 [node name="ProgressBar" type="ProgressBar" parent="Fighters/Fighter2" unique_id=1465664563]
 visible = false

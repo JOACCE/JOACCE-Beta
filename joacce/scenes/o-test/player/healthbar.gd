@@ -25,7 +25,7 @@ func _set_health(new_health: float) -> void:
 	health = clamp(new_health, 0, max_value)
 	value = health
 	_updating = false
-	print("current health: ", health)
+	print("current health: ", health, "/ ", max_value)
 	
 # TEMPORARY FOR TESTING, pressing reduces health by 10
 func _on_button_pressed() -> void:

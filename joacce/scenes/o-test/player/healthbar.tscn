@@ -5,6 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://dmnmkxragbqc2" path="res://assets/ui/over_healthbar.png" id="3_16luu"]
 [ext_resource type="Texture2D" uid="uid://24a6baynxq43" path="res://assets/ui/progress_healthbar.png" id="4_o6tr0"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvlaw"]
+atlas = ExtResource("4_o6tr0")
+region = Rect2(906, 588, 882, 126)
+
 [node name="Healthbar" type="TextureProgressBar" unique_id=563292]
 z_index = -3
 anchors_preset = 15
@@ -12,15 +16,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -409.0
 offset_top = -149.0
-offset_right = 2095.1665
-offset_bottom = 1874.0
+offset_right = 487.0
+offset_bottom = 1251.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.45, 0.25)
 value = 80.0
 texture_under = ExtResource("2_jvlaw")
 texture_over = ExtResource("3_16luu")
-texture_progress = ExtResource("4_o6tr0")
+texture_progress = SubResource("AtlasTexture_jvlaw")
+texture_progress_offset = Vector2(900, 585)
 script = ExtResource("1_mux8s")
 
 [node name="Button" type="Button" parent="." unique_id=859078946]
