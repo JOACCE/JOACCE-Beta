@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	# Assign volume contexts (as each song has a different volume
 	volume_contexts = {
-		"fight" : -14.0,
+		"fight" : -10.5,
 		"menu" : -8.0
 	}
 	
