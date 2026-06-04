@@ -82,6 +82,10 @@ _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 metadata/_snap_enabled = true
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oyjmv"]
+radius = 12.0
+height = 70.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6nna0"]
 animations = [{
 "frames": [{
@@ -198,6 +202,7 @@ scale = Vector2(0.23, 0.23)
 sprite_frames = SubResource("SpriteFrames_truya")
 frame = 1
 frame_progress = 1.0
+script = ExtResource("3_t6ydl")
 
 [node name="Special2Effect" type="CPUParticles2D" parent="Sprites/Special2" unique_id=907113989]
 show_behind_parent = true
@@ -216,6 +221,25 @@ scale_curve_x = SubResource("Curve_q215x")
 scale_curve_y = SubResource("Curve_hkhs2")
 color_ramp = ExtResource("14_o7sv6")
 color_initial_ramp = ExtResource("14_o7sv6")
+
+[node name="ColorRect" type="ColorRect" parent="Sprites/Special2" unique_id=1285769886]
+offset_left = 130.1554
+offset_top = -58.931297
+offset_right = 231.84453
+offset_bottom = -17.750343
+rotation = -1.1375657
+scale = Vector2(3.9775846, -3.903662)
+color = Color(0.70670056, 0, 0.1611616, 1)
+
+[node name="Hitarea" type="Area2D" parent="Sprites/Special2" unique_id=2060372163]
+position = Vector2(52.173897, 108.69565)
+rotation = -1.1111195
+scale = Vector2(6.5814915, 6.942245)
+
+[node name="Hitbox" type="CollisionShape2D" parent="Sprites/Special2/Hitarea" unique_id=1525760812]
+position = Vector2(57, -12)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_oyjmv")
 
 [node name="Charge" type="AnimatedSprite2D" parent="Sprites" unique_id=1129322675]
 visible = false
@@ -310,3 +334,4 @@ bus = &"SFX"
 
 [connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]
 [connection signal="body_entered" from="Kick/Hitarea" to="." method="_on_hitarea_body_entered"]
+[connection signal="body_entered" from="Sprites/Special2/Hitarea" to="." method="_on_hitarea_body_entered"]
