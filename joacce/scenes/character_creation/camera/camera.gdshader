@@ -11,7 +11,7 @@ void fragment() {
 	vec2 flipped_uv = vec2(1.0 - UV.x, UV.y);
 	
 	vec2 center = vec2(0.5, 0.5);
-	vec2 zoomed_uv = center + (flipped_uv - center) / zoom;
+	vec2 zoomed_uv = vec2(center.x + (flipped_uv.x - center.x) / zoom, flipped_uv.y);
 	
 	if (zoomed_uv.x < 0.0 || zoomed_uv.x > 1.0 ||
 		zoomed_uv.y < 0.0 || zoomed_uv.y > 1.0) 

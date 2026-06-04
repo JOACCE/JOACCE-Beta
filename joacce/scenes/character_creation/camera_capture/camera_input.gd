@@ -14,17 +14,17 @@ These captures are saved to individual files for use in arena
 const imageProcessing = preload("res://scenes/character_creation/imageProcessing.gd")
 
 # Camera
-@onready var camera : Control = $UI/VBoxContainer/HBoxContainer/CameraContainer/Camera
+@onready var camera : Control = $UI/CameraCaptureContainer/HBoxContainer/CameraContainer/Camera
 
 # Stencil
-@onready var stencil : TextureRect = $UI/VBoxContainer/HBoxContainer/CameraContainer/Stencil
-@onready var stencil_label : Label = $UI/VBoxContainer/StencilLabel
+@onready var stencil : TextureRect = $UI/CameraCaptureContainer/HBoxContainer/CameraContainer/Stencil
+@onready var stencil_label : Label = $UI/CameraCaptureContainer/StencilLabel
 
 # Buttons
-@onready var button_container : HBoxContainer = $UI/VBoxContainer/CenterContainer/ButtonContainer
-@onready var ready_button : Button = $UI/VBoxContainer/CenterContainer/ButtonContainer/ReadyButton
-@onready var plus_button : Button = $UI/VBoxContainer/CenterContainer/ButtonContainer/PlusButton
-@onready var minus_button : Button = $UI/VBoxContainer/CenterContainer/ButtonContainer/MinusButton
+@onready var button_container : HBoxContainer = $UI/CameraCaptureContainer/CenterContainer/ButtonContainer
+@onready var ready_button : Button = $UI/CameraCaptureContainer/CenterContainer/ButtonContainer/ReadyButton
+@onready var plus_button : Button = $UI/CameraCaptureContainer/CenterContainer/ButtonContainer/PlusButton
+@onready var minus_button : Button = $UI/CameraCaptureContainer/CenterContainer/ButtonContainer/MinusButton
 
 # Countdown
 @onready var countdown = $UI/CountdownContainer/Countdown
@@ -33,8 +33,15 @@ const imageProcessing = preload("res://scenes/character_creation/imageProcessing
 @onready var capture_popup : CenterContainer = $UI/CenterPopup
 @onready var sprite_preview : TextureRect = $UI/CenterPopup/CapturePopup/PreviewSprite
 
+# Capture Vbox
+@onready var capture_vbox : VBoxContainer = $UI/CameraCaptureContainer
+
+# Save Character Popup
+@onready var name_popup : CenterContainer = $UI/SaveCharacterPopup
+@onready var name_input : LineEdit = $UI/SaveCharacterPopup/VBoxContainer/LineEdit
+
 # Resource
-var camera_res = preload("res://scenes/character_creation/CharacterCreationData.tres")
+var camera_res : CameraData = preload("res://scenes/character_creation/CameraData.tres")
 
 # Stencil queue
 var stencils : Array = []
@@ -60,6 +67,7 @@ func _ready() -> void:
 			cam = feed
 	
 	camera.turn_on_camera_feed(cam)
+	camera.display.material.set_shader_parameter("zoom", camera_res.zoom)
 
 	_swap_stencil(stencils.pop_front())
 	
@@ -78,6 +86,13 @@ func _hide_ui() -> void:
 	for child in button_container.get_children():
 		if child is Button:
 			child.hide()
+
+
+func _hide_camera() -> void:
+	capture_vbox.hide()
+
+func _show_camera() -> void:
+	capture_vbox.show()
 
 
 ##
@@ -120,8 +135,7 @@ func _capture_player() -> void:
 	# Get stencil boundary relative to scene (used to resize)
 	var boundary : Rect2 = stencil.get_global_rect()
 	
-	
-	imageProcessing.extractPlayer(imgRaw, imgMask, boundary).save_png(camera_res.CHARACTER_DIR + curr_stencil)
+	imageProcessing.extractPlayer(imgRaw, imgMask, boundary).save_png(camera_res.CHARACTER_DIR + "_tmp/" + curr_stencil)
 
 
 ##
@@ -134,6 +148,7 @@ func _on_ready_pressed() -> void:
 	
 	await _capture_player()
 	
+	_hide_camera()
 	_show_sprite_preview()
 
 
@@ -161,6 +176,9 @@ func _change_zoom(delta: float) -> void:
 	camera_res.zoom = clamp(zoom + delta, 0.2, 3.0)
 	
 	camera.display.material.set_shader_parameter("zoom", camera_res.zoom)
+	ResourceSaver.save(camera_res, "res://scenes/character_creation/CharacterCreationData.tres")
+	
+	#camera.update_crop()
 
 
 ##
@@ -170,7 +188,7 @@ func _show_sprite_preview() -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	# Sorry, this is an ugly line
-	sprite_preview.texture = ImageTexture.create_from_image(Image.load_from_file(camera_res.CHARACTER_DIR + curr_stencil))
+	sprite_preview.texture = ImageTexture.create_from_image(Image.load_from_file(camera_res.CHARACTER_DIR + "_tmp/"+ curr_stencil))
 	capture_popup.show()
 
 
@@ -182,7 +200,12 @@ func _on_confirm_button_pressed() -> void:
 		_swap_stencil(stencils.pop_front())
 		
 		capture_popup.hide()
+		_show_camera()
 		_show_ui()
+	else:
+		# No more pictures to take, prompt name
+		capture_popup.hide()
+		name_popup.show()
 
 
 ##
@@ -190,3 +213,43 @@ func _on_confirm_button_pressed() -> void:
 ##
 func _on_retake_button_pressed() -> void:
 	capture_popup.hide()
+	_show_camera()
+	_show_ui()
+
+
+func _on_name_confirm_button_pressed() -> void:
+	var character_name : String = name_input.text
+	
+	if (!_is_name_taken(character_name)):
+		var dir_name = _create_character_dir(character_name)
+		_move_tmp_files(dir_name)
+		
+		get_tree().change_scene_to_file("res://scenes/o-test/menus/start_menu.tscn")
+	else:
+		print("Character name is already taken.")
+
+
+func _is_name_taken(character_name : String) -> bool:
+	var dir_name : String = camera_res.CHARACTER_DIR + "/" + character_name.replace(" ", "_")
+	
+	return DirAccess.dir_exists_absolute(dir_name);
+
+
+func _create_character_dir(character_name : String) -> String:
+	var dir_name : String = camera_res.CHARACTER_DIR + "/" + character_name.replace(" ", "_")
+	DirAccess.make_dir_absolute(dir_name)
+	
+	return dir_name
+
+
+func _move_tmp_files(dest: String) -> void:
+	var tmp_files = Array(DirAccess.get_files_at(camera_res.CHARACTER_DIR + "_tmp/"))
+	
+	# Filter to only tmp files and remove .imports
+	tmp_files = tmp_files.filter(func(x : String) : return !x.ends_with(".import"))
+	
+	for f in tmp_files:
+		var old_path = camera_res.CHARACTER_DIR + "_tmp/" + f
+		var new_path = dest + "/" + f
+		
+		DirAccess.rename_absolute(old_path, new_path)

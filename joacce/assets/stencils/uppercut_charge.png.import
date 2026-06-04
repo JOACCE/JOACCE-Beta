@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtirx0y7g46gs"
-path="res://.godot/imported/special2-1.png-9c0b65b148237cba41f5c68cfc43e9bd.ctex"
+uid="uid://dn6qtflg32hg4"
+path="res://.godot/imported/uppercut_charge.png-12bd00464c416b81c7616596c4ad80e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stencils/figures/special2-1.png"
-dest_files=["res://.godot/imported/special2-1.png-9c0b65b148237cba41f5c68cfc43e9bd.ctex"]
+source_file="res://assets/stencils/uppercut_charge.png"
+dest_files=["res://.godot/imported/uppercut_charge.png-12bd00464c416b81c7616596c4ad80e1.ctex"]
 
 [params]
 

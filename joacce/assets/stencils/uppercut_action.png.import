@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgn1530ktbpyq"
-path="res://.godot/imported/punch.png-7d4a05d0ad44b4be26f7fd5fc7561bfc.ctex"
+uid="uid://k17f1juegk2a"
+path="res://.godot/imported/uppercut_action.png-58c46227808d43f48a5b9b66739d4ee0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stencils/figures/punch.png"
-dest_files=["res://.godot/imported/punch.png-7d4a05d0ad44b4be26f7fd5fc7561bfc.ctex"]
+source_file="res://assets/stencils/uppercut_action.png"
+dest_files=["res://.godot/imported/uppercut_action.png-58c46227808d43f48a5b9b66739d4ee0.ctex"]
 
 [params]
 

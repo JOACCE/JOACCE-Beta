@@ -5,7 +5,8 @@ extends Node2D
 var feed_options : Array[CameraFeed]
 
 # Resource
-var camera_res : CharacterCreationData = preload("res://scenes/character_creation/CharacterCreationData.tres")
+var camera_res : CameraData = preload("res://scenes/character_creation/CameraData.tres")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,20 +19,21 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
+
 
 func _on_camera_dropdown_item_selected(index: int) -> void:
 	if (index > 0):
 		camera.turn_on_camera_feed(feed_options[index-1])
 		camera_res.camera_name = feed_options[index-1].get_name()
-	
+
 
 ##
 ## On back button, switch to previous scene (Menu?)
 ##
 func _on_back_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/o-test/menus/start_menu.tscn")
 
 ##
 ## On next button, move to character creation scene

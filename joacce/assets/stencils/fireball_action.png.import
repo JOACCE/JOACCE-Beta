@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dowt84c4wo2sa"
-path="res://.godot/imported/kick.png-e5592cb13a3e15548b03301ed732aa81.ctex"
+uid="uid://bsbv81oaw8f57"
+path="res://.godot/imported/fireball_action.png-40e6ec0160dd5bfb235e44614da8bb93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stencils/figures/kick.png"
-dest_files=["res://.godot/imported/kick.png-e5592cb13a3e15548b03301ed732aa81.ctex"]
+source_file="res://assets/stencils/fireball_action.png"
+dest_files=["res://.godot/imported/fireball_action.png-40e6ec0160dd5bfb235e44614da8bb93.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4a83mynh4n8v"
-path="res://.godot/imported/special2-1.png-f4ea1a3a4f094b54c46f49209a310105.ctex"
+uid="uid://clmrdt0y5aaa2"
+path="res://.godot/imported/fireball_charge.png-c84e11c03d989ed1267b703f832c25d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stencils/special2-1.png"
-dest_files=["res://.godot/imported/special2-1.png-f4ea1a3a4f094b54c46f49209a310105.ctex"]
+source_file="res://assets/stencils/fireball_charge.png"
+dest_files=["res://.godot/imported/fireball_charge.png-c84e11c03d989ed1267b703f832c25d7.ctex"]
 
 [params]
 

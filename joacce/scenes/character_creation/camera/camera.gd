@@ -44,3 +44,13 @@ func turn_on_camera_feed(cam: CameraFeed):
 	await RenderingServer.frame_post_draw
 	
 	mat.set_shader_parameter("visibility", 1.0)
+
+func update_crop():
+	var full_size = Vector2(640, 480)
+	
+	var zoom = display.material.get_shader_parameter("zoom")
+	var visible_size = full_size * zoom
+	var offset = (full_size - visible_size) / 2.0
+	
+	display.size = visible_size
+	display.position = offset

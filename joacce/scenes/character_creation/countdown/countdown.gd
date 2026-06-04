@@ -3,11 +3,13 @@ extends Node
 @onready var label = $Label
 @onready var timer = $Timer
 
+@export var timer_length : float = 5.0
+
 signal timer_expired()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	timer.wait_time = timer_length
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
