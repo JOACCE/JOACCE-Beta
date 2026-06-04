@@ -254,18 +254,24 @@ offset_bottom = 40.0
 [node name="Healthbar" parent="Canvas/Bars" unique_id=486555453 instance=ExtResource("14_duly7")]
 custom_minimum_size = Vector2(400, 25)
 layout_mode = 0
-offset_left = 40.0
-offset_top = 50.0
-offset_right = 440.0
-offset_bottom = 75.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -391.0
+offset_top = -114.0
+offset_right = 1657.0
+offset_bottom = 1934.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Meterbar" parent="Canvas/Bars" unique_id=585487628 instance=ExtResource("15_jjgo2")]
 custom_minimum_size = Vector2(266, 20)
 layout_mode = 0
-offset_left = 40.0
-offset_top = 90.0
-offset_right = 306.0
-offset_bottom = 110.0
+offset_left = 41.0
+offset_top = 91.0
+offset_right = 1117.0
+offset_bottom = 253.0
+scale = Vector2(0.25, 0.25)
 
 [node name="fireball" parent="." unique_id=1812506723 instance=ExtResource("16_jjgo2")]
 visible = false

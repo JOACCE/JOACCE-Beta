@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dvh60o0ld4ael"]
 
 [ext_resource type="Script" uid="uid://hcxj2k5w8m0k" path="res://scenes/o-test/player/meterbar.gd" id="1_h1t7c"]
+[ext_resource type="Texture2D" uid="uid://nyj4w10r8oqx" path="res://assets/ui/charge_meter.png" id="2_e2v2n"]
 
 [node name="Meterbar" type="HBoxContainer" unique_id=24493788]
 offset_right = 266.0
@@ -8,22 +9,22 @@ offset_bottom = 20.0
 theme_override_constants/separation = 4
 script = ExtResource("1_h1t7c")
 
-[node name="Charge1" type="Panel" parent="." unique_id=285455375]
-custom_minimum_size = Vector2(50, 0)
+[node name="Charge1" type="TextureRect" parent="." unique_id=2067991110]
 layout_mode = 2
+texture = ExtResource("2_e2v2n")
 
-[node name="Charge2" type="Panel" parent="." unique_id=793449399]
-custom_minimum_size = Vector2(50, 0)
+[node name="Charge2" type="TextureRect" parent="." unique_id=319976485]
 layout_mode = 2
+texture = ExtResource("2_e2v2n")
 
-[node name="Charge3" type="Panel" parent="." unique_id=212875866]
-custom_minimum_size = Vector2(50, 0)
+[node name="Charge3" type="TextureRect" parent="." unique_id=1616623486]
 layout_mode = 2
+texture = ExtResource("2_e2v2n")
 
-[node name="Charge4" type="Panel" parent="." unique_id=560011264]
-custom_minimum_size = Vector2(50, 0)
+[node name="Charge4" type="TextureRect" parent="." unique_id=423029263]
 layout_mode = 2
+texture = ExtResource("2_e2v2n")
 
-[node name="Charge5" type="Panel" parent="." unique_id=1136643375]
-custom_minimum_size = Vector2(50, 0)
+[node name="Charge5" type="TextureRect" parent="." unique_id=1717271574]
 layout_mode = 2
+texture = ExtResource("2_e2v2n")
