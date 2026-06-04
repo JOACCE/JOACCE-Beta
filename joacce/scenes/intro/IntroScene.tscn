@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bwj8kgqdxgl4j" path="res://scripts/intro/intro_scene.gd" id="1_c4hh3"]
 [ext_resource type="PackedScene" uid="uid://dao8xo1tkwxgr" path="res://assets/models/city/source/untitled1.glb" id="1_uda3f"]
 [ext_resource type="PackedScene" uid="uid://dl2ftogqrswy1" path="res://assets/models/alley/abandoned_alley_3.glb" id="2_c4hh3"]
+[ext_resource type="FontFile" uid="uid://bphypfln80nsy" path="res://assets/fonts/Pricedown Bl.otf" id="4_gmqsq"]
 [ext_resource type="FontFile" uid="uid://7ccxja4diiis" path="res://assets/fonts/Iceland-Regular.ttf" id="4_gmqsq"]
 [ext_resource type="PackedScene" uid="uid://36o1vhtip1xf" path="res://assets/models/warehouse/abandoned_warehouse_-_interior_scene.glb" id="5_g0ov8"]
 [ext_resource type="PackedScene" uid="uid://cniwobg058vxw" path="res://assets/models/ring/boxing_ring.glb" id="6_h0136"]
@@ -67,6 +68,22 @@ text = "FIGHTOSCOPE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=392527506]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -77.0
+offset_right = -28.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_gmqsq")
+theme_override_font_sizes/font_size = 32
+text = "SKIP"
+
 [node name="CharacterLabel" type="Label" parent="CanvasLayer" unique_id=1341668598]
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,6 +146,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -43)
 transform = Transform3D(8.448001, 0, 0, 0, 1, 0, 0, 0, 4.62, -33, -0.19114304, -87)
 material_override = SubResource("StandardMaterial3D_gmqsq")
 mesh = SubResource("PlaneMesh_h0136")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 skeleton = NodePath("../..")
 
 [node name="StreetLights" type="Node3D" parent="CityArea" unique_id=1329115072]

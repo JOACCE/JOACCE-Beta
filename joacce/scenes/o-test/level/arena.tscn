@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://jsjuhonb7wka"]
+
+[ext_resource type="PackedScene" uid="uid://be8fgmdt6yakd" path="res://scenes/o-test/player/fighter.tscn" id="1_hn76v"]
+[ext_resource type="Script" uid="uid://b7o4j16agbpsf" path="res://scenes/o-test/level/match_manager.gd" id="1_iw1hm"]
+[ext_resource type="Texture2D" uid="uid://b71upxtsdqr3k" path="res://assets/menus/arena.png" id="2_j50fx"]
+[ext_resource type="Script" uid="uid://bie32sa0pgecn" path="res://scenes/o-test/player/StateMachine/StateMachine.gd" id="2_pq3kf"]
+[ext_resource type="Script" uid="uid://dedtppyrp6wpi" path="res://scenes/o-test/level/fighters.gd" id="3_27urd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27urd"]
+size = Vector2(53, 645)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3m8qi"]
+size = Vector2(1192, 20)
+
+[node name="Arena" type="Node2D" unique_id=102359838]
+script = ExtResource("1_iw1hm")
+
+[node name="ArenaBackground" type="TextureRect" parent="." unique_id=1186860121]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_j50fx")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1489566965]
+position = Vector2(564, 467)
+
+[node name="Environment" type="Node2D" parent="." unique_id=1426574357]
+
+[node name="Walls" type="StaticBody2D" parent="Environment" unique_id=797057926]
+
+[node name="LeftCollision" type="CollisionShape2D" parent="Environment/Walls" unique_id=1751140799]
+position = Vector2(12.5, 321.5)
+shape = SubResource("RectangleShape2D_27urd")
+
+[node name="RightCollision" type="CollisionShape2D" parent="Environment/Walls" unique_id=504709883]
+position = Vector2(1148, 327)
+shape = SubResource("RectangleShape2D_27urd")
+
+[node name="Floor" type="StaticBody2D" parent="Environment" unique_id=1284747627]
+
+[node name="Collision" type="CollisionShape2D" parent="Environment/Floor" unique_id=1685492071]
+position = Vector2(582, 634)
+shape = SubResource("RectangleShape2D_3m8qi")
+
+[node name="Fighters" type="Node2D" parent="." unique_id=1147875794]
+script = ExtResource("3_27urd")
+
+[node name="Fighter" parent="Fighters" unique_id=1512274704 instance=ExtResource("1_hn76v")]
+position = Vector2(129, 535)
+
+[node name="ProgressBar" type="ProgressBar" parent="Fighters/Fighter" unique_id=568693552]
+visible = false
+modulate = Color(0.08235294, 1, 1, 1)
+show_behind_parent = true
+light_mask = 8
+visibility_layer = 8
+z_as_relative = false
+y_sort_enabled = true
+custom_minimum_size = Vector2(40, 75)
+layout_direction = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 65.0
+offset_bottom = 100.0
+grow_vertical = 0
+rounded = true
+
+[node name="StateMachine" type="Node2D" parent="Fighters/Fighter" unique_id=1585892513]
+script = ExtResource("2_pq3kf")
+
+[node name="Fighter2" parent="Fighters" unique_id=650291903 instance=ExtResource("1_hn76v")]
+position = Vector2(1007, 539)
+id = 2
+
+[node name="Bars" parent="Fighters/Fighter2/Canvas" parent_id_path=PackedInt32Array(650291903, 1235444386) index="0" unique_id=235110853]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_right = 0.0
+grow_horizontal = 0
+scale = Vector2(-1, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="Fighters/Fighter2" unique_id=1465664563]
+visible = false
+modulate = Color(0.08235294, 1, 1, 1)
+show_behind_parent = true
+light_mask = 8
+visibility_layer = 8
+z_as_relative = false
+y_sort_enabled = true
+custom_minimum_size = Vector2(40, 75)
+layout_direction = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 65.0
+offset_bottom = 100.0
+grow_vertical = 0
+rounded = true
+
+[node name="StateMachine" type="Node2D" parent="Fighters/Fighter2" unique_id=1344101781]
+script = ExtResource("2_pq3kf")
+
+[editable path="Fighters/Fighter2"]

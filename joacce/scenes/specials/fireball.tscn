@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://chgtl54tos6oy"]
+
+[ext_resource type="Texture2D" uid="uid://bv5q6d78fs2pa" path="res://assets/vfx/fireball.png" id="1_jjprf"]
+[ext_resource type="Script" uid="uid://dtifo1shuimhe" path="res://scenes/specials/fireball.gd" id="1_ofyat"]
+
+[sub_resource type="Curve" id="Curve_ofyat"]
+_data = [Vector2(0.100529104, 0.27485377), 0.0, 0.0, 0, 0, Vector2(1, 0.17543858), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ofyat"]
+offsets = PackedFloat32Array(0, 0.5056818, 1)
+colors = PackedColorArray(0.9, 0.36, 0, 1, 0.9882353, 0.38431373, 0, 1, 0.99, 0.832095, 0.1287, 1)
+
+[sub_resource type="Curve" id="Curve_5fgfi"]
+_limits = [0.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 24.383118), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ofyat"]
+radius = 132.0
+height = 322.0
+
+[node name="fireball" type="Node2D" unique_id=1812506723]
+script = ExtResource("1_ofyat")
+
+[node name="fire_fx" type="CPUParticles2D" parent="." unique_id=1376407386]
+modulate = Color(1, 1, 1, 0.5411765)
+amount = 10
+texture = ExtResource("1_jjprf")
+lifetime = 0.5
+randomness = 1.0
+direction = Vector2(-1, 0)
+spread = 180.0
+gravity = Vector2(-900, 0)
+linear_accel_max = 0.99
+scale_amount_curve = SubResource("Curve_ofyat")
+color_ramp = SubResource("Gradient_ofyat")
+anim_speed_curve = SubResource("Curve_5fgfi")
+
+[node name="fireball" type="Sprite2D" parent="." unique_id=588673390]
+texture = ExtResource("1_jjprf")
+
+[node name="Hitarea" type="Area2D" parent="." unique_id=359166155]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Hitarea" unique_id=67694631]
+position = Vector2(183, -105)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ofyat")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1951972769]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="body_entered" from="Hitarea" to="." method="_on_hitarea_body_entered"]
