@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://b3xsvehqhhvqa"]
 
 [ext_resource type="Script" uid="uid://cjl2qh17em0aq" path="res://scenes/intro/intro_video.gd" id="1_6tsxb"]
-[ext_resource type="VideoStream" uid="uid://dkr46rod2uhvx" path="res://assets/intro_vid.ogv" id="2_8ledn"]
+[ext_resource type="VideoStream" uid="uid://cr4u2x0tdm2a8" path="res://assets/menus/intro_vid.ogv" id="2_6tsxb"]
+[ext_resource type="FontFile" uid="uid://bphypfln80nsy" path="res://assets/fonts/Pricedown Bl.otf" id="3_8ledn"]
 
 [node name="IntroVideo" type="Control" unique_id=1918283558]
 layout_mode = 3
@@ -19,4 +20,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_8ledn")
+stream = ExtResource("2_6tsxb")
+volume_db = -80.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=693343422]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=810684161]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -77.0
+offset_right = -28.0
+offset_bottom = -29.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_8ledn")
+theme_override_font_sizes/font_size = 32
+text = "SKIP"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

@@ -9,6 +9,9 @@ func enter():
 	anim.play()
 	player.velocity.x =0
 	stack_inputted = false
+	
+	# Play sfx
+	player.fighter_audio.play_sfx("charge")
 
 func exit():
 	player.charge_bar.visible = false
@@ -21,6 +24,9 @@ func exit():
 	
 	player.unlock()
 	
+	# Stop sfx
+	player.fighter_audio.stop_sfx("charge")
+
 func physics_update(delta):
 	if Input.is_action_pressed("p"+str(player.id)+"_charge") and player.is_on_floor():
 		if player.current_charge < player.max_charge:
@@ -37,6 +43,9 @@ func physics_update(delta):
 			player.charge_stack = new_charge_stack
 			player.meter_bar.update_charges(new_charge_stack)
 			stack_inputted = true
+			
+			# Play completed charge sfx
+			# player.fighter_audio.play_sfx("")
 	else:
 		state_machine.change_state("idle")
 		

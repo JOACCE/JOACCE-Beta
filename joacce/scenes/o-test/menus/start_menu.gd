@@ -11,6 +11,7 @@ extends Control
 var _valid_os : Array[String] = ["macOS", "Linux", "Android", "iOS"]
 
 func _on_fight_pressed() -> void:
+	AudioManager.play_music("fight")
 	get_tree().change_scene_to_file("res://scenes/o-test/level/arena.tscn")
 
 func _on_create_pressed() -> void:
