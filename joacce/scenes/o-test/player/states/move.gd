@@ -30,3 +30,7 @@ func physics_update(_delta):
 		state_machine.change_state("punch")
 	if Input.is_action_just_pressed("p"+str(player.id)+"_kick"):
 		state_machine.change_state("kick")
+	if Input.is_action_just_pressed("p"+str(player.id)+"_special1"):
+		state_machine.change_state("special_1")
+	if Input.is_action_just_pressed("p"+str(player.id)+"_special2"):
+		state_machine.change_state("special_2")

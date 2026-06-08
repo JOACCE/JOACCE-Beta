@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var SPEED = 400.0
-var JUMP_VELOCITY = -600.0
+var JUMP_VELOCITY = -500.0
 
 @onready var punch: Node2D = $Punch
 @onready var kick: Node2D = $Kick
@@ -39,6 +39,7 @@ var charge_stack = 1
 const max_stack = 5
 
 var player ={}
+var current_damage = 0
 
 # Takes in the fighter id that reaches 0 hp
 signal health_depleted(loser_id: int)
@@ -98,7 +99,7 @@ func apply_damage(damage) -> void:
 
 func _on_hitarea_body_entered(body: Node2D) -> void:
 	if name != body.name and body.has_method("apply_damage"):
-		body.apply_damage(5)
+		body.apply_damage(current_damage)
 
 func play_special(sprite: AnimatedSprite2D) -> void:
 	if charge_stack<=0:
@@ -116,6 +117,7 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	sprite.visible = true
 	sprite.play()
 	if sprite == special_2:
+		current_damage = 20
 		var dir = -1 if get_parent().facing_left == self else 1
 		velocity.x = dir * 200
 		velocity.y = -600  # the "up" of uppercut
