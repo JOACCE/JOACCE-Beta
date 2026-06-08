@@ -92,7 +92,6 @@ func get_movement():
 	velocity.x = direction * SPEED
 
 func apply_damage(damage) -> void:
-	print(name, " took ", damage, " damage")
 	state_machine.change_state("damage")
 	health -= damage
 	# Update healthbar UI state
