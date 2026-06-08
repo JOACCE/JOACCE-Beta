@@ -17,8 +17,6 @@ func _ready():
 		"special_2": preload("res://scenes/o-test/player/states/special.gd").new(),
 		"damage" : preload("res://scenes/o-test/player/states/damage.gd").new()
 	}
-	print(states)
-	print(get_parent())
 	states["special_1"].special_number =1
 	states["special_2"].special_number =2
 
@@ -26,7 +24,6 @@ func _ready():
 	for state in states.values():
 		state.player = get_parent()
 		state.state_machine =self
-		print("state", state, " | Player ",state.player)
 	
 	call_deferred("change_state","idle")	
 	
