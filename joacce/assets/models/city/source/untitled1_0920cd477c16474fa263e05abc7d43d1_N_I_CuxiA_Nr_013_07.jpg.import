@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2wow4oaycg6c"
 path.s3tc="res://.godot/imported/untitled1_0920cd477c16474fa263e05abc7d43d1_N_I_CuxiA_Nr_013_07.jpg-2e72353084a4d121b055148dfdb12979.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_0920cd477c16474fa263e05abc7d43d1_N_I_CuxiA_Nr_013_07.jpg-2e72353084a4d121b055148dfdb12979.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_0920cd477c16474fa263e05abc7d43d1_N_I_CuxiA_Nr_013_07.jpg"
-dest_files=["res://.godot/imported/untitled1_0920cd477c16474fa263e05abc7d43d1_N_I_CuxiA_Nr_013_07.jpg-2e72353084a4d121b055148dfdb12979.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_0920cd477c16474fa263e05abc7d43d1_N_I_CuxiA_Nr_013_07.jpg-2e72353084a4d121b055148dfdb12979.s3tc.ctex", "res://.godot/imported/untitled1_0920cd477c16474fa263e05abc7d43d1_N_I_CuxiA_Nr_013_07.jpg-2e72353084a4d121b055148dfdb12979.etc2.ctex"]
 
 [params]
 

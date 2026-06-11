@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bosicrdslub3k"
 path.s3tc="res://.godot/imported/untitled1_ab8362b535cd4b25b04a716fd81f428b_N_I_aptground_nr_2_001.jpg-76f51d0f49c93f9cb1f6d81309e346de.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_ab8362b535cd4b25b04a716fd81f428b_N_I_aptground_nr_2_001.jpg-76f51d0f49c93f9cb1f6d81309e346de.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_ab8362b535cd4b25b04a716fd81f428b_N_I_aptground_nr_2_001.jpg"
-dest_files=["res://.godot/imported/untitled1_ab8362b535cd4b25b04a716fd81f428b_N_I_aptground_nr_2_001.jpg-76f51d0f49c93f9cb1f6d81309e346de.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_ab8362b535cd4b25b04a716fd81f428b_N_I_aptground_nr_2_001.jpg-76f51d0f49c93f9cb1f6d81309e346de.s3tc.ctex", "res://.godot/imported/untitled1_ab8362b535cd4b25b04a716fd81f428b_N_I_aptground_nr_2_001.jpg-76f51d0f49c93f9cb1f6d81309e346de.etc2.ctex"]
 
 [params]
 

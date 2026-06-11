@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://co7jf7jmoduop"
 path.s3tc="res://.godot/imported/untitled1_9d1268c172c140b69a3df497b9dd48ee_N_I_ringbox_nr_2_001.jpg-cb5cf388920403114a70e508e738cebc.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_9d1268c172c140b69a3df497b9dd48ee_N_I_ringbox_nr_2_001.jpg-cb5cf388920403114a70e508e738cebc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_9d1268c172c140b69a3df497b9dd48ee_N_I_ringbox_nr_2_001.jpg"
-dest_files=["res://.godot/imported/untitled1_9d1268c172c140b69a3df497b9dd48ee_N_I_ringbox_nr_2_001.jpg-cb5cf388920403114a70e508e738cebc.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_9d1268c172c140b69a3df497b9dd48ee_N_I_ringbox_nr_2_001.jpg-cb5cf388920403114a70e508e738cebc.s3tc.ctex", "res://.godot/imported/untitled1_9d1268c172c140b69a3df497b9dd48ee_N_I_ringbox_nr_2_001.jpg-cb5cf388920403114a70e508e738cebc.etc2.ctex"]
 
 [params]
 

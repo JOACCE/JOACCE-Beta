@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhuetekopgv6"
 path.s3tc="res://.godot/imported/untitled1_4cdf166782fa40ab9141ccf9addf1027_RGB_BakedTexture_GRYVYZMIRNYSF.png-40e4cb7e62b53b96f22d79f922a3c398.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_4cdf166782fa40ab9141ccf9addf1027_RGB_BakedTexture_GRYVYZMIRNYSF.png-40e4cb7e62b53b96f22d79f922a3c398.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_4cdf166782fa40ab9141ccf9addf1027_RGB_BakedTexture_GRYVYZMIRNYSF.png"
-dest_files=["res://.godot/imported/untitled1_4cdf166782fa40ab9141ccf9addf1027_RGB_BakedTexture_GRYVYZMIRNYSF.png-40e4cb7e62b53b96f22d79f922a3c398.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_4cdf166782fa40ab9141ccf9addf1027_RGB_BakedTexture_GRYVYZMIRNYSF.png-40e4cb7e62b53b96f22d79f922a3c398.s3tc.ctex", "res://.godot/imported/untitled1_4cdf166782fa40ab9141ccf9addf1027_RGB_BakedTexture_GRYVYZMIRNYSF.png-40e4cb7e62b53b96f22d79f922a3c398.etc2.ctex"]
 
 [params]
 

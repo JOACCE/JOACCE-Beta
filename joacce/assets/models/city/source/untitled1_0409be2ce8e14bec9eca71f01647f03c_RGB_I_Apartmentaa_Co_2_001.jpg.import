@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://emgrxwr46b5m"
 path.s3tc="res://.godot/imported/untitled1_0409be2ce8e14bec9eca71f01647f03c_RGB_I_Apartmentaa_Co_2_001.jpg-de0b3470a61d6e7991980743d6120f42.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_0409be2ce8e14bec9eca71f01647f03c_RGB_I_Apartmentaa_Co_2_001.jpg-de0b3470a61d6e7991980743d6120f42.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_0409be2ce8e14bec9eca71f01647f03c_RGB_I_Apartmentaa_Co_2_001.jpg"
-dest_files=["res://.godot/imported/untitled1_0409be2ce8e14bec9eca71f01647f03c_RGB_I_Apartmentaa_Co_2_001.jpg-de0b3470a61d6e7991980743d6120f42.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_0409be2ce8e14bec9eca71f01647f03c_RGB_I_Apartmentaa_Co_2_001.jpg-de0b3470a61d6e7991980743d6120f42.s3tc.ctex", "res://.godot/imported/untitled1_0409be2ce8e14bec9eca71f01647f03c_RGB_I_Apartmentaa_Co_2_001.jpg-de0b3470a61d6e7991980743d6120f42.etc2.ctex"]
 
 [params]
 

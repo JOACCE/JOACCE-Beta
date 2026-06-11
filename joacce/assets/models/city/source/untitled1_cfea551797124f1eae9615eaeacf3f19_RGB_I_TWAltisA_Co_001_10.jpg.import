@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddkyb20krrplk"
 path.s3tc="res://.godot/imported/untitled1_cfea551797124f1eae9615eaeacf3f19_RGB_I_TWAltisA_Co_001_10.jpg-b48d517e158c2cb697f85c6bed524ce3.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_cfea551797124f1eae9615eaeacf3f19_RGB_I_TWAltisA_Co_001_10.jpg-b48d517e158c2cb697f85c6bed524ce3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_cfea551797124f1eae9615eaeacf3f19_RGB_I_TWAltisA_Co_001_10.jpg"
-dest_files=["res://.godot/imported/untitled1_cfea551797124f1eae9615eaeacf3f19_RGB_I_TWAltisA_Co_001_10.jpg-b48d517e158c2cb697f85c6bed524ce3.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_cfea551797124f1eae9615eaeacf3f19_RGB_I_TWAltisA_Co_001_10.jpg-b48d517e158c2cb697f85c6bed524ce3.s3tc.ctex", "res://.godot/imported/untitled1_cfea551797124f1eae9615eaeacf3f19_RGB_I_TWAltisA_Co_001_10.jpg-b48d517e158c2cb697f85c6bed524ce3.etc2.ctex"]
 
 [params]
 

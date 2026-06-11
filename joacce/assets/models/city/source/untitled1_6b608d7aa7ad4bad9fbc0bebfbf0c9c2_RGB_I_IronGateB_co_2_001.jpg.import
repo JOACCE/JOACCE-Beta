@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dh4w2tvuake5k"
 path.s3tc="res://.godot/imported/untitled1_6b608d7aa7ad4bad9fbc0bebfbf0c9c2_RGB_I_IronGateB_co_2_001.jpg-c4abe7597a68c9d3c669610534a0e223.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_6b608d7aa7ad4bad9fbc0bebfbf0c9c2_RGB_I_IronGateB_co_2_001.jpg-c4abe7597a68c9d3c669610534a0e223.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_6b608d7aa7ad4bad9fbc0bebfbf0c9c2_RGB_I_IronGateB_co_2_001.jpg"
-dest_files=["res://.godot/imported/untitled1_6b608d7aa7ad4bad9fbc0bebfbf0c9c2_RGB_I_IronGateB_co_2_001.jpg-c4abe7597a68c9d3c669610534a0e223.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_6b608d7aa7ad4bad9fbc0bebfbf0c9c2_RGB_I_IronGateB_co_2_001.jpg-c4abe7597a68c9d3c669610534a0e223.s3tc.ctex", "res://.godot/imported/untitled1_6b608d7aa7ad4bad9fbc0bebfbf0c9c2_RGB_I_IronGateB_co_2_001.jpg-c4abe7597a68c9d3c669610534a0e223.etc2.ctex"]
 
 [params]
 

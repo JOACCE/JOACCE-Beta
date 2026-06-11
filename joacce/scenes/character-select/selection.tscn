@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://do13w4vka0tv7"]
+
+[ext_resource type="Script" uid="uid://ba6vtr0mihiyw" path="res://scenes/character-select/selection.gd" id="1_fc51g"]
+[ext_resource type="Texture2D" uid="uid://cj4r0bvq7bbq5" path="res://assets/characters/ej/idle.png" id="1_qwe78"]
+[ext_resource type="Texture2D" uid="uid://clk3xv0udc1to" path="res://assets/stencils/idle.png" id="2_5v7jr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v7jr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="Selection" type="Control" unique_id=1671752645]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fc51g")
+
+[node name="P1Select" type="ItemList" parent="." unique_id=1267913266]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -464.0
+offset_right = 512.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5v7jr")
+allow_reselect = true
+allow_search = false
+max_text_lines = 7
+item_count = 9
+max_columns = 3
+same_column_width = true
+fixed_column_width = 150
+icon_mode = 0
+fixed_icon_size = Vector2i(100, 100)
+item_0/text = "ej"
+item_0/icon = ExtResource("1_qwe78")
+item_1/text = "Connor"
+item_1/icon = ExtResource("2_5v7jr")
+item_2/text = "Arturo"
+item_2/icon = ExtResource("2_5v7jr")
+item_3/text = "CK"
+item_3/icon = ExtResource("2_5v7jr")
+item_4/text = "Jazzy"
+item_4/icon = ExtResource("2_5v7jr")
+item_5/text = "Ozcar"
+item_5/icon = ExtResource("2_5v7jr")
+item_6/text = "Custom1"
+item_6/icon = ExtResource("2_5v7jr")
+item_6/disabled = true
+item_7/text = "Custom2"
+item_7/icon = ExtResource("2_5v7jr")
+item_7/disabled = true
+item_8/text = "Custom 3"
+item_8/icon = ExtResource("2_5v7jr")
+item_8/disabled = true
+
+[node name="SelectedChar1" type="TextureRect" parent="." unique_id=1752830741]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -504.0
+offset_right = 512.0
+offset_bottom = -24.0
+grow_vertical = 0
+expand_mode = 1
+
+[connection signal="item_selected" from="P1Select" to="." method="_on_p_1_select_item_selected"]

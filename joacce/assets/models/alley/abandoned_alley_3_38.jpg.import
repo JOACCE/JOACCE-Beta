@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://hm0leqse47dw"
 path.s3tc="res://.godot/imported/abandoned_alley_3_38.jpg-7ba315b7fd783724ec11d555469cdf7f.s3tc.ctex"
+path.etc2="res://.godot/imported/abandoned_alley_3_38.jpg-7ba315b7fd783724ec11d555469cdf7f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/alley/abandoned_alley_3_38.jpg"
-dest_files=["res://.godot/imported/abandoned_alley_3_38.jpg-7ba315b7fd783724ec11d555469cdf7f.s3tc.ctex"]
+dest_files=["res://.godot/imported/abandoned_alley_3_38.jpg-7ba315b7fd783724ec11d555469cdf7f.s3tc.ctex", "res://.godot/imported/abandoned_alley_3_38.jpg-7ba315b7fd783724ec11d555469cdf7f.etc2.ctex"]
 
 [params]
 

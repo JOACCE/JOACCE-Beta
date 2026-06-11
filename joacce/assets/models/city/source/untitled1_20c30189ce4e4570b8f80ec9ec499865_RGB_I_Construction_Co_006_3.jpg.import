@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://8ia6urq6sn54"
 path.s3tc="res://.godot/imported/untitled1_20c30189ce4e4570b8f80ec9ec499865_RGB_I_Construction_Co_006_3.jpg-8f7f1ac344d56a60a12ba88e0d9d6cfa.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_20c30189ce4e4570b8f80ec9ec499865_RGB_I_Construction_Co_006_3.jpg-8f7f1ac344d56a60a12ba88e0d9d6cfa.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_20c30189ce4e4570b8f80ec9ec499865_RGB_I_Construction_Co_006_3.jpg"
-dest_files=["res://.godot/imported/untitled1_20c30189ce4e4570b8f80ec9ec499865_RGB_I_Construction_Co_006_3.jpg-8f7f1ac344d56a60a12ba88e0d9d6cfa.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_20c30189ce4e4570b8f80ec9ec499865_RGB_I_Construction_Co_006_3.jpg-8f7f1ac344d56a60a12ba88e0d9d6cfa.s3tc.ctex", "res://.godot/imported/untitled1_20c30189ce4e4570b8f80ec9ec499865_RGB_I_Construction_Co_006_3.jpg-8f7f1ac344d56a60a12ba88e0d9d6cfa.etc2.ctex"]
 
 [params]
 

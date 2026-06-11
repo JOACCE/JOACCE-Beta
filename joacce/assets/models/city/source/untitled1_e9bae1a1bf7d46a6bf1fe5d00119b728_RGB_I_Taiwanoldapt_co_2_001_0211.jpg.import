@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://58dseigcbn4p"
 path.s3tc="res://.godot/imported/untitled1_e9bae1a1bf7d46a6bf1fe5d00119b728_RGB_I_Taiwanoldapt_co_2_001_0211.jpg-6b1844cef3e48e455b07272fba966870.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_e9bae1a1bf7d46a6bf1fe5d00119b728_RGB_I_Taiwanoldapt_co_2_001_0211.jpg-6b1844cef3e48e455b07272fba966870.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_e9bae1a1bf7d46a6bf1fe5d00119b728_RGB_I_Taiwanoldapt_co_2_001_0211.jpg"
-dest_files=["res://.godot/imported/untitled1_e9bae1a1bf7d46a6bf1fe5d00119b728_RGB_I_Taiwanoldapt_co_2_001_0211.jpg-6b1844cef3e48e455b07272fba966870.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_e9bae1a1bf7d46a6bf1fe5d00119b728_RGB_I_Taiwanoldapt_co_2_001_0211.jpg-6b1844cef3e48e455b07272fba966870.s3tc.ctex", "res://.godot/imported/untitled1_e9bae1a1bf7d46a6bf1fe5d00119b728_RGB_I_Taiwanoldapt_co_2_001_0211.jpg-6b1844cef3e48e455b07272fba966870.etc2.ctex"]
 
 [params]
 
