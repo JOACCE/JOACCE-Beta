@@ -4,132 +4,84 @@ extends Control
 @onready var selected_1: TextureRect = $SelectedChar1
 @onready var p2_select: ItemList = $P2Select
 @onready var selected_2: TextureRect = $SelectedChar2
+@onready var p1_controls: Label = $P1Controls
+@onready var p2_controls: Label = $P2Controls
 
 var p1_selected_icon
 var p1_selected_name
-var p1_x = 0
-var p1_y = 0
-
 var p2_selected_icon
 var p2_selected_name
-var p2_x = 0
-var p2_y = 0
 
-const max_xy = 3
+var pos = [Vector2i.ZERO, Vector2i.ZERO]
+const MAX_XY = 3
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	highlight(1)
 	highlight(2)
+	
+	_change_control_text()
+
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("p1_punch") and p1_select.visible:
-		select(1)
-	if event.is_action_pressed("p1_kick"):
-		deselect(1)
-	if event.is_action_pressed("p1_left") and p1_select.visible:
-		left(1)
-	if event.is_action_pressed("p1_right") and p1_select.visible:
-		right(1)
-	if event.is_action_pressed("p1_jump") and p1_select.visible:
-		up(1)
-	if event.is_action_pressed("p1_charge") and p1_select.visible:
-		down(1)
-		
-	if event.is_action_pressed("p2_punch") and p2_select.visible:
-		select(2)
-	if event.is_action_pressed("p2_kick"):
-		deselect(2)
-	if event.is_action_pressed("p2_left") and p2_select.visible:
-		left(2)
-	if event.is_action_pressed("p2_right") and p2_select.visible:
-		right(2)
-	if event.is_action_pressed("p2_jump") and p2_select.visible:
-		up(2)
-	if event.is_action_pressed("p2_charge") and p2_select.visible:
-		down(2)
+	for p in [1, 2]:
+		var sel := _get_select(p)
+		if event.is_action_pressed("p%d_punch" % p) and sel.visible:
+			select(p)
+		if event.is_action_pressed("p%d_kick" % p):
+			deselect(p)
+		if event.is_action_pressed("p%d_left" % p) and sel.visible:
+			move(p, Vector2i(-1, 0))
+		if event.is_action_pressed("p%d_right" % p) and sel.visible:
+			move(p, Vector2i(1, 0))
+		if event.is_action_pressed("p%d_jump" % p) and sel.visible:
+			move(p, Vector2i(0, -1))
+		if event.is_action_pressed("p%d_charge" % p) and sel.visible:
+			move(p, Vector2i(0, 1))
 
-func select(player):
-	if player == 1:
-		p1_select.item_selected.emit(p1_x+ max_xy*p1_y)
-	else:
-		p2_select.item_selected.emit(p2_x + max_xy*p2_y)
 
-func deselect(player):
-	if player == 1:
-		selected_1.modulate.a = 0
-		p1_select.visible = true
-	else:
-		selected_2.modulate.a = 0
-		p2_select.visible = true
+func _get_select(player: int) -> ItemList:
+	return p1_select if player == 1 else p2_select
 
-func left(player):
-	if player == 1:
-		var temp_x = p1_x-1 if p1_x>0 else 0
-		if p1_select.is_item_disabled(temp_x + p1_y*max_xy):
-			return
-		p1_x = temp_x
-		highlight(1)
-	else:
-		var temp_x = p2_x-1 if p2_x>0 else 0
-		if p2_select.is_item_disabled(temp_x + p2_y*max_xy):
-			return
-		p2_x = temp_x
-		highlight(2)
 
-func right(player):
-	if player == 1:
-		var temp_x = p1_x+1 if p1_x<max_xy-1 else max_xy-1
-		if p1_select.is_item_disabled(temp_x + p1_y*max_xy):
-			return
-		p1_x = temp_x
-		highlight(1)
-	else:
-		var temp_x = p2_x+1 if p2_x<max_xy-1 else max_xy-1
-		if p2_select.is_item_disabled(temp_x + p2_y*max_xy):
-			return
-		p2_x = temp_x
-		highlight(2)
-	
-func up(player):
-	if player == 1:
-		var temp_y = p1_y-1 if p1_y>0 else 0
-		if p1_select.is_item_disabled(p1_x + temp_y*max_xy):
-			return
-		p1_y = temp_y
-		highlight(1)
-	else:
-		var temp_y = p2_y-1 if p2_y>0 else 0
-		if p2_select.is_item_disabled(p2_x + temp_y*max_xy):
-			return
-		p2_y = temp_y
-		highlight(2)
+func _get_display(player: int) -> TextureRect:
+	return selected_1 if player == 1 else selected_2
 
-func down(player):
-	if player == 1:
-		var temp_y = p1_y+1 if p1_y<max_xy-1 else max_xy-1
-		if p1_select.is_item_disabled(p1_x + temp_y*max_xy):
-			return
-		p1_y = temp_y
-		highlight(1)
-	else:
-		var temp_y = p2_y+1 if p2_y<max_xy-1 else max_xy-1
-		if p2_select.is_item_disabled(p2_x + temp_y*max_xy):
-			return
-		p2_y = temp_y
-		highlight(2)
 
-func highlight(player):
-	if player == 1:
-		p1_select.select(p1_x + p1_y*max_xy)
-	else:
-		p2_select.select(p2_x + p2_y*max_xy)
-		
+func _idx(player: int) -> int:
+	var p = pos[player - 1]
+	return p.x + p.y * MAX_XY
+
+
+func select(player: int) -> void:
+	_get_select(player).item_selected.emit(_idx(player))
+
+
+func deselect(player: int) -> void:
+	_get_display(player).modulate.a = 0
+	_get_select(player).visible = true
+
+
+func move(player: int, dir: Vector2i) -> void:
+	var p = pos[player - 1]
+	var new_p := Vector2i(
+		clamp(p.x + dir.x, 0, MAX_XY - 1),
+		clamp(p.y + dir.y, 0, MAX_XY - 1)
+	)
+	if _get_select(player).is_item_disabled(new_p.x + new_p.y * MAX_XY):
+		return
+	pos[player - 1] = new_p
+	highlight(player)
+
+
+func highlight(player: int) -> void:
+	_get_select(player).select(_idx(player))
+
+func _change_control_text():
+	print(InputMap.get_action_description("p1_punch"))
 
 func _on_p_1_select_item_selected(index: int) -> void:
 	p1_selected_icon = p1_select.get_item_icon(index)
 	p1_selected_name = p1_select.get_item_text(index)
-	
 	selected_1.texture = p1_selected_icon
 	selected_1.modulate.a = 255
 	p1_select.visible = false
@@ -138,7 +90,6 @@ func _on_p_1_select_item_selected(index: int) -> void:
 func _on_p_2_select_item_selected(index: int) -> void:
 	p2_selected_icon = p2_select.get_item_icon(index)
 	p2_selected_name = p2_select.get_item_text(index)
-	
 	selected_2.texture = p2_selected_icon
 	selected_2.modulate.a = 255
 	p2_select.visible = false
