@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3x2rt5upogml"
 path.s3tc="res://.godot/imported/untitled1_85cd99d64b7d48c4adea5951a1fc1cfa_N_I_Leaves_nr_2_001.jpg-b0fcfbae8968543859ac90cff9137ce7.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_85cd99d64b7d48c4adea5951a1fc1cfa_N_I_Leaves_nr_2_001.jpg-b0fcfbae8968543859ac90cff9137ce7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_85cd99d64b7d48c4adea5951a1fc1cfa_N_I_Leaves_nr_2_001.jpg"
-dest_files=["res://.godot/imported/untitled1_85cd99d64b7d48c4adea5951a1fc1cfa_N_I_Leaves_nr_2_001.jpg-b0fcfbae8968543859ac90cff9137ce7.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_85cd99d64b7d48c4adea5951a1fc1cfa_N_I_Leaves_nr_2_001.jpg-b0fcfbae8968543859ac90cff9137ce7.s3tc.ctex", "res://.godot/imported/untitled1_85cd99d64b7d48c4adea5951a1fc1cfa_N_I_Leaves_nr_2_001.jpg-b0fcfbae8968543859ac90cff9137ce7.etc2.ctex"]
 
 [params]
 

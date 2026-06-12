@@ -5,15 +5,15 @@ extends Resource
 @export var name : String = ""
 
 # Sprite paths
-@export var charge : String = ""
-@export var damage : String = ""
-@export var idle : String = ""
-@export var kick : String = ""
-@export var loss : String = ""
-@export var punch : String = ""
-@export var special1_1 : String = ""
-@export var special1_2 : String = ""
-@export var special2_1 : String = ""
-@export var special2_2 : String = ""
-@export var victory : String = ""
-@export var walk : String = ""
+@export var charge : Texture2D 
+@export var damage : Texture2D
+@export var idle : Texture2D 
+@export var kick : Texture2D 
+@export var loss : Texture2D 
+@export var punch : Texture2D 
+@export var special1_1 : Texture2D 
+@export var special1_2 : Texture2D 
+@export var special2_1 : Texture2D 
+@export var special2_2 : Texture2D 
+@export var victory : Texture2D 
+@export var walk : Texture2D 

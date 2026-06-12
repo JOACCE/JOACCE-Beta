@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://oi7q4f63s5fx"
 path.s3tc="res://.godot/imported/untitled1_b1d133af6cb242e39f9f6a51f244d31a_RGB_BakedTexture_GRYVYZMICGEJL.png-502a38c722181142b1e159f3dcb7488f.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_b1d133af6cb242e39f9f6a51f244d31a_RGB_BakedTexture_GRYVYZMICGEJL.png-502a38c722181142b1e159f3dcb7488f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_b1d133af6cb242e39f9f6a51f244d31a_RGB_BakedTexture_GRYVYZMICGEJL.png"
-dest_files=["res://.godot/imported/untitled1_b1d133af6cb242e39f9f6a51f244d31a_RGB_BakedTexture_GRYVYZMICGEJL.png-502a38c722181142b1e159f3dcb7488f.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_b1d133af6cb242e39f9f6a51f244d31a_RGB_BakedTexture_GRYVYZMICGEJL.png-502a38c722181142b1e159f3dcb7488f.s3tc.ctex", "res://.godot/imported/untitled1_b1d133af6cb242e39f9f6a51f244d31a_RGB_BakedTexture_GRYVYZMICGEJL.png-502a38c722181142b1e159f3dcb7488f.etc2.ctex"]
 
 [params]
 

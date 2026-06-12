@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpv485ord4w5q"
 path.s3tc="res://.godot/imported/untitled1_0d6b64b5f5834ae1a9afcba9b2118a3d_RGB_I_potplant_co_2_001.jpg-438000f171ef0e252f390d14996ddf9d.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_0d6b64b5f5834ae1a9afcba9b2118a3d_RGB_I_potplant_co_2_001.jpg-438000f171ef0e252f390d14996ddf9d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_0d6b64b5f5834ae1a9afcba9b2118a3d_RGB_I_potplant_co_2_001.jpg"
-dest_files=["res://.godot/imported/untitled1_0d6b64b5f5834ae1a9afcba9b2118a3d_RGB_I_potplant_co_2_001.jpg-438000f171ef0e252f390d14996ddf9d.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_0d6b64b5f5834ae1a9afcba9b2118a3d_RGB_I_potplant_co_2_001.jpg-438000f171ef0e252f390d14996ddf9d.s3tc.ctex", "res://.godot/imported/untitled1_0d6b64b5f5834ae1a9afcba9b2118a3d_RGB_I_potplant_co_2_001.jpg-438000f171ef0e252f390d14996ddf9d.etc2.ctex"]
 
 [params]
 
