@@ -65,7 +65,7 @@ func get_char(id):
 		var filename = dir.get_next()
 		while filename != "":
 			if filename.ends_with(".res") and filename == char_name+".res":
-				var fighter = ResourceLoader.load(DEF_PATH + filename)
+				var fighter = ResourceLoader.load(SAVE_PATH + filename)
 				return fighter
 			filename = dir.get_next()
 	print("Using EJ default")
