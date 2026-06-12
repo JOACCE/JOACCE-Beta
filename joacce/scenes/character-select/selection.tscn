@@ -140,12 +140,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 184.0
+offset_left = 157.0
 offset_top = -47.0
-offset_right = 345.0
+offset_right = 379.0
 offset_bottom = -24.0
 grow_vertical = 0
-text = "Select: R   Deselect: F"
+text = "Select: Punch   Deselect: Kick"
 
 [node name="P2Controls" type="Label" parent="." unique_id=386601221]
 layout_mode = 1
@@ -154,13 +154,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -459.0
+offset_left = -395.0
 offset_top = -47.0
-offset_right = -88.0
+offset_right = -162.0
 offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Select: Semicolon (Punch)   Deselect: Slash (Kick)"
+text = "Select: Punch   Deselect: Kick"
 
 [connection signal="item_selected" from="P1Select" to="." method="_on_p_1_select_item_selected"]
 [connection signal="item_selected" from="P2Select" to="." method="_on_p_2_select_item_selected"]

@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_ctoij")
 camera_name = "FaceTime HD Camera"
-zoom = 2.3999999999999995
+
+zoom = 1.6999999999999988
 metadata/_custom_type_script = "uid://boms7fr154gxo"

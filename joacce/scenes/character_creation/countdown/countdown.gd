@@ -9,6 +9,8 @@ signal timer_expired()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if OS.is_debug_build():
+		timer_length= 0.5
 	timer.wait_time = timer_length
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

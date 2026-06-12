@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://jtuygkdyyogi"]
 
 [ext_resource type="Script" uid="uid://c4get2wcunqf1" path="res://scenes/character_creation/camera_select/camera_select.gd" id="1_u0q77"]
-[ext_resource type="PackedScene" uid="uid://c0t8baf72a4tj" path="res://scenes/character_creation/camera/camera.tscn" id="2_3waco"]
+[ext_resource type="PackedScene" uid="uid://c0t8baf72a4tj" path="res://scenes/character_creation/camera/default_camera.tscn" id="2_3waco"]
 [ext_resource type="Texture2D" uid="uid://bnb23ug205aku" path="res://assets/menus/TEMP title.png" id="2_u0q77"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0q77"]

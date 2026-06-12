@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://d4l4oiqpgnw84"]
+[gd_scene format=3 uid="uid://hyma2o8fceva"]
 
-[ext_resource type="Script" uid="uid://bof2voiae41lt" path="res://scenes/character_creation/camera_capture/camera_input.gd" id="1_sng04"]
-[ext_resource type="Texture2D" uid="uid://bnb23ug205aku" path="res://assets/menus/TEMP title.png" id="2_3xl85"]
-[ext_resource type="Texture2D" uid="uid://i5qjdsyxb7iy" path="res://assets/background.png" id="2_fh5o4"]
-[ext_resource type="PackedScene" uid="uid://c0t8baf72a4tj" path="res://scenes/character_creation/camera/camera.tscn" id="3_3xl85"]
-[ext_resource type="Texture2D" uid="uid://clk3xv0udc1to" path="res://assets/stencils/idle.png" id="4_s3u7c"]
-[ext_resource type="PackedScene" uid="uid://dwdor3mbqe8rs" path="res://scenes/character_creation/countdown/countdown.tscn" id="5_fh5o4"]
+[ext_resource type="Script" uid="uid://cucdup51uj4eu" path="res://scenes/character_creation/camera_capture_web/camera_input_web.gd" id="1_uabte"]
+[ext_resource type="Texture2D" uid="uid://bnb23ug205aku" path="res://assets/menus/TEMP title.png" id="2_s861u"]
+[ext_resource type="PackedScene" uid="uid://fv5uqbwo62my" path="res://scenes/character_creation/camera/web_camera.tscn" id="4_bcn5i"]
+[ext_resource type="Texture2D" uid="uid://clk3xv0udc1to" path="res://assets/stencils/idle.png" id="5_kkt5f"]
+[ext_resource type="PackedScene" uid="uid://dwdor3mbqe8rs" path="res://scenes/character_creation/countdown/countdown.tscn" id="6_sv1jl"]
+[ext_resource type="Texture2D" uid="uid://i5qjdsyxb7iy" path="res://assets/background.png" id="7_apfvf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fh5o4"]
 font_size = 64
@@ -51,7 +51,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="CameraInput" type="Node2D" unique_id=1315409302]
-script = ExtResource("1_sng04")
+script = ExtResource("1_uabte")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=324943156]
 
@@ -62,7 +62,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_3xl85")
+texture = ExtResource("2_s861u")
 
 [node name="CameraCaptureContainer" type="VBoxContainer" parent="UI" unique_id=1622432048]
 anchors_preset = 15
@@ -90,12 +90,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Camera" parent="UI/CameraCaptureContainer/HBoxContainer/CameraContainer" unique_id=384450534 instance=ExtResource("3_3xl85")]
+[node name="WebCamera" parent="UI/CameraCaptureContainer/HBoxContainer/CameraContainer" unique_id=256770726 instance=ExtResource("4_bcn5i")]
+clip_contents = true
 layout_mode = 2
 
 [node name="Stencil" type="TextureRect" parent="UI/CameraCaptureContainer/HBoxContainer/CameraContainer" unique_id=814568141]
 layout_mode = 2
-texture = ExtResource("4_s3u7c")
+texture = ExtResource("5_kkt5f")
 expand_mode = 2
 
 [node name="Margin2" type="Control" parent="UI/CameraCaptureContainer/HBoxContainer" unique_id=709002342]
@@ -113,6 +114,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="MinusButton" type="Button" parent="UI/CameraCaptureContainer/CenterContainer/ButtonContainer" unique_id=526595938]
+visible = false
 custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -135,6 +137,7 @@ custom_minimum_size = Vector2(20, 50)
 layout_mode = 2
 
 [node name="PlusButton" type="Button" parent="UI/CameraCaptureContainer/CenterContainer/ButtonContainer" unique_id=1188765259]
+visible = false
 custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -155,7 +158,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Countdown" parent="UI/CountdownContainer" unique_id=1642255454 instance=ExtResource("5_fh5o4")]
+[node name="Countdown" parent="UI/CountdownContainer" unique_id=1642255454 instance=ExtResource("6_sv1jl")]
 
 [node name="CenterPopup" type="CenterContainer" parent="UI" unique_id=516907074]
 visible = false
@@ -175,7 +178,7 @@ grow_vertical = 2
 visible = false
 custom_minimum_size = Vector2(400, 600)
 layout_mode = 2
-texture = ExtResource("2_fh5o4")
+texture = ExtResource("7_apfvf")
 expand_mode = 2
 
 [node name="CapturePopup" type="VBoxContainer" parent="UI/CenterPopup" unique_id=695381051]
