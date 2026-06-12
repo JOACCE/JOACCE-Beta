@@ -221,6 +221,8 @@ func set_sprites():
 	punch_frame.texture = data.punch
 	kick_frame.texture = data.kick
 	damage_frame.texture = data.damage
+	win_frame.texture = data.victory
+	loss_frame.texture = data.loss
 	apply_animation_frames(walk, [data.idle, data.walk])
 	apply_animation_frames(charge, [data.charge])
 	apply_animation_frames(special_1, [data.special1_1, data.special1_2])
