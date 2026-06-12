@@ -32,6 +32,7 @@ var JUMP_VELOCITY = -500.0
 #player distinct by player_id
 @export var id := 1
 
+
 var charge_speed = 70.0
 var current_charge = 0.0
 var max_charge = 100
@@ -39,6 +40,8 @@ var charge_stack = 1
 const max_stack = 5
 
 var player ={}
+var previous_buttons := {}
+
 var current_damage = 0
 
 # Takes in the fighter id that reaches 0 hp
