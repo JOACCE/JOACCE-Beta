@@ -201,6 +201,5 @@ func set_match_enabled(enabled: bool):
 		attacking = false
 		animation_playing = false
 		charge_time = 0.0
-
 		if state_machine:
 			state_machine.change_state("idle")
