@@ -8,3 +8,6 @@ extends Resource
 # Directories
 @export var CHARACTER_DIR : String = "res://assets/characters/"
 @export var STENCIL_DIR : String = "res://assets/stencils/"
+
+# Camera version
+@export var camera_version : String = "res://scenes/character_creation/camera/default_camera.tscn"

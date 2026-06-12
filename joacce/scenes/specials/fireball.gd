@@ -29,5 +29,5 @@ func _on_hitarea_body_entered(body: Node2D) -> void:
 		if body.id == source_player.id:
 			return
 		if body.has_method("apply_damage"):
-			body.apply_damage(10) 
+			body.apply_damage(25) 
 		queue_free()

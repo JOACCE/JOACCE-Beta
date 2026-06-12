@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0t8baf72a4tj"]
 
-[ext_resource type="Script" uid="uid://bkripenbcr0lr" path="res://scenes/character_creation/camera/camera.gd" id="1_3f81m"]
+[ext_resource type="Script" uid="uid://bkripenbcr0lr" path="res://scenes/character_creation/camera/default_camera.gd" id="1_3f81m"]
 [ext_resource type="Shader" uid="uid://bm38gx43qi467" path="res://scenes/character_creation/camera/camera.gdshader" id="1_3thg3"]
 [ext_resource type="Texture2D" uid="uid://i5qjdsyxb7iy" path="res://assets/background.png" id="2_3f81m"]
 

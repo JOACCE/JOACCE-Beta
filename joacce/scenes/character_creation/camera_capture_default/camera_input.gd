@@ -69,7 +69,8 @@ func _ready() -> void:
 	camera.turn_on_camera_feed(cam)
 	camera.display.material.set_shader_parameter("zoom", camera_res.zoom)
 
-	_swap_stencil(stencils.pop_front())
+	if (len(stencils) > 0):
+		_swap_stencil(stencils.pop_front())
 	
 func _swap_stencil(path : String) -> void:
 	curr_stencil = path
@@ -177,8 +178,6 @@ func _change_zoom(delta: float) -> void:
 	
 	camera.display.material.set_shader_parameter("zoom", camera_res.zoom)
 	ResourceSaver.save(camera_res, "res://scenes/character_creation/CharacterCreationData.tres")
-	
-	#camera.update_crop()
 
 
 ##
