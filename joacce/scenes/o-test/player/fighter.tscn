@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bxv8l3272cl6i" path="res://assets/audio/sfx/punch-kick.ogg" id="19_oyjmv"]
 [ext_resource type="AudioStream" uid="uid://cci0jiregn245" path="res://assets/audio/sfx/impact.ogg" id="20_ml0lt"]
 [ext_resource type="AudioStream" uid="uid://kaiylpba4lj8" path="res://assets/audio/sfx/fireball.ogg" id="21_y643t"]
+[ext_resource type="AudioStream" uid="uid://btvxeanqp638p" path="res://assets/audio/sfx/charge.ogg" id="22_ml0lt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18uai"]
 radius = 12.0
@@ -82,6 +83,10 @@ _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 metadata/_snap_enabled = true
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oyjmv"]
+radius = 12.0
+height = 70.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_6nna0"]
 animations = [{
 "frames": [{
@@ -107,7 +112,6 @@ height = 180.0
 
 [node name="Fighter" type="CharacterBody2D" unique_id=1512274704]
 floor_stop_on_slope = false
-floor_block_on_wall = false
 floor_max_angle = 0.0
 script = ExtResource("1_18uai")
 fireball_scene = ExtResource("16_jjgo2")
@@ -198,8 +202,9 @@ scale = Vector2(0.23, 0.23)
 sprite_frames = SubResource("SpriteFrames_truya")
 frame = 1
 frame_progress = 1.0
+script = ExtResource("3_t6ydl")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprites/Special2" unique_id=907113989]
+[node name="Special2Effect" type="CPUParticles2D" parent="Sprites/Special2" unique_id=907113989]
 show_behind_parent = true
 position = Vector2(200, -317.3913)
 amount = 30
@@ -216,6 +221,25 @@ scale_curve_x = SubResource("Curve_q215x")
 scale_curve_y = SubResource("Curve_hkhs2")
 color_ramp = ExtResource("14_o7sv6")
 color_initial_ramp = ExtResource("14_o7sv6")
+
+[node name="ColorRect" type="ColorRect" parent="Sprites/Special2" unique_id=1285769886]
+offset_left = 130.1554
+offset_top = -58.931297
+offset_right = 231.84453
+offset_bottom = -17.750343
+rotation = -1.1375657
+scale = Vector2(3.9775846, -3.903662)
+color = Color(0.70670056, 0, 0.1611616, 1)
+
+[node name="Hitarea" type="Area2D" parent="Sprites/Special2" unique_id=2060372163]
+position = Vector2(52.173897, 108.69565)
+rotation = -1.1111195
+scale = Vector2(6.5814915, 6.942245)
+
+[node name="Hitbox" type="CollisionShape2D" parent="Sprites/Special2/Hitarea" unique_id=1525760812]
+position = Vector2(57, -12)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_oyjmv")
 
 [node name="Charge" type="AnimatedSprite2D" parent="Sprites" unique_id=1129322675]
 visible = false
@@ -258,50 +282,62 @@ offset_bottom = 40.0
 [node name="Healthbar" parent="Canvas/Bars" unique_id=486555453 instance=ExtResource("14_duly7")]
 custom_minimum_size = Vector2(400, 25)
 layout_mode = 0
-offset_left = 40.0
-offset_top = 50.0
-offset_right = 440.0
-offset_bottom = 75.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -391.0
+offset_top = -114.0
+offset_right = 1657.0
+offset_bottom = 1934.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Meterbar" parent="Canvas/Bars" unique_id=585487628 instance=ExtResource("15_jjgo2")]
 custom_minimum_size = Vector2(266, 20)
 layout_mode = 0
-offset_left = 40.0
-offset_top = 90.0
-offset_right = 306.0
-offset_bottom = 110.0
+offset_left = 21.0
+offset_top = 84.0
+offset_right = 1097.0
+offset_bottom = 246.0
+scale = Vector2(0.25, 0.25)
 
 [node name="fireball" parent="." unique_id=1812506723 instance=ExtResource("16_jjgo2")]
 visible = false
 position = Vector2(152.00002, -11)
-scale = Vector2(0.2, 0.2)
 
 [node name="Audio" type="Node2D" parent="." unique_id=131253413]
 script = ExtResource("18_q215x")
 
 [node name="Punch" type="AudioStreamPlayer2D" parent="Audio" unique_id=1635389911]
 stream = ExtResource("19_oyjmv")
-max_distance = 1034.0
+attenuation = 0.07966009
 panning_strength = 2.27
 bus = &"SFX"
 
 [node name="Impact" type="AudioStreamPlayer2D" parent="Audio" unique_id=1488091203]
 stream = ExtResource("20_ml0lt")
-max_distance = 1034.0
+attenuation = 0.07966009
 panning_strength = 2.27
 bus = &"SFX"
 
 [node name="Kick" type="AudioStreamPlayer2D" parent="Audio" unique_id=283196698]
 stream = ExtResource("19_oyjmv")
-max_distance = 1034.0
+attenuation = 0.07966009
 panning_strength = 2.27
 bus = &"SFX"
 
 [node name="Fireball" type="AudioStreamPlayer2D" parent="Audio" unique_id=1032516677]
 stream = ExtResource("21_y643t")
-max_distance = 1034.0
+attenuation = 0.07966009
 panning_strength = 2.27
 bus = &"SFX"
 
+[node name="Charge" type="AudioStreamPlayer2D" parent="Audio" unique_id=1088187506]
+stream = ExtResource("22_ml0lt")
+volume_db = 4.54
+attenuation = 0.07966009
+panning_strength = 2.27
+
 [connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]
 [connection signal="body_entered" from="Kick/Hitarea" to="." method="_on_hitarea_body_entered"]
+[connection signal="body_entered" from="Sprites/Special2/Hitarea" to="." method="_on_hitarea_body_entered"]

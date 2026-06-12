@@ -23,8 +23,11 @@ height = 322.0
 [node name="fireball" type="Node2D" unique_id=1812506723]
 script = ExtResource("1_ofyat")
 
+[node name="fireball" type="Sprite2D" parent="." unique_id=588673390]
+texture = ExtResource("1_jjprf")
+
 [node name="fire_fx" type="CPUParticles2D" parent="." unique_id=1376407386]
-modulate = Color(1, 1, 1, 0.5411765)
+modulate = Color(1, 1, 1, 0.39215687)
 amount = 10
 texture = ExtResource("1_jjprf")
 lifetime = 0.5
@@ -36,9 +39,6 @@ linear_accel_max = 0.99
 scale_amount_curve = SubResource("Curve_ofyat")
 color_ramp = SubResource("Gradient_ofyat")
 anim_speed_curve = SubResource("Curve_5fgfi")
-
-[node name="fireball" type="Sprite2D" parent="." unique_id=588673390]
-texture = ExtResource("1_jjprf")
 
 [node name="Hitarea" type="Area2D" parent="." unique_id=359166155]
 

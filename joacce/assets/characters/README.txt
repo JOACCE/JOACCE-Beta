@@ -1,0 +1,1 @@
+PLEASE DO NOT REMOVE '_tmp' AND 'resources' DIRECTORIES EVER

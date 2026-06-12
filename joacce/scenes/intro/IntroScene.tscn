@@ -37,9 +37,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45370102, 0)
 curve = SubResource("Curve3D_uda3f")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CameraPath" unique_id=1444291044]
-transform = Transform3D(-0.007859594, -0.14736393, -0.988988, 0, 0.9890072, -0.14737017, 0.99980783, -0.0011584433, -0.007774538, -8.157355, -5.391198, -88.43234)
-progress = 103.323784
-rotation_mode = 2
+transform = Transform3D(-0.239908, 0.3973977, -0.88562363, -0.2587642, 0.8530435, 0.45290822, 0.935543, 0.337853, -0.10183578, -18.95119, -1.262743, -88.56641)
+progress = 92.11509
 
 [node name="Camera3D" type="Camera3D" parent="CameraPath/PathFollow3D" unique_id=405584696]
 transform = Transform3D(0.9996498, 0.0057579256, -0.027322285, 0, 0.9785713, 0.20620956, 0.027922748, -0.20613693, 0.97815293, 0, 0, 0)

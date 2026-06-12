@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var SPEED = 400.0
-var JUMP_VELOCITY = -600.0
+var JUMP_VELOCITY = -500.0
 
 @onready var punch: Node2D = $Punch
 @onready var kick: Node2D = $Kick
@@ -39,6 +39,7 @@ var charge_stack = 1
 const max_stack = 5
 
 var player ={}
+var current_damage = 0
 
 # Takes in the fighter id that reaches 0 hp
 signal health_depleted(loser_id: int)
@@ -60,7 +61,6 @@ var anim_lock : bool
 
 func _ready() -> void:
 	# Initialize UI elements
-	health_bar.init_health(health)
 	meter_bar.update_charges(charge_stack)
 
 func _physics_process(delta: float) -> void:
@@ -95,11 +95,11 @@ func apply_damage(damage) -> void:
 	state_machine.change_state("damage")
 	health -= damage
 	# Update healthbar UI state
-	health_bar.health = health
+	health_bar.take_damage(damage)
 
 func _on_hitarea_body_entered(body: Node2D) -> void:
-	if name != body.name:
-		body.apply_damage(5)
+	if name != body.name and body.has_method("apply_damage"):
+		body.apply_damage(current_damage)
 
 func play_special(sprite: AnimatedSprite2D) -> void:
 	if charge_stack<=0:
@@ -107,6 +107,7 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	charge_stack -= 1
 		
 	meter_bar.update_charges(charge_stack)
+	
 	if sprite != special_2:
 		special_fireball()
 	animation_playing = true
@@ -116,9 +117,11 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	sprite.visible = true
 	sprite.play()
 	if sprite == special_2:
+		current_damage = 20
 		var dir = -1 if get_parent().facing_left == self else 1
 		velocity.x = dir * 200
 		velocity.y = -600  # the "up" of uppercut
+		special_2.attack()
 	await sprite.animation_finished
 	sprite.visible = false
 	current_sprite.visible = true
@@ -143,7 +146,7 @@ func switch_frame(sprite_name, duration = 0):
 			fighter_audio.play_sfx("kick")
 			kick_frame.visible = true
 			current_sprite = kick_frame
-		"charge": 
+		"charge":
 			charge.visible = true
 			current_sprite = charge
 		"damage": 
@@ -158,9 +161,6 @@ func special_fireball() -> void:
 	if not fireball_scene:
 		return
 	
-	#if animation.frame < 1:
-		#while animation.frame != 1:
-			#await animation.frame_changed
 	await get_tree().create_timer(0.5).timeout
 		
 	var fireball_fx = fireball_scene.instantiate()
