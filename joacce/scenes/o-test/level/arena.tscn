@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bie32sa0pgecn" path="res://scenes/o-test/player/StateMachine/StateMachine.gd" id="2_pq3kf"]
 [ext_resource type="Script" uid="uid://dedtppyrp6wpi" path="res://scenes/o-test/level/fighters.gd" id="3_27urd"]
 [ext_resource type="Texture2D" uid="uid://24a6baynxq43" path="res://assets/ui/progress_healthbar.png" id="6_e2g0h"]
+[ext_resource type="PackedScene" uid="uid://d2wjr4wbkvhd" path="res://scenes/o-test/menus/match_countdown.tscn" id="7_bhtxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27urd"]
 size = Vector2(61.5, 639.5)
@@ -44,10 +45,12 @@ position = Vector2(582, 634)
 shape = SubResource("RectangleShape2D_3m8qi")
 
 [node name="Fighters" type="Node2D" parent="." unique_id=1147875794]
+position = Vector2(452, 307)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("3_27urd")
 
 [node name="Fighter" parent="Fighters" unique_id=1512274704 instance=ExtResource("1_hn76v")]
-position = Vector2(129, 535)
+position = Vector2(-1449.9998, 560)
 
 [node name="ProgressBar" type="ProgressBar" parent="Fighters/Fighter" unique_id=568693552]
 visible = false
@@ -62,18 +65,20 @@ layout_direction = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 65.0
-offset_bottom = 100.0
+offset_left = 810.0
+offset_top = 490.0
+offset_right = 850.0
+offset_bottom = 565.0
 grow_vertical = 0
+scale = Vector2(4, 4)
 rounded = true
+show_percentage = false
 
 [node name="StateMachine" type="Node2D" parent="Fighters/Fighter" unique_id=1585892513]
 script = ExtResource("2_pq3kf")
 
 [node name="Fighter2" parent="Fighters" unique_id=650291903 instance=ExtResource("1_hn76v")]
-position = Vector2(1007, 539)
+position = Vector2(2349.9998, 580.00006)
 id = 2
 
 [node name="Bars" parent="Fighters/Fighter2/Canvas" parent_id_path=PackedInt32Array(650291903, 1235444386) index="0" unique_id=235110853]
@@ -91,6 +96,8 @@ size_flags_vertical = 3
 value = 100.0
 texture_progress = SubResource("AtlasTexture_e2g0h")
 
+[node name="MatchCountdown" parent="Fighters/Fighter2/Canvas" parent_id_path=PackedInt32Array(650291903, 1235444386) index="1" unique_id=290303958 instance=ExtResource("7_bhtxq")]
+
 [node name="ProgressBar" type="ProgressBar" parent="Fighters/Fighter2" unique_id=1465664563]
 visible = false
 modulate = Color(0.08235294, 1, 1, 1)
@@ -104,12 +111,14 @@ layout_direction = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 65.0
-offset_bottom = 100.0
+offset_left = -980.0
+offset_top = 489.99976
+offset_right = -940.0
+offset_bottom = 564.99976
 grow_vertical = 0
+scale = Vector2(4, 4)
 rounded = true
+show_percentage = false
 
 [node name="StateMachine" type="Node2D" parent="Fighters/Fighter2" unique_id=1344101781]
 script = ExtResource("2_pq3kf")

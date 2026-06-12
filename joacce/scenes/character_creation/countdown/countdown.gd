@@ -3,7 +3,7 @@ extends Node
 @onready var label = $Label
 @onready var timer = $Timer
 
-@export var timer_length : float = 5.0
+@export var timer_length : float = 3.0
 
 signal timer_expired()
 
@@ -44,3 +44,6 @@ func _on_timer_timeout() -> void:
 	label.hide()
 	
 	timer_expired.emit()
+	
+func set_timer_length(length : float) -> void:
+	timer.wait_time = length

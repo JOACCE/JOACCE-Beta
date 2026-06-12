@@ -10,6 +10,7 @@ extends Control
 @onready var quit_button : Button = $VBoxContainer/Quit
 
 func _on_fight_pressed() -> void:
+	AudioManager.play_click_sfx()
 	AudioManager.play_music("fight")
 	get_tree().change_scene_to_file("res://scenes/o-test/level/arena.tscn")
 
@@ -27,10 +28,12 @@ func _on_create_pressed() -> void:
 		popup.show()
 
 func _on_quit_pressed() -> void:
+	AudioManager.play_click_sfx()
 	get_tree().quit()
 
 
 func _on_dismiss_button_pressed() -> void:
+	AudioManager.play_click_sfx()
 	_enable_menu_buttons()
 	popup.hide()
 
@@ -45,3 +48,18 @@ func _disable_menu_buttons() -> void:
 	fight_button.disabled = true
 	create_button.disabled = true
 	quit_button.disabled = true
+
+func _on_fight_mouse_entered() -> void:
+	AudioManager.play_hover_sfx()
+
+
+func _on_create_mouse_entered() -> void:
+	AudioManager.play_hover_sfx()
+
+
+func _on_quit_mouse_entered() -> void:
+	AudioManager.play_hover_sfx()
+
+
+func _on_dismiss_button_mouse_entered() -> void:
+	AudioManager.play_hover_sfx()

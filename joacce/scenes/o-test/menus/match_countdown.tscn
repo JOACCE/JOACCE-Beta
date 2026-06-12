@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d2wjr4wbkvhd"]
+
+[ext_resource type="Script" uid="uid://dgdmv1th58u1w" path="res://scenes/o-test/menus/match_countdown.gd" id="1_5ax0m"]
+[ext_resource type="FontFile" uid="uid://bphypfln80nsy" path="res://assets/fonts/Pricedown Bl.otf" id="1_b0iw0"]
+[ext_resource type="AudioStream" uid="uid://c7rnmpgnfdwu6" path="res://assets/audio/sfx/Countdown-2.ogg" id="3_se45g"]
+
+[node name="MatchCountdown" type="ColorRect" unique_id=290303958]
+z_index = 50
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6117647)
+script = ExtResource("1_5ax0m")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1765792350]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CountdownText" type="Label" parent="CenterContainer" unique_id=656321104]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_b0iw0")
+theme_override_font_sizes/font_size = 96
+text = "3"
+
+[node name="CountdownSFX" type="AudioStreamPlayer" parent="." unique_id=594013787]
+stream = ExtResource("3_se45g")
+bus = &"SFX"
