@@ -88,12 +88,21 @@ func create_character(char_name, buffers):
 			new_fighter.set(KEY_MAP[filename], ImageTexture.create_from_image(img))
 		else:
 			print("Warning: Missing buffer for ", filename)
-	
-	var error = ResourceSaver.save(new_fighter, fighter_path, ResourceSaver.FLAG_COMPRESS)
-	if error == OK:
-		print("Saved ", char_name, " to ", fighter_path)
+			
+	if (OS.get_name() == "Web"):
+		var error = ResourceSaver.save(new_fighter, fighter_path, ResourceSaver.FLAG_COMPRESS)
+		if error == OK:
+			print("Saved ", char_name, " to ", fighter_path)
+		else:
+			print("Save failed with error: ", error)
 	else:
-		print("Save failed with error: ", error)
+		fighter_path = DEF_PATH + char_name.replace(" ", "_") + ".res"
+		var error = ResourceSaver.save(new_fighter, fighter_path, ResourceSaver.FLAG_COMPRESS)
+		
+		if error == OK:
+			print("Saved ", char_name, " to ", fighter_path)
+		else:
+			print("Save failed with error: ", error)
 
 func char_select(player, char):
 	if player == 1:
