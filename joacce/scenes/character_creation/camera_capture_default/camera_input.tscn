@@ -24,8 +24,25 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rovx"]
+bg_color = Color(0.4117647, 0.18039216, 0.21960784, 0.78431374)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydmlu"]
 bg_color = Color(0.9372549, 0.42745098, 0.18431373, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk03h"]
+bg_color = Color(0.9372549, 0.42745098, 0.18431373, 0.78431374)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyw86"]
+bg_color = Color(0.9372549, 0.42745098, 0.18431373, 0.78431374)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -38,8 +55,36 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vtxx"]
+bg_color = Color(0.9372549, 0.42745098, 0.18431373, 0.78431374)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0icot"]
+bg_color = Color(0.9372549, 0.42745098, 0.18431373, 0.78431374)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lek0h"]
 bg_color = Color(0.9372549, 0.42745098, 0.18431373, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pgci"]
+bg_color = Color(0.9372549, 0.42745098, 0.18431373, 0.78431374)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkje1"]
+bg_color = Color(0.9372549, 0.42745098, 0.18431373, 0.78431374)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -124,6 +169,7 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_bygmc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mijiv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5rovx")
 text = "X"
 
 [node name="Margin2" type="Control" parent="UI/CameraCaptureContainer/UpperMenu" unique_id=613956339]
@@ -169,6 +215,8 @@ custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_ydmlu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sk03h")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_lyw86")
 text = "-"
 
 [node name="Margin1" type="Control" parent="UI/CameraCaptureContainer/CenterContainer/ButtonContainer" unique_id=860026062]
@@ -180,6 +228,8 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_s80x4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3vtxx")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_0icot")
 text = "Ready?"
 
 [node name="Margin2" type="Control" parent="UI/CameraCaptureContainer/CenterContainer/ButtonContainer" unique_id=1767719984]
@@ -191,6 +241,8 @@ custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_lek0h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3pgci")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hkje1")
 text = "+"
 
 [node name="TimerSlider" type="HSlider" parent="UI/CameraCaptureContainer" unique_id=1365409158]

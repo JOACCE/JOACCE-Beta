@@ -152,6 +152,8 @@ func _capture_player() -> void:
 ## Capture a screenshot on button press
 ##
 func _on_ready_pressed() -> void:
+	_disable_buttons()
+	
 	countdown.start()
 	
 	await countdown.timer_expired
@@ -160,6 +162,7 @@ func _on_ready_pressed() -> void:
 	
 	_hide_camera()
 	_show_sprite_preview()
+	_enable_buttons()
 
 
 ##
@@ -270,3 +273,17 @@ func _on_exit_button_pressed() -> void:
 func _on_timer_slider_value_changed(value: float) -> void:
 	timer_label.text = "Timer: " + str(int(value)) + "s"
 	countdown.set_timer_length(value)
+	
+func _disable_buttons() -> void:
+	for child in button_container.get_children():
+		if child is Button:
+			child.disabled = true
+			
+	timer_slider.editable = false
+	
+func _enable_buttons() -> void:
+	for child in button_container.get_children():
+		if child is Button:
+			child.disabled = false
+	
+	timer_slider.editable = true

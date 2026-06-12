@@ -18,6 +18,13 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnmjs"]
+bg_color = Color(0.4117647, 0.18039216, 0.21960784, 0.78431374)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="Theme" id="Theme_u0q77"]
 default_font_size = 36
 
@@ -37,6 +44,13 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_homjw"]
 bg_color = Color(0.31764707, 0.6117647, 0.40392157, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hftad"]
+bg_color = Color(0.31764707, 0.6117647, 0.40392157, 0.78431374)
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
@@ -120,6 +134,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_u0q77")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tnmjs")
 text = "BACK"
 
 [node name="Margin1" type="Control" parent="UI/VBoxContainer/CenterContainer/ButtonContainer" unique_id=27467387]
@@ -152,6 +167,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_homjw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hftad")
 text = "NEXT"
 
 [node name="Margin3" type="Control" parent="UI/VBoxContainer" unique_id=435863273]

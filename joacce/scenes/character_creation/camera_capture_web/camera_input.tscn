@@ -31,6 +31,20 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2l5m"]
+bg_color = Color(0.9372549, 0.42745098, 0.18431373, 0.78431374)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcn5i"]
+bg_color = Color(0.9372549, 0.42745098, 0.18431373, 0.78431374)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7mhir"]
 content_margin_left = 10.0
 content_margin_top = 10.0
@@ -160,6 +174,8 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxFlat_s80x4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r2l5m")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_bcn5i")
 text = "Ready?"
 
 [node name="Margin2" type="Control" parent="UI/CameraCaptureContainer/CenterContainer/ButtonContainer" unique_id=1767719984]
