@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://wj1qyxkas0re"
 path.s3tc="res://.godot/imported/untitled1_794f021dce784f14b45de0ee10b05cd3_RGB_144.jpg-89006265fea6b17e9e5c6bb81e30d79e.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_794f021dce784f14b45de0ee10b05cd3_RGB_144.jpg-89006265fea6b17e9e5c6bb81e30d79e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_794f021dce784f14b45de0ee10b05cd3_RGB_144.jpg"
-dest_files=["res://.godot/imported/untitled1_794f021dce784f14b45de0ee10b05cd3_RGB_144.jpg-89006265fea6b17e9e5c6bb81e30d79e.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_794f021dce784f14b45de0ee10b05cd3_RGB_144.jpg-89006265fea6b17e9e5c6bb81e30d79e.s3tc.ctex", "res://.godot/imported/untitled1_794f021dce784f14b45de0ee10b05cd3_RGB_144.jpg-89006265fea6b17e9e5c6bb81e30d79e.etc2.ctex"]
 
 [params]
 

@@ -19,6 +19,9 @@ func _ready():
 	fighter_1.health_depleted.connect(_on_health_depleted)
 	fighter_2.health_depleted.connect(_on_health_depleted)
 	
+	fighter_1.set_sprites()
+	fighter_2.set_sprites()
+	
 	# if match end menu existing, remove
 	if end_menu:
 		end_menu.queue_free()

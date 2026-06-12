@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://856336ohk7x5"
 path.s3tc="res://.godot/imported/untitled1_0e62541395c34d3b9f7b9c960f3d1f74_RGB_I_Aircon_co_0_001.jpg-44abef200ea9890eca25b1749377b705.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_0e62541395c34d3b9f7b9c960f3d1f74_RGB_I_Aircon_co_0_001.jpg-44abef200ea9890eca25b1749377b705.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_0e62541395c34d3b9f7b9c960f3d1f74_RGB_I_Aircon_co_0_001.jpg"
-dest_files=["res://.godot/imported/untitled1_0e62541395c34d3b9f7b9c960f3d1f74_RGB_I_Aircon_co_0_001.jpg-44abef200ea9890eca25b1749377b705.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_0e62541395c34d3b9f7b9c960f3d1f74_RGB_I_Aircon_co_0_001.jpg-44abef200ea9890eca25b1749377b705.s3tc.ctex", "res://.godot/imported/untitled1_0e62541395c34d3b9f7b9c960f3d1f74_RGB_I_Aircon_co_0_001.jpg-44abef200ea9890eca25b1749377b705.etc2.ctex"]
 
 [params]
 

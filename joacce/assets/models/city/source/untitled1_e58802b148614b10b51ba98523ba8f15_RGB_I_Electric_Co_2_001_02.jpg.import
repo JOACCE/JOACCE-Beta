@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://coj17xyui6kf4"
 path.s3tc="res://.godot/imported/untitled1_e58802b148614b10b51ba98523ba8f15_RGB_I_Electric_Co_2_001_02.jpg-c3b1e8c7d8ba2fbb7ddd18cd7ee8d8ff.s3tc.ctex"
+path.etc2="res://.godot/imported/untitled1_e58802b148614b10b51ba98523ba8f15_RGB_I_Electric_Co_2_001_02.jpg-c3b1e8c7d8ba2fbb7ddd18cd7ee8d8ff.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/city/source/untitled1_e58802b148614b10b51ba98523ba8f15_RGB_I_Electric_Co_2_001_02.jpg"
-dest_files=["res://.godot/imported/untitled1_e58802b148614b10b51ba98523ba8f15_RGB_I_Electric_Co_2_001_02.jpg-c3b1e8c7d8ba2fbb7ddd18cd7ee8d8ff.s3tc.ctex"]
+dest_files=["res://.godot/imported/untitled1_e58802b148614b10b51ba98523ba8f15_RGB_I_Electric_Co_2_001_02.jpg-c3b1e8c7d8ba2fbb7ddd18cd7ee8d8ff.s3tc.ctex", "res://.godot/imported/untitled1_e58802b148614b10b51ba98523ba8f15_RGB_I_Electric_Co_2_001_02.jpg-c3b1e8c7d8ba2fbb7ddd18cd7ee8d8ff.etc2.ctex"]
 
 [params]
 

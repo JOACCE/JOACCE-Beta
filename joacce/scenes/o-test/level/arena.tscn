@@ -51,6 +51,7 @@ script = ExtResource("3_27urd")
 
 [node name="Fighter" parent="Fighters" unique_id=1512274704 instance=ExtResource("1_hn76v")]
 position = Vector2(-1449.9998, 560)
+id = null
 
 [node name="ProgressBar" type="ProgressBar" parent="Fighters/Fighter" unique_id=568693552]
 visible = false

@@ -12,7 +12,7 @@ extends Control
 func _on_fight_pressed() -> void:
 	AudioManager.play_click_sfx()
 	AudioManager.play_music("fight")
-	get_tree().change_scene_to_file("res://scenes/o-test/level/arena.tscn")
+	get_tree().change_scene_to_file("res://scenes/character-select/selection.tscn")
 
 func _on_create_pressed() -> void:
 	if (OS.get_name() == "Web"):
