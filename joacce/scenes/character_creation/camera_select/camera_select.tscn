@@ -4,6 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://c0t8baf72a4tj" path="res://scenes/character_creation/camera/default_camera.tscn" id="2_3waco"]
 [ext_resource type="Texture2D" uid="uid://bnb23ug205aku" path="res://assets/menus/TEMP title.png" id="2_u0q77"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0drgw"]
+bg_color = Color(0.4117647, 0.18039216, 0.21960784, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0q77"]
 bg_color = Color(0.4117647, 0.18039216, 0.21960784, 1)
 corner_radius_top_left = 15
@@ -56,8 +63,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Margin" type="Control" parent="UI/VBoxContainer" unique_id=1921851128]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/VBoxContainer" unique_id=331260441]
+layout_mode = 2
+alignment = 2
+
+[node name="ExitButton" type="Button" parent="UI/VBoxContainer/HBoxContainer2" unique_id=1421138223]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_0drgw")
+text = "X"
+
+[node name="ExitMargin" type="Control" parent="UI/VBoxContainer/HBoxContainer2" unique_id=529298276]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
 [node name="Margin1" type="Control" parent="UI/VBoxContainer" unique_id=520700333]
-custom_minimum_size = Vector2(0, 95)
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/VBoxContainer" unique_id=1352765881]

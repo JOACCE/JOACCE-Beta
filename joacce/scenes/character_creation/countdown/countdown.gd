@@ -42,3 +42,6 @@ func _on_timer_timeout() -> void:
 	label.hide()
 	
 	timer_expired.emit()
+	
+func set_timer_length(length : float) -> void:
+	timer.wait_time = length

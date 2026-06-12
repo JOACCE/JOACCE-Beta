@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cue5wnjw2i3uu"
-path="res://.godot/imported/idle.png-ea40dd14fc55857f6cdecebea5eb0a82.ctex"
+uid="uid://dt68vcpv50nya"
+path="res://.godot/imported/charge.png-b65ffaf5e8bc9481c505bef36fb8c33b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stencils/idle.png"
-dest_files=["res://.godot/imported/idle.png-ea40dd14fc55857f6cdecebea5eb0a82.ctex"]
+source_file="res://assets/characters/_tmp/charge.png"
+dest_files=["res://.godot/imported/charge.png-b65ffaf5e8bc9481c505bef36fb8c33b.ctex"]
 
 [params]
 
