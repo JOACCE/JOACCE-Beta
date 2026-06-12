@@ -48,6 +48,7 @@ func get_all_characters()->Array:
 
 func get_char(id):
 	var char_name = char1 if id == 1 else char2
+	char_name = char_name.replace(" ", "_")
 	var dir = DirAccess.open(DEF_PATH)
 	if dir:
 		dir.list_dir_begin()
