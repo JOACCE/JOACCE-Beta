@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ba6vtr0mihiyw" path="res://scenes/character-select/selection.gd" id="1_fc51g"]
 [ext_resource type="Texture2D" uid="uid://cj4r0bvq7bbq5" path="res://assets/characters/ej/idle.png" id="1_qwe78"]
-[ext_resource type="Texture2D" uid="uid://clk3xv0udc1to" path="res://assets/stencils/idle.png" id="2_5v7jr"]
+[ext_resource type="Texture2D" uid="uid://cue5wnjw2i3uu" path="res://assets/stencils/idle.png" id="2_5v7jr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v7jr"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

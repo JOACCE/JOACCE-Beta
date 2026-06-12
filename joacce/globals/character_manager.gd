@@ -1,7 +1,7 @@
 extends Node
 
 const SAVE_PATH = "user://characters/"
-
+const DEF_PATH = "res://assets/characters/resources/"
 const KEY_MAP = {
 		"idle.png":"idle",
 		"walk.png":"walk",
@@ -22,7 +22,20 @@ var char2
 
 func get_all_characters()->Array:
 	var characters = []
-	var dir = DirAccess.open(SAVE_PATH)
+	
+	
+	var dir = DirAccess.open(DEF_PATH)
+	if dir:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		while filename != "":
+			if filename.ends_with(".res"):
+				var fighter = ResourceLoader.load(DEF_PATH + filename)
+				characters.append(fighter)
+			filename = dir.get_next()
+	
+	dir = DirAccess.open(SAVE_PATH)
+	
 	if dir:
 		dir.list_dir_begin()
 		var filename = dir.get_next()
@@ -32,6 +45,31 @@ func get_all_characters()->Array:
 				characters.append(fighter)
 			filename = dir.get_next()
 	return characters
+
+func get_char(id):
+	var char_name = char1 if id == 1 else char2
+	var dir = DirAccess.open(DEF_PATH)
+	if dir:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		while filename != "":
+			if filename.ends_with(".res") and filename == char_name+".res":
+				var fighter = ResourceLoader.load(DEF_PATH + filename)
+				return fighter
+			filename = dir.get_next()
+
+	dir = DirAccess.open(SAVE_PATH)
+	
+	if dir:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		while filename != "":
+			if filename.ends_with(".res") and filename == char_name+".res":
+				var fighter = ResourceLoader.load(DEF_PATH + filename)
+				return fighter
+			filename = dir.get_next()
+	print("Using EJ default")
+	return ResourceLoader.load(DEF_PATH+"EJ.res")
 
 func create_character(char_name, buffers):
 	var fighter_path : String = SAVE_PATH + char_name.replace(" ","_") + ".res"
@@ -55,3 +93,10 @@ func create_character(char_name, buffers):
 		print("Saved ", char_name, " to ", fighter_path)
 	else:
 		print("Save failed with error: ", error)
+
+func char_select(player, char):
+	if player == 1:
+		char1 = char
+	else:
+		char2 = char
+	print("Player ", player, " chose ", char)

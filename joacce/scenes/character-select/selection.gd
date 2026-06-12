@@ -41,7 +41,13 @@ func _input(event: InputEvent) -> void:
 			move(p, Vector2i(0, -1))
 		if event.is_action_pressed("p%d_charge" % p) and sel.visible:
 			move(p, Vector2i(0, 1))
-
+	if event.is_action_pressed("ui_cancel"):
+		CharacterManager.char1 = null
+		CharacterManager.char2 = null
+		get_tree().change_scene_to_file("res://scenes/o-test/menus/start_menu.tscn")
+	if event.is_action_pressed("ui_accept") and CharacterManager.char1 and CharacterManager.char2:
+		AudioManager.play_music("fight")
+		get_tree().change_scene_to_file("res://scenes/o-test/level/arena.tscn")
 
 func _get_select(player: int) -> ItemList:
 	return p1_select if player == 1 else p2_select
@@ -86,17 +92,24 @@ func _change_control_text():
 func _on_p_1_select_item_selected(index: int) -> void:
 	p1_selected_icon = p1_select.get_item_icon(index)
 	p1_selected_name = p1_select.get_item_text(index)
+	if p1_selected_name == CharacterManager.char2:
+		return
 	selected_1.texture = p1_selected_icon
 	selected_1.modulate.a = 255
 	p1_select.visible = false
+	CharacterManager.char_select(1, p1_selected_name)
 
 
 func _on_p_2_select_item_selected(index: int) -> void:
 	p2_selected_icon = p2_select.get_item_icon(index)
 	p2_selected_name = p2_select.get_item_text(index)
+	if p2_selected_name == CharacterManager.char1:
+		return
 	selected_2.texture = p2_selected_icon
 	selected_2.modulate.a = 255
 	p2_select.visible = false
+	CharacterManager.char_select(2, p2_selected_name)
+	
 
 func _update_items():
 	p1_select.clear()

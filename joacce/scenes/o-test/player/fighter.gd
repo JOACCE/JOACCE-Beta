@@ -205,3 +205,26 @@ func set_match_enabled(enabled: bool):
 		charge_time = 0.0
 		if state_machine:
 			state_machine.change_state("idle")
+
+func set_sprites():
+	var data = CharacterManager.get_char(id)
+	idle.texture = data.idle
+	punch_frame.texture = data.punch
+	kick_frame.texture = data.kick
+	damage_frame.texture = data.damage
+	apply_animation_frames(walk, [data.idle, data.walk])
+	apply_animation_frames(charge, [data.charge])
+	apply_animation_frames(special_1, [data.special1_1, data.special1_2])
+	apply_animation_frames(special_2, [data.special2_1, data.special2_2])
+
+func apply_animation_frames(sprite: AnimatedSprite2D, textures: Array):
+	sprite.sprite_frames = sprite.sprite_frames.duplicate()
+	var frames = sprite.sprite_frames
+	var anim_name = frames.get_animation_names()[0]
+	
+	for i in textures.size():
+		if i< frames.get_frame_count(anim_name):
+			frames.set_frame(anim_name, i, textures[i])
+		else:
+			frames.add_frame(anim_name, textures[i])
+	

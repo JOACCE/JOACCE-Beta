@@ -6,6 +6,7 @@ extends Resource
 
 # Sprite paths
 @export var charge : Texture2D 
+@export var damage : Texture2D
 @export var idle : Texture2D 
 @export var kick : Texture2D 
 @export var loss : Texture2D 
