@@ -10,6 +10,8 @@ var JUMP_VELOCITY = -640.0
 @onready var punch_frame: Sprite2D = $Sprites/Punch
 @onready var kick_frame: Sprite2D = $Sprites/Kick
 @onready var damage_frame: Sprite2D = $Sprites/Damage
+@onready var win_frame: Sprite2D = $Sprites/Win
+@onready var loss_frame: Sprite2D = $Sprites/Loss
 @onready var special_1: AnimatedSprite2D = $Sprites/Special1
 @onready var special_2: AnimatedSprite2D = $Sprites/Special2
 @onready var charge: AnimatedSprite2D = $Sprites/Charge
@@ -166,6 +168,13 @@ func switch_frame(sprite_name, duration = 0):
 			fighter_audio.play_sfx("impact")
 			damage_frame.visible = true
 			current_sprite = damage_frame
+		"win":
+			win_frame.visible = true
+			current_sprite = win_frame
+		"loss":
+			loss_frame.visible = true
+			current_sprite = loss_frame
+
 	if duration > 0: 
 		await get_tree().create_timer(duration).timeout
 	return current_sprite

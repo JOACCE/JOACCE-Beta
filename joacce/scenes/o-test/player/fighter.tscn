@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://ks1ax17l5duh" path="res://assets/stencils/default/kick.png" id="6_jr3a8"]
 [ext_resource type="Texture2D" uid="uid://bv7pxwudsnrwo" path="res://assets/stencils/default/damage.png" id="7_jr3a8"]
 [ext_resource type="Texture2D" uid="uid://cricg28txgyld" path="res://assets/stencils/default/special1-1.png" id="8_3ttc0"]
+[ext_resource type="Texture2D" uid="uid://brn6ov4edfdt4" path="res://assets/stencils/default/loss.png" id="8_jykef"]
 [ext_resource type="Texture2D" uid="uid://c13aq4tqqhd0n" path="res://assets/stencils/default/special1-2.png" id="9_nne8j"]
+[ext_resource type="Texture2D" uid="uid://c7woy6h6igxib" path="res://assets/stencils/default/victory.png" id="9_rkbwr"]
 [ext_resource type="Texture2D" uid="uid://b1wir6fku3xvd" path="res://assets/stencils/default/special2-1.png" id="10_j2mfq"]
 [ext_resource type="Texture2D" uid="uid://dvqfr6virh7eu" path="res://assets/stencils/default/special2-2.png" id="11_7pges"]
 [ext_resource type="Texture2D" uid="uid://dechgdoaqyqb3" path="res://assets/stencils/default/charge.png" id="12_7pges"]
@@ -145,6 +147,14 @@ texture = ExtResource("6_jr3a8")
 visible = false
 position = Vector2(-15, 46)
 texture = ExtResource("7_jr3a8")
+
+[node name="Loss" type="Sprite2D" parent="Sprites" unique_id=2130768685]
+visible = false
+texture = ExtResource("8_jykef")
+
+[node name="Win" type="Sprite2D" parent="Sprites" unique_id=554862526]
+visible = false
+texture = ExtResource("9_rkbwr")
 
 [node name="Special1" type="AnimatedSprite2D" parent="Sprites" unique_id=593912497]
 visible = false
