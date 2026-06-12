@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dao8xo1tkwxgr" path="res://assets/models/city/source/untitled1.glb" id="1_uda3f"]
 [ext_resource type="PackedScene" uid="uid://dl2ftogqrswy1" path="res://assets/models/alley/abandoned_alley_3.glb" id="2_c4hh3"]
 [ext_resource type="FontFile" uid="uid://bphypfln80nsy" path="res://assets/fonts/Pricedown Bl.otf" id="4_gmqsq"]
-[ext_resource type="FontFile" uid="uid://7ccxja4diiis" path="res://assets/fonts/Iceland-Regular.ttf" id="4_gmqsq"]
+[ext_resource type="FontFile" uid="uid://7ccxja4diiis" path="res://assets/fonts/Iceland-Regular.ttf" id="2_vixev"]
 [ext_resource type="PackedScene" uid="uid://36o1vhtip1xf" path="res://assets/models/warehouse/abandoned_warehouse_-_interior_scene.glb" id="5_g0ov8"]
 [ext_resource type="PackedScene" uid="uid://cniwobg058vxw" path="res://assets/models/ring/boxing_ring.glb" id="6_h0136"]
 
@@ -147,7 +147,6 @@ transform = Transform3D(8.448001, 0, 0, 0, 1, 0, 0, 0, 4.62, -33, -0.19114304, -
 material_override = SubResource("StandardMaterial3D_gmqsq")
 mesh = SubResource("PlaneMesh_h0136")
 
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 skeleton = NodePath("../..")
 
 [node name="StreetLights" type="Node3D" parent="CityArea" unique_id=1329115072]
@@ -319,3 +318,4 @@ light_energy = 0.001
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1353547271]
 environment = SubResource("Environment_h0136")
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
