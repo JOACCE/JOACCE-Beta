@@ -12,6 +12,7 @@ var JUMP_VELOCITY = -640.0
 @onready var damage_frame: Sprite2D = $Sprites/Damage
 @onready var special_1: AnimatedSprite2D = $Sprites/Special1
 @onready var special_2: AnimatedSprite2D = $Sprites/Special2
+@onready var special_2_effect: CPUParticles2D = $Sprites/Special2/Special2Effect
 @onready var charge: AnimatedSprite2D = $Sprites/Charge
 @onready var charge_effect: CPUParticles2D = $Sprites/Charge/ChargeEffect
 @onready var sprites: Node2D = $Sprites
@@ -127,6 +128,7 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	current_sprite.visible = false
 	sprite.visible = true
 	sprite.play()
+
 	if sprite == special_2:
 		fighter_audio.play_sfx("uppercut")
 		current_damage = 20
@@ -134,9 +136,12 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 		velocity.x = dir * 200
 		velocity.y = -600  # the "up" of uppercut
 		special_2.attack()
+		await get_tree().create_timer(0.25).timeout
+		special_2_effect.visible = true
 		
 	await sprite.animation_finished
 	sprite.visible = false
+	special_2_effect.visible = false
 	current_sprite.visible = true
 
 
