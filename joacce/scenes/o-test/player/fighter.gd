@@ -128,11 +128,13 @@ func play_special(sprite: AnimatedSprite2D) -> void:
 	sprite.visible = true
 	sprite.play()
 	if sprite == special_2:
+		fighter_audio.play_sfx("uppercut")
 		current_damage = 20
 		var dir = -1 if get_parent().facing_left == self else 1
 		velocity.x = dir * 200
 		velocity.y = -600  # the "up" of uppercut
 		special_2.attack()
+		
 	await sprite.animation_finished
 	sprite.visible = false
 	current_sprite.visible = true

@@ -31,8 +31,8 @@ parameters/looping = true
 
 [node name="UIHover" type="AudioStreamPlayer" parent="." unique_id=1519643174]
 stream = ExtResource("5_8ak76")
-volume_db = -12.0
+volume_db = -15.0
 
 [node name="UIClick" type="AudioStreamPlayer" parent="." unique_id=382225005]
 stream = ExtResource("6_nvroi")
-volume_db = -9.0
+volume_db = -12.0
