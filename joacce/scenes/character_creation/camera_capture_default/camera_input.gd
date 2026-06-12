@@ -47,6 +47,8 @@ var camera_res : CameraData = preload("res://scenes/character_creation/CameraDat
 var stencils : Array = []
 var curr_stencil : String = ""
 
+var captured_buffers : Dictionary = {} # The pose images in memory
+
 func _ready() -> void:
 	# Setup stencil queue
 	stencils = Array(DirAccess.get_files_at(camera_res.STENCIL_DIR))
@@ -136,8 +138,10 @@ func _capture_player() -> void:
 	# Get stencil boundary relative to scene (used to resize)
 	var boundary : Rect2 = stencil.get_global_rect()
 	
-	imageProcessing.extractPlayer(imgRaw, imgMask, boundary).save_png(camera_res.CHARACTER_DIR + "_tmp/" + curr_stencil)
-
+	#imageProcessing.extractPlayer(imgRaw, imgMask, boundary).save_png(camera_res.CHARACTER_DIR + "_tmp/" + curr_stencil)
+	
+	var processed : Image = imageProcessing.extractPlayer(imgRaw, imgMask, boundary)
+	captured_buffers[curr_stencil] = processed.save_png_to_buffer()
 
 ##
 ## Capture a screenshot on button press
@@ -222,7 +226,7 @@ func _on_name_confirm_button_pressed() -> void:
 	if (!_is_name_taken(character_name)):
 		var dir_name = _create_character_dir(character_name)
 		_move_tmp_files(dir_name)
-		CharacterManager.create_character(character_name, dir_name)
+		CharacterManager.create_character(character_name, captured_buffers)
 		get_tree().change_scene_to_file("res://scenes/o-test/menus/start_menu.tscn")
 	else:
 		print("Character name is already taken.")

@@ -214,8 +214,8 @@ func _on_name_confirm_button_pressed() -> void:
 	var character_name : String = name_input.text
 	
 	if (!_is_name_taken(character_name)):
-		var dir_name = _create_character_dir(character_name)
-		_move_tmp_files(dir_name)
+		#var dir_name = _create_character_dir(character_name)
+		#_move_tmp_files(dir_name)
 		
 		get_tree().change_scene_to_file("res://scenes/o-test/menus/start_menu.tscn")
 	else:
