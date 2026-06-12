@@ -6,7 +6,7 @@ extends Control
 @onready var selected_2: TextureRect = $SelectedChar2
 @onready var p1_controls: Label = $P1Controls
 @onready var p2_controls: Label = $P2Controls
-
+@onready var empty_texture : TextureRect = $EmptyTexture
 var p1_selected_icon
 var p1_selected_name
 var p2_selected_icon
@@ -14,13 +14,17 @@ var p2_selected_name
 
 var pos = [Vector2i.ZERO, Vector2i.ZERO]
 const MAX_XY = 3
+var char_arr
 
 func _ready() -> void:
+	char_arr = CharacterManager.get_all_characters()
+	
+	_update_items()
+	
 	highlight(1)
 	highlight(2)
 	
 	_change_control_text()
-
 
 func _input(event: InputEvent) -> void:
 	for p in [1, 2]:
@@ -93,3 +97,16 @@ func _on_p_2_select_item_selected(index: int) -> void:
 	selected_2.texture = p2_selected_icon
 	selected_2.modulate.a = 255
 	p2_select.visible = false
+
+func _update_items():
+	p1_select.clear()
+	p2_select.clear()
+	for i in MAX_XY*MAX_XY:
+		if i < char_arr.size():
+			p1_select.add_item(char_arr[i].name, char_arr[i].idle)
+			p2_select.add_item(char_arr[i].name, char_arr[i].idle)
+		else:
+			p1_select.add_item("???", empty_texture.texture)
+			p2_select.add_item("???", empty_texture.texture)
+			p1_select.set_item_disabled(i, true)
+			p2_select.set_item_disabled(i, true)

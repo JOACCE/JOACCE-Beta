@@ -191,7 +191,10 @@ func _show_sprite_preview() -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	# Sorry, this is an ugly line
-	sprite_preview.texture = ImageTexture.create_from_image(Image.load_from_file(camera_res.CHARACTER_DIR + "_tmp/"+ curr_stencil))
+	#sprite_preview.texture = ImageTexture.create_from_image(Image.load_from_file(camera_res.CHARACTER_DIR + "_tmp/"+ curr_stencil))
+	var preview_image : Image = Image.new()
+	preview_image.load_png_from_buffer(captured_buffers[curr_stencil])
+	sprite_preview.texture = ImageTexture.create_from_image(preview_image)
 	capture_popup.show()
 
 
@@ -224,8 +227,8 @@ func _on_name_confirm_button_pressed() -> void:
 	var character_name : String = name_input.text
 	
 	if (!_is_name_taken(character_name)):
-		var dir_name = _create_character_dir(character_name)
-		_move_tmp_files(dir_name)
+		#var dir_name = _create_character_dir(character_name)
+		#_move_tmp_files(dir_name)
 		CharacterManager.create_character(character_name, captured_buffers)
 		get_tree().change_scene_to_file("res://scenes/o-test/menus/start_menu.tscn")
 	else:
@@ -233,7 +236,7 @@ func _on_name_confirm_button_pressed() -> void:
 
 
 func _is_name_taken(character_name : String) -> bool:
-	var dir_name : String = camera_res.CHARACTER_DIR + "/" + character_name.replace(" ", "_")
+	var dir_name : String = "user://characters/" + character_name.replace(" ", "_")
 	
 	return DirAccess.dir_exists_absolute(dir_name);
 

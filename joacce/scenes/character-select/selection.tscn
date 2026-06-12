@@ -162,5 +162,12 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Select: Punch   Deselect: Kick"
 
+[node name="EmptyTexture" type="TextureRect" parent="." unique_id=214249697]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_5v7jr")
+
 [connection signal="item_selected" from="P1Select" to="." method="_on_p_1_select_item_selected"]
 [connection signal="item_selected" from="P2Select" to="." method="_on_p_2_select_item_selected"]
