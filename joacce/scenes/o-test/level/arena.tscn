@@ -44,10 +44,12 @@ position = Vector2(582, 634)
 shape = SubResource("RectangleShape2D_3m8qi")
 
 [node name="Fighters" type="Node2D" parent="." unique_id=1147875794]
+position = Vector2(452, 307)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("3_27urd")
 
 [node name="Fighter" parent="Fighters" unique_id=1512274704 instance=ExtResource("1_hn76v")]
-position = Vector2(129, 535)
+position = Vector2(-1449.9998, 560)
 
 [node name="ProgressBar" type="ProgressBar" parent="Fighters/Fighter" unique_id=568693552]
 visible = false
@@ -73,7 +75,7 @@ rounded = true
 script = ExtResource("2_pq3kf")
 
 [node name="Fighter2" parent="Fighters" unique_id=650291903 instance=ExtResource("1_hn76v")]
-position = Vector2(1007, 539)
+position = Vector2(2349.9998, 580.00006)
 id = 2
 
 [node name="Bars" parent="Fighters/Fighter2/Canvas" parent_id_path=PackedInt32Array(650291903, 1235444386) index="0" unique_id=235110853]

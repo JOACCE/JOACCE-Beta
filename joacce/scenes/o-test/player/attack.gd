@@ -31,10 +31,10 @@ func attack():
 func _enable_hit():
 	in_action = true
 	hitbox.disabled = false
-	color_rect.visible = true
+	#color_rect.visible = true
 
 func _disable_hit():
 	in_action = false
 	hitbox.disabled = true
-	color_rect.visible = false
+	#color_rect.visible = false
 	
