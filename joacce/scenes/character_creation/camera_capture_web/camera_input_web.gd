@@ -230,8 +230,7 @@ func _is_name_taken(character_name : String) -> bool:
 
 func _create_character_dir(character_name : String) -> String:
 	var dir_name : String = camera_res.CHARACTER_DIR + "/" + character_name.replace(" ", "_")
-	var err = DirAccess.make_dir_absolute(dir_name)
-	print("mkdir:", err)
+	DirAccess.make_dir_absolute(dir_name)
 	
 	return dir_name
 
@@ -246,8 +245,4 @@ func _move_tmp_files(dest: String) -> void:
 		var old_path = camera_res.CHARACTER_DIR + "_tmp/" + f
 		var new_path = dest + "/" + f
 		
-		var err = DirAccess.rename_absolute(old_path, new_path)
-		print("rename:", err)
-		
-		print(FileAccess.file_exists(old_path))
-		print(FileAccess.file_exists(new_path))
+		DirAccess.rename_absolute(old_path, new_path)
