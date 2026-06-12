@@ -64,12 +64,14 @@ layout_direction = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 65.0
-offset_bottom = 100.0
+offset_left = 810.0
+offset_top = 490.0
+offset_right = 850.0
+offset_bottom = 565.0
 grow_vertical = 0
+scale = Vector2(4, 4)
 rounded = true
+show_percentage = false
 
 [node name="StateMachine" type="Node2D" parent="Fighters/Fighter" unique_id=1585892513]
 script = ExtResource("2_pq3kf")
@@ -106,12 +108,14 @@ layout_direction = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 65.0
-offset_bottom = 100.0
+offset_left = -980.0
+offset_top = 489.99976
+offset_right = -940.0
+offset_bottom = 564.99976
 grow_vertical = 0
+scale = Vector2(4, 4)
 rounded = true
+show_percentage = false
 
 [node name="StateMachine" type="Node2D" parent="Fighters/Fighter2" unique_id=1344101781]
 script = ExtResource("2_pq3kf")

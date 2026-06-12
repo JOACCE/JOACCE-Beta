@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CameraData" format=3]
+
+[ext_resource type="Script" path="res://scenes/character_creation/CameraData.gd" id="1_ctoij"]
+
+[resource]
+script = ExtResource("1_ctoij")
+camera_name = "J. Mae  Camera"
+zoom = 1.6999999999999988
+metadata/_custom_type_script = "uid://boms7fr154gxo"
