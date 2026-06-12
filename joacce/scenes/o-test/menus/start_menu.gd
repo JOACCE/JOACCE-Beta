@@ -8,14 +8,17 @@ extends Control
 @onready var create_button : Button = $VBoxContainer/Create
 @onready var quit_button : Button = $VBoxContainer/Quit
 
-var _valid_os : Array[String] = ["macOS", "Linux", "Android", "iOS"]
-
 func _on_fight_pressed() -> void:
 	AudioManager.play_music("fight")
 	get_tree().change_scene_to_file("res://scenes/o-test/level/arena.tscn")
 
 func _on_create_pressed() -> void:
-	if (OS.get_name() in _valid_os):
+	if (OS.get_name() == "Web"):
+		get_tree().change_scene_to_file("res://scenes/character_creation/camera_capture_web/camera_input.tscn")
+	elif (OS.get_name() == "Windows"):
+		get_tree().change_scene_to_file("res://scenes/character_creation/camera_capture_windows/camera_input.tscn")
+	elif (OS.get_name() in ["macOS", "Linux", "Android", "iOS"]):
+		# Camera selection works with Goot CameraServer
 		get_tree().change_scene_to_file("res://scenes/character_creation/camera_select/camera_select.tscn")
 	else:
 		print("Character creation not supported on ", OS.get_name())

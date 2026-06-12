@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$GODOT_PROJECT_NAME</title>
+    <style>
+        body {
+            touch-action: none;
+            margin: 0;
+            border: 0 none;
+            padding: 0;
+            text-align: center;
+            background-color: #000;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+        #canvas {
+            display: block;
+            margin: 0;
+            color: white;
+            width: 100%;
+            height: 100%;
+        }
+        #canvas:focus {
+            outline: none;
+        }
+        #status {
+            position: absolute;
+            left: 0; top: 0; right: 0; bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: visible;
+        }
+    </style>
+    <!-- Download OpenCV Web Assembly Runtime dynamically -->
+    <script src="https://cdn.jsdelivr.net/npm/@techstark/opencv-js@4.12.0-release.1/dist/opencv.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <canvas id="canvas">
+        HTML5 canvas appears to be unsupported in the current browser.
+    </canvas>
+
+    <!-- Hidden HTML webcam pipeline utility elements -->
+    <video id="webcam" width="640" height="480" autoplay playsinline style="display:none;"></video>
+    <canvas id="opencv_canvas" width="640" height="480" style="display:none;"></canvas>
+
+    <script type="text/javascript">
+        const video = document.getElementById('webcam');
+        const cvCanvas = document.getElementById('opencv_canvas');
+        const ctx = cvCanvas.getContext('2d', { willReadFrequently: true });
+
+        async function startWebcam() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { width: 640, height: 480 },
+                    audio: false
+                });
+
+                video.srcObject = stream;
+
+                await new Promise(resolve => {
+                    video.onloadedmetadata = resolve;
+                });
+
+                await video.play();
+
+                console.log("Webcam ready:", video.videoWidth, video.videoHeight);
+            } catch (err) {
+                console.error("Webcam initialization failed:", err);
+            }
+        }
+
+        function getOpenCVFrame() {
+            if (typeof cv === "undefined") {
+                console.log("OpenCV not loaded");
+                return null;
+            }
+
+            if (!cv.Mat) {
+                console.log("OpenCV runtime not ready");
+                return null;
+            }
+
+            if (!video.srcObject) {
+                console.log("No webcam stream");
+                return null;
+            }
+
+            if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+                console.log("Video not ready:", video.readyState);
+                return null;
+            }
+
+            if (video.videoWidth === 0 || video.videoHeight === 0) {
+                console.log("Video has no dimensions:", video.videoWidth, video.videoHeight);
+                return null;
+            }
+
+            // rest of processing...
+            try { 
+                ctx.drawImage(video, 0, 0, cvCanvas.width, cvCanvas.height); 
+
+                let src = cv.imread(cvCanvas); 
+
+                cv.imshow(cvCanvas, src); 
+
+                
+                src.delete(); 
+                console.log("getOpenCVFrame called");
+                return cvCanvas.toDataURL("image/png")
+            } catch (e) { 
+                console.error("OpenCV processing loop error: ", e); 
+                return null; 
+            }
+        }
+
+        startWebcam();
+    </script>
+
+    <!-- Godot 4 Web Assembly Engine Loader Initialization Scripts -->
+    <script src="$GODOT_URL"></script>
+    <script>
+        const godotConfig = $GODOT_CONFIG;
+        const engine = new Engine(godotConfig);
+        engine.startGame();
+    </script>
+</body>
+</html>
