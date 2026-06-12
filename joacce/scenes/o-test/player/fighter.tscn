@@ -77,8 +77,8 @@ point_count = 2
 metadata/_snap_enabled = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oyjmv"]
-radius = 12.0
-height = 70.0
+radius = 15.463833
+height = 79.129105
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6nna0"]
 animations = [{
@@ -162,8 +162,9 @@ frame_progress = 1.0
 script = ExtResource("3_t6ydl")
 
 [node name="Special2Effect" type="CPUParticles2D" parent="Sprites/Special2" unique_id=907113989]
-show_behind_parent = true
-position = Vector2(103, -1026)
+visible = false
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(123, -999)
 amount = 30
 texture = ExtResource("13_truya")
 speed_scale = 4.0
@@ -172,7 +173,7 @@ damping_max = 79.208
 angle_min = -900.0
 angle_max = 900.0
 scale_amount_min = 0.5
-scale_amount_max = 2.0
+scale_amount_max = 0.5
 split_scale = true
 scale_curve_x = SubResource("Curve_q215x")
 scale_curve_y = SubResource("Curve_hkhs2")
@@ -195,8 +196,8 @@ rotation = -1.1111195
 scale = Vector2(6.5814915, 6.942245)
 
 [node name="Hitbox" type="CollisionShape2D" parent="Sprites/Special2/Hitarea" unique_id=1525760812]
-position = Vector2(57, -12)
-rotation = 1.5707964
+position = Vector2(136.68082, -52.763332)
+rotation = 0.9964417
 shape = SubResource("CapsuleShape2D_oyjmv")
 
 [node name="Charge" type="AnimatedSprite2D" parent="Sprites" unique_id=1129322675]
