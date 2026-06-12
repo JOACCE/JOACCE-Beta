@@ -3,6 +3,8 @@ extends Node2D
 @onready var fight_music: AudioStreamPlayer = $FightMusic
 @onready var menu_music: AudioStreamPlayer = $MenuMusic
 @onready var ambience_player: AudioStreamPlayer = $AmbiencePlayer
+@onready var ui_click_sfx : AudioStreamPlayer = $UIClick
+@onready var ui_hover_sfx : AudioStreamPlayer = $UIHover
 
 var currently_playing: AudioStreamPlayer
 
@@ -75,3 +77,12 @@ func crossfade_music(next_song: AudioStreamPlayer, music_volume_db : float) -> v
 
 	if old_song:
 		tween.tween_callback(old_song.stop)
+
+func play_click_sfx() -> void:
+	if (ui_click_sfx):
+		ui_click_sfx.play()
+
+func play_hover_sfx() -> void:
+	if(ui_hover_sfx):
+		ui_hover_sfx.pitch_scale = randf_range(0.7, 1.3)
+		ui_hover_sfx.play()

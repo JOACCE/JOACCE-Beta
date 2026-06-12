@@ -6,6 +6,8 @@ extends Node2D
 @onready var kick_sfx : AudioStreamPlayer2D = $Kick
 @onready var fireball_sfx : AudioStreamPlayer2D = $Fireball
 @onready var charge_sfx : AudioStreamPlayer2D = $Charge
+@onready var uppercut_sfx : AudioStreamPlayer2D = $Uppercut
+
 
 var sfx_table = {}
 
@@ -15,7 +17,8 @@ func _ready() ->void:
 		"impact" : impact_sfx,
 		"kick" : kick_sfx,
 		"fireball" : fireball_sfx,
-		"charge" : charge_sfx
+		"charge" : charge_sfx,
+		"uppercut" : uppercut_sfx
 	}
 
 func play_sfx(sfx: String) -> void:

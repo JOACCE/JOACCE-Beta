@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://dosfa70ffqayq" path="res://globals/audio_manager.gd" id="1_hilj8"]
 [ext_resource type="AudioStream" uid="uid://bmkve7pxjkf2w" path="res://assets/audio/menu music.ogg" id="2_dd2wf"]
 [ext_resource type="AudioStream" uid="uid://dsanxomchbcgh" path="res://assets/audio/ambience street.ogg" id="3_3uslp"]
+[ext_resource type="AudioStream" uid="uid://fq0oh4qfoo4m" path="res://assets/audio/sfx/ui_hover.ogg" id="5_8ak76"]
+[ext_resource type="AudioStream" uid="uid://c3n1al71m6xvl" path="res://assets/audio/sfx/ui_select.ogg" id="6_nvroi"]
 
 [node name="AudioManager" type="Node2D" unique_id=779044383]
 process_mode = 3
@@ -26,3 +28,11 @@ volume_db = -10.089
 pitch_scale = 0.93
 bus = &"Ambience"
 parameters/looping = true
+
+[node name="UIHover" type="AudioStreamPlayer" parent="." unique_id=1519643174]
+stream = ExtResource("5_8ak76")
+volume_db = -15.0
+
+[node name="UIClick" type="AudioStreamPlayer" parent="." unique_id=382225005]
+stream = ExtResource("6_nvroi")
+volume_db = -12.0

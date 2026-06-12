@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bie32sa0pgecn" path="res://scenes/o-test/player/StateMachine/StateMachine.gd" id="2_pq3kf"]
 [ext_resource type="Script" uid="uid://dedtppyrp6wpi" path="res://scenes/o-test/level/fighters.gd" id="3_27urd"]
 [ext_resource type="Texture2D" uid="uid://24a6baynxq43" path="res://assets/ui/progress_healthbar.png" id="6_e2g0h"]
+[ext_resource type="PackedScene" uid="uid://d2wjr4wbkvhd" path="res://scenes/o-test/menus/match_countdown.tscn" id="7_bhtxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27urd"]
 size = Vector2(61.5, 639.5)
@@ -94,6 +95,8 @@ size_flags_vertical = 3
 [node name="Healthbar" parent="Fighters/Fighter2/Canvas/Bars" index="0" unique_id=486555453]
 value = 100.0
 texture_progress = SubResource("AtlasTexture_e2g0h")
+
+[node name="MatchCountdown" parent="Fighters/Fighter2/Canvas" parent_id_path=PackedInt32Array(650291903, 1235444386) index="1" unique_id=290303958 instance=ExtResource("7_bhtxq")]
 
 [node name="ProgressBar" type="ProgressBar" parent="Fighters/Fighter2" unique_id=1465664563]
 visible = false

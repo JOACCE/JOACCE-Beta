@@ -42,4 +42,5 @@ theme_override_font_sizes/font_size = 32
 text = "SKIP"
 metadata/_edit_use_anchors_ = true
 
+[connection signal="mouse_entered" from="CanvasLayer/Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
