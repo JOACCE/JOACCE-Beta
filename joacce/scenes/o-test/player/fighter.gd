@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var SPEED = 400.0
-var JUMP_VELOCITY = -500.0
+var JUMP_VELOCITY = -640.0
 
 @onready var punch: Node2D = $Punch
 @onready var kick: Node2D = $Kick
