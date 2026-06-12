@@ -2,6 +2,7 @@ extends Control
 
 # Popup
 @onready var popup : CenterContainer = $CenterContainer
+@onready var popup_label : Label = $CenterContainer/VBoxContainer/Label
 
 # Menu Buttons
 @onready var fight_button : Button = $VBoxContainer/Fight
@@ -15,14 +16,14 @@ func _on_fight_pressed() -> void:
 func _on_create_pressed() -> void:
 	if (OS.get_name() == "Web"):
 		get_tree().change_scene_to_file("res://scenes/character_creation/camera_capture_web/camera_input.tscn")
-	elif (OS.get_name() == "Windows"):
-		get_tree().change_scene_to_file("res://scenes/character_creation/camera_capture_windows/camera_input.tscn")
+	#elif (OS.get_name() == "Windows"):
+		#get_tree().change_scene_to_file("res://scenes/character_creation/camera_capture_windows/camera_input.tscn")
 	elif (OS.get_name() in ["macOS", "Linux", "Android", "iOS"]):
 		# Camera selection works with Goot CameraServer
 		get_tree().change_scene_to_file("res://scenes/character_creation/camera_select/camera_select.tscn")
 	else:
-		print("Character creation not supported on ", OS.get_name())
 		_disable_menu_buttons()
+		popup_label.text = "Character creation not supported on " + OS.get_name()
 		popup.show()
 
 func _on_quit_pressed() -> void:
