@@ -18,13 +18,17 @@ const imageProcessing = preload("res://scenes/character_creation/imageProcessing
 
 # Stencil
 @onready var stencil : TextureRect = $UI/CameraCaptureContainer/HBoxContainer/CameraContainer/Stencil
-@onready var stencil_label : Label = $UI/CameraCaptureContainer/StencilLabel
+@onready var stencil_label : Label = $UI/CameraCaptureContainer/UpperMenu/StencilLabel
 
 # Buttons
 @onready var button_container : HBoxContainer = $UI/CameraCaptureContainer/CenterContainer/ButtonContainer
 @onready var ready_button : Button = $UI/CameraCaptureContainer/CenterContainer/ButtonContainer/ReadyButton
 @onready var plus_button : Button = $UI/CameraCaptureContainer/CenterContainer/ButtonContainer/PlusButton
 @onready var minus_button : Button = $UI/CameraCaptureContainer/CenterContainer/ButtonContainer/MinusButton
+
+# Timer
+@onready var timer_slider : HSlider = $UI/CameraCaptureContainer/TimerSlider
+@onready var timer_label : Label = $UI/CameraCaptureContainer/TimerLabel
 
 # Countdown
 @onready var countdown = $UI/CountdownContainer/Countdown
@@ -87,6 +91,8 @@ func _hide_ui() -> void:
 	for child in button_container.get_children():
 		if child is Button:
 			child.hide()
+	timer_slider.hide()
+	timer_label.hide()
 
 
 func _hide_camera() -> void:
@@ -105,6 +111,9 @@ func _show_ui() -> void:
 	for child in button_container.get_children():
 		if child is Button:
 			child.show()
+	
+	timer_slider.show()
+	timer_label.show()
 
 
 ##
@@ -143,6 +152,8 @@ func _capture_player() -> void:
 ## Capture a screenshot on button press
 ##
 func _on_ready_pressed() -> void:
+	_disable_buttons()
+	
 	countdown.start()
 	
 	await countdown.timer_expired
@@ -151,6 +162,7 @@ func _on_ready_pressed() -> void:
 	
 	_hide_camera()
 	_show_sprite_preview()
+	_enable_buttons()
 
 
 ##
@@ -252,3 +264,26 @@ func _move_tmp_files(dest: String) -> void:
 		var new_path = dest + "/" + f
 		
 		DirAccess.rename_absolute(old_path, new_path)
+
+
+func _on_exit_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/o-test/menus/start_menu.tscn")
+
+
+func _on_timer_slider_value_changed(value: float) -> void:
+	timer_label.text = "Timer: " + str(int(value)) + "s"
+	countdown.set_timer_length(value)
+	
+func _disable_buttons() -> void:
+	for child in button_container.get_children():
+		if child is Button:
+			child.disabled = true
+			
+	timer_slider.editable = false
+	
+func _enable_buttons() -> void:
+	for child in button_container.get_children():
+		if child is Button:
+			child.disabled = false
+	
+	timer_slider.editable = true

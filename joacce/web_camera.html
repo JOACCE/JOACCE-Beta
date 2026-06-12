@@ -105,7 +105,8 @@
 
                 let src = cv.imread(cvCanvas); 
 
-                cv.imshow(cvCanvas, src); 
+                cv.flip(src, src, 1);
+                cv.imshow(cvCanvas, src);
 
                 
                 src.delete(); 
