@@ -44,6 +44,8 @@ var previous_buttons := {}
 
 var current_damage = 0
 
+var match_enabled: bool = false
+
 # Takes in the fighter id that reaches 0 hp
 signal health_depleted(loser_id: int)
 # As a setter, will run the function for every health change
@@ -67,6 +69,12 @@ func _ready() -> void:
 	meter_bar.update_charges(charge_stack)
 
 func _physics_process(delta: float) -> void:
+	# Case when blocking movement
+	if !match_enabled:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
@@ -183,3 +191,16 @@ func special_fireball() -> void:
 	fighter_audio.play_sfx("fireball")
 	
 	get_tree().current_scene.add_child(fireball_fx)
+
+func set_match_enabled(enabled: bool):
+	match_enabled = enabled
+	
+	# Restrict movement
+	if !match_enabled:
+		velocity = Vector2.ZERO
+		attacking = false
+		animation_playing = false
+		charge_time = 0.0
+
+		if state_machine:
+			state_machine.change_state("idle")
