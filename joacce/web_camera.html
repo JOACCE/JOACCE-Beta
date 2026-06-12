@@ -109,7 +109,6 @@
 
                 
                 src.delete(); 
-                console.log("getOpenCVFrame called");
                 return cvCanvas.toDataURL("image/png")
             } catch (e) { 
                 console.error("OpenCV processing loop error: ", e); 

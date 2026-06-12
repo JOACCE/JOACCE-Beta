@@ -50,8 +50,19 @@ var curr_stencil : String = ""
 func _ready() -> void:
 	# Setup stencil queue
 	stencils = Array(DirAccess.get_files_at(camera_res.STENCIL_DIR))
-	stencils = stencils.filter(func(x): return !x.ends_with(".import"))
-
+	stencils = stencils \
+				.filter(func(x): return x.ends_with(".png.import")) \
+				.map(func(x): return x.trim_suffix(".import"))
+	
+	var dir = DirAccess.open("user://")
+	
+	if not dir.dir_exists("characters"):
+		dir.make_dir("characters")
+	camera_res.CHARACTER_DIR = "user://characters/"
+	
+	if not dir.dir_exists("characters/_tmp"):
+		dir.make_dir("characters/_tmp")
+	
 	if (len(stencils) > 0):
 		_swap_stencil(stencils.pop_front())
 	
@@ -114,7 +125,7 @@ func _capture_player() -> void:
 	var imgRaw : Image = await _capture_screen()
 	
 	# Load mask from a file
-	var imgMask : Image = Image.load_from_file(camera_res.STENCIL_DIR + curr_stencil)
+	var imgMask : Image = load(camera_res.STENCIL_DIR + curr_stencil).get_image()
 	
 	# Get stencil boundary relative to scene (used to resize)
 	var boundary : Rect2 = stencil.get_global_rect()
@@ -219,7 +230,8 @@ func _is_name_taken(character_name : String) -> bool:
 
 func _create_character_dir(character_name : String) -> String:
 	var dir_name : String = camera_res.CHARACTER_DIR + "/" + character_name.replace(" ", "_")
-	DirAccess.make_dir_absolute(dir_name)
+	var err = DirAccess.make_dir_absolute(dir_name)
+	print("mkdir:", err)
 	
 	return dir_name
 
@@ -234,4 +246,8 @@ func _move_tmp_files(dest: String) -> void:
 		var old_path = camera_res.CHARACTER_DIR + "_tmp/" + f
 		var new_path = dest + "/" + f
 		
-		DirAccess.rename_absolute(old_path, new_path)
+		var err = DirAccess.rename_absolute(old_path, new_path)
+		print("rename:", err)
+		
+		print(FileAccess.file_exists(old_path))
+		print(FileAccess.file_exists(new_path))
