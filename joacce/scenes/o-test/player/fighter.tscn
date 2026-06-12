@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://be8fgmdt6yakd"]
 
 [ext_resource type="Script" uid="uid://twf31shv83c2" path="res://scenes/o-test/player/fighter.gd" id="1_18uai"]
-[ext_resource type="Texture2D" uid="uid://bkf3oldoxu56x" path="res://assets/stencils/default/idle.png" id="2_t6ydl"]
+[ext_resource type="Texture2D" uid="uid://5o36fgwm5lsm" path="res://assets/stencils/default/idle.png" id="2_t6ydl"]
 [ext_resource type="Script" uid="uid://cv3u61nreii4v" path="res://scenes/o-test/player/attack.gd" id="3_t6ydl"]
-[ext_resource type="Texture2D" uid="uid://bwwno4dwke15k" path="res://assets/stencils/default/punch.png" id="5_0olyo"]
+[ext_resource type="Texture2D" uid="uid://crfo6j74urr43" path="res://assets/stencils/default/punch.png" id="5_0olyo"]
 [ext_resource type="Texture2D" uid="uid://b3ljsk0m0g05h" path="res://assets/stencils/default/walk_atlas.tres" id="5_jjgo2"]
-[ext_resource type="Texture2D" uid="uid://bf1l6tmh33ovo" path="res://assets/stencils/default/kick.png" id="6_jr3a8"]
-[ext_resource type="Texture2D" uid="uid://bmyu2fsrkd68v" path="res://assets/stencils/default/damage.png" id="7_jr3a8"]
-[ext_resource type="Texture2D" uid="uid://bsyoowgknwx6y" path="res://assets/stencils/default/special1-1.png" id="8_3ttc0"]
-[ext_resource type="Texture2D" uid="uid://h2mikka8j41b" path="res://assets/stencils/default/special1-2.png" id="9_nne8j"]
-[ext_resource type="Texture2D" uid="uid://buh2lrpn2gcrp" path="res://assets/stencils/default/special2-1.png" id="10_j2mfq"]
-[ext_resource type="Texture2D" uid="uid://dbdtxdifimkjd" path="res://assets/stencils/default/special2-2.png" id="11_7pges"]
-[ext_resource type="Texture2D" uid="uid://fkk7wkyecc8k" path="res://assets/stencils/default/charge.png" id="12_7pges"]
+[ext_resource type="Texture2D" uid="uid://ks1ax17l5duh" path="res://assets/stencils/default/kick.png" id="6_jr3a8"]
+[ext_resource type="Texture2D" uid="uid://bv7pxwudsnrwo" path="res://assets/stencils/default/damage.png" id="7_jr3a8"]
+[ext_resource type="Texture2D" uid="uid://cricg28txgyld" path="res://assets/stencils/default/special1-1.png" id="8_3ttc0"]
+[ext_resource type="Texture2D" uid="uid://c13aq4tqqhd0n" path="res://assets/stencils/default/special1-2.png" id="9_nne8j"]
+[ext_resource type="Texture2D" uid="uid://b1wir6fku3xvd" path="res://assets/stencils/default/special2-1.png" id="10_j2mfq"]
+[ext_resource type="Texture2D" uid="uid://dvqfr6virh7eu" path="res://assets/stencils/default/special2-2.png" id="11_7pges"]
+[ext_resource type="Texture2D" uid="uid://dechgdoaqyqb3" path="res://assets/stencils/default/charge.png" id="12_7pges"]
 [ext_resource type="Texture2D" uid="uid://dgnm4n15pgu4e" path="res://assets/stencils/default/white_sphere.png" id="13_truya"]
 [ext_resource type="PackedScene" uid="uid://f8f8aiv3cw3a" path="res://scenes/o-test/player/healthbar.tscn" id="14_duly7"]
 [ext_resource type="Gradient" uid="uid://d0m2os7mfjdcb" path="res://assets/vfx/flame_gradient.tres" id="14_o7sv6"]
@@ -22,14 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://cci0jiregn245" path="res://assets/audio/sfx/impact.ogg" id="20_ml0lt"]
 [ext_resource type="AudioStream" uid="uid://kaiylpba4lj8" path="res://assets/audio/sfx/fireball.ogg" id="21_y643t"]
 [ext_resource type="AudioStream" uid="uid://btvxeanqp638p" path="res://assets/audio/sfx/charge.ogg" id="22_ml0lt"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18uai"]
-radius = 12.0
-height = 70.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t6ydl"]
-radius = 12.0
-height = 84.00337
+[ext_resource type="AudioStream" uid="uid://dfg7p8n67mhgm" path="res://assets/audio/sfx/uppercut.ogg" id="23_y643t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7utpr"]
 animations = [{
@@ -99,16 +92,26 @@ animations = [{
 }]
 
 [sub_resource type="Curve" id="Curve_jjgo2"]
-_data = [Vector2(0.007936507, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.99769855), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_o7sv6"]
-_data = [Vector2(0.05820106, 0.14619881), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16k5x"]
-radius = 30.0
-height = 180.0
+radius = 186.0
+height = 1564.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18uai"]
+radius = 116.200226
+height = 535.2963
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t6ydl"]
+radius = 153.44254
+height = 594.3165
 
 [node name="Fighter" type="CharacterBody2D" unique_id=1512274704]
 floor_stop_on_slope = false
@@ -116,81 +119,36 @@ floor_max_angle = 0.0
 script = ExtResource("1_18uai")
 fireball_scene = ExtResource("16_jjgo2")
 
-[node name="Punch" type="Node2D" parent="." unique_id=1646976795]
-position = Vector2(-13.000001, -22.000006)
-rotation = -0.18181063
-script = ExtResource("3_t6ydl")
-damage = 7
-
-[node name="ColorRect" type="ColorRect" parent="Punch" unique_id=53954590]
-offset_left = 21.782501
-offset_top = -24.464714
-offset_right = 92.7825
-offset_bottom = -0.46471405
-color = Color(0.70670056, 0, 0.1611616, 1)
-
-[node name="Hitarea" type="Area2D" parent="Punch" unique_id=1855460985]
-
-[node name="Hitbox" type="CollisionShape2D" parent="Punch/Hitarea" unique_id=2119894823]
-position = Vector2(57, -12)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_18uai")
-
-[node name="Kick" type="Node2D" parent="." unique_id=1080015205]
-position = Vector2(-17, -34)
-script = ExtResource("3_t6ydl")
-damage = 6
-
-[node name="ColorRect" type="ColorRect" parent="Kick" unique_id=908994361]
-offset_left = 25.730412
-offset_top = 33.78686
-offset_right = 108.9102
-offset_bottom = 57.07716
-rotation = 0.2617994
-color = Color(0.70670056, 0, 0.1611616, 1)
-
-[node name="Hitarea" type="Area2D" parent="Kick" unique_id=897711681]
-
-[node name="Hitbox" type="CollisionShape2D" parent="Kick/Hitarea" unique_id=283928191]
-position = Vector2(62.999992, 55.999996)
-rotation = -1.3089969
-shape = SubResource("CapsuleShape2D_t6ydl")
-
 [node name="Sprites" type="Node2D" parent="." unique_id=1314340576]
 
 [node name="Idle" type="Sprite2D" parent="Sprites" unique_id=448263837]
-scale = Vector2(0.2, 0.2)
+position = Vector2(35, 35)
 texture = ExtResource("2_t6ydl")
 
 [node name="Walk" type="AnimatedSprite2D" parent="Sprites" unique_id=1221412688]
 visible = false
-position = Vector2(0, -3.8146973e-06)
-scale = Vector2(0.2, 0.2)
+position = Vector2(35, 35)
 sprite_frames = SubResource("SpriteFrames_7utpr")
 frame_progress = 0.88584214
 
 [node name="Punch" type="Sprite2D" parent="Sprites" unique_id=1020174422]
 visible = false
-position = Vector2(0, -25)
-scale = Vector2(0.23, 0.23)
+position = Vector2(-3, 80)
 texture = ExtResource("5_0olyo")
 
 [node name="Kick" type="Sprite2D" parent="Sprites" unique_id=720777712]
 visible = false
-position = Vector2(5, -20)
-scale = Vector2(0.22, 0.22)
+position = Vector2(5, 32)
 texture = ExtResource("6_jr3a8")
 
 [node name="Damage" type="Sprite2D" parent="Sprites" unique_id=395197532]
 visible = false
-position = Vector2(-7, -21.999998)
-scale = Vector2(0.22, 0.22)
+position = Vector2(-15, 46)
 texture = ExtResource("7_jr3a8")
 
 [node name="Special1" type="AnimatedSprite2D" parent="Sprites" unique_id=593912497]
 visible = false
 position = Vector2(-1, -27)
-scale = Vector2(0.23, 0.23)
 sprite_frames = SubResource("SpriteFrames_j2mfq")
 frame = 1
 frame_progress = 1.0
@@ -198,7 +156,6 @@ frame_progress = 1.0
 [node name="Special2" type="AnimatedSprite2D" parent="Sprites" unique_id=1775015784]
 visible = false
 position = Vector2(-1, -21)
-scale = Vector2(0.23, 0.23)
 sprite_frames = SubResource("SpriteFrames_truya")
 frame = 1
 frame_progress = 1.0
@@ -206,7 +163,7 @@ script = ExtResource("3_t6ydl")
 
 [node name="Special2Effect" type="CPUParticles2D" parent="Sprites/Special2" unique_id=907113989]
 show_behind_parent = true
-position = Vector2(200, -317.3913)
+position = Vector2(103, -1026)
 amount = 30
 texture = ExtResource("13_truya")
 speed_scale = 4.0
@@ -214,8 +171,8 @@ gravity = Vector2(0, -100)
 damping_max = 79.208
 angle_min = -900.0
 angle_max = 900.0
-scale_amount_min = 0.0
-scale_amount_max = 0.6
+scale_amount_min = 0.5
+scale_amount_max = 2.0
 split_scale = true
 scale_curve_x = SubResource("Curve_q215x")
 scale_curve_y = SubResource("Curve_hkhs2")
@@ -223,6 +180,7 @@ color_ramp = ExtResource("14_o7sv6")
 color_initial_ramp = ExtResource("14_o7sv6")
 
 [node name="ColorRect" type="ColorRect" parent="Sprites/Special2" unique_id=1285769886]
+visible = false
 offset_left = 130.1554
 offset_top = -58.931297
 offset_right = 231.84453
@@ -243,14 +201,13 @@ shape = SubResource("CapsuleShape2D_oyjmv")
 
 [node name="Charge" type="AnimatedSprite2D" parent="Sprites" unique_id=1129322675]
 visible = false
-position = Vector2(-7, -32)
-scale = Vector2(0.23, 0.23)
+position = Vector2(-7, 49)
 sprite_frames = SubResource("SpriteFrames_6nna0")
 
 [node name="ChargeEffect" type="CPUParticles2D" parent="Sprites/Charge" unique_id=323290807]
-modulate = Color(1, 1, 1, 0.16078432)
-show_behind_parent = true
-position = Vector2(17.391304, 417.39133)
+modulate = Color(1, 1, 1, 0.101960786)
+position = Vector2(4.999992, 829)
+rotation = 0.17405406
 scale = Vector2(0.1, 0.1)
 amount = 100
 texture = ExtResource("13_truya")
@@ -268,8 +225,55 @@ color_ramp = ExtResource("14_o7sv6")
 color_initial_ramp = ExtResource("14_o7sv6")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1022065581]
-position = Vector2(-2, -18)
 shape = SubResource("CapsuleShape2D_16k5x")
+
+[node name="Punch" type="Node2D" parent="." unique_id=1646976795]
+position = Vector2(-13.000001, -22.000006)
+rotation = -0.18181063
+script = ExtResource("3_t6ydl")
+damage = 7
+
+[node name="ColorRect" type="ColorRect" parent="Punch" unique_id=53954590]
+visible = false
+modulate = Color(1, 1, 1, 0.78431374)
+offset_left = 316.54126
+offset_top = -445.1047
+offset_right = 846.93475
+offset_bottom = -212.82053
+rotation = 0.00040945783
+color = Color(0.70670056, 0, 0.1611616, 1)
+
+[node name="Hitarea" type="Area2D" parent="Punch" unique_id=1855460985]
+position = Vector2(572.2001, -474.3585)
+
+[node name="Hitbox" type="CollisionShape2D" parent="Punch/Hitarea" unique_id=2119894823]
+position = Vector2(8.748056, 145.98793)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_18uai")
+
+[node name="Kick" type="Node2D" parent="." unique_id=1080015205]
+position = Vector2(-43, 16)
+script = ExtResource("3_t6ydl")
+damage = 6
+
+[node name="ColorRect" type="ColorRect" parent="Kick" unique_id=908994361]
+visible = false
+modulate = Color(1, 1, 1, 0.78431374)
+offset_left = 377.0894
+offset_top = 137.13464
+offset_right = 964.89856
+offset_bottom = 443.6145
+rotation = 0.7914236
+color = Color(0.70670056, 0, 0.1611616, 1)
+
+[node name="Hitarea" type="Area2D" parent="Kick" unique_id=897711681]
+position = Vector2(477, 124)
+rotation = 0.70552355
+
+[node name="Hitbox" type="CollisionShape2D" parent="Kick/Hitarea" unique_id=283928191]
+position = Vector2(211.69888, 253.16513)
+rotation = -1.499629
+shape = SubResource("CapsuleShape2D_t6ydl")
 
 [node name="Canvas" type="CanvasLayer" parent="." unique_id=1235444386]
 
@@ -337,7 +341,13 @@ stream = ExtResource("22_ml0lt")
 volume_db = 4.54
 attenuation = 0.07966009
 panning_strength = 2.27
+bus = &"SFX"
 
+[node name="Uppercut" type="AudioStreamPlayer2D" parent="Audio" unique_id=549781473]
+stream = ExtResource("23_y643t")
+volume_db = 4.54
+bus = &"SFX"
+
+[connection signal="body_entered" from="Sprites/Special2/Hitarea" to="." method="_on_hitarea_body_entered"]
 [connection signal="body_entered" from="Punch/Hitarea" to="." method="_on_hitarea_body_entered"]
 [connection signal="body_entered" from="Kick/Hitarea" to="." method="_on_hitarea_body_entered"]
-[connection signal="body_entered" from="Sprites/Special2/Hitarea" to="." method="_on_hitarea_body_entered"]

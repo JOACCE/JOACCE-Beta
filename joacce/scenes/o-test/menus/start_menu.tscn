@@ -109,7 +109,12 @@ autowrap_mode = 2
 layout_mode = 2
 text = "CLOSE"
 
+[connection signal="mouse_entered" from="TextureRect" to="." method="_on_texture_rect_mouse_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/Fight" to="." method="_on_fight_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Fight" to="." method="_on_fight_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Create" to="." method="_on_create_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/DismissButton" to="." method="_on_dismiss_button_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/DismissButton" to="." method="_on_dismiss_button_pressed"]

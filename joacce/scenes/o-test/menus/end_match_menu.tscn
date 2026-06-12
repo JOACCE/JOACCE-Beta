@@ -56,5 +56,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "MAIN MENU"
 
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/Rematch" to="." method="_on_rematch_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Rematch" to="." method="_on_rematch_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/VBoxContainer/Main Menu" to="." method="_on_main_menu_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

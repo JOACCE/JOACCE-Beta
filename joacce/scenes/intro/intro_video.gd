@@ -11,4 +11,9 @@ func _on_video_finished() -> void:
 
 
 func _on_button_pressed() -> void:
+	AudioManager.play_click_sfx()
 	get_tree().change_scene_to_file("res://scenes/o-test/menus/start_menu.tscn")
+
+
+func _on_button_mouse_entered() -> void:
+	AudioManager.play_hover_sfx()
