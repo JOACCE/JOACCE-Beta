@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ba6vtr0mihiyw" path="res://scenes/character-select/selection.gd" id="1_fc51g"]
 [ext_resource type="Texture2D" uid="uid://cj4r0bvq7bbq5" path="res://assets/characters/ej/idle.png" id="1_qwe78"]
 [ext_resource type="Texture2D" uid="uid://cue5wnjw2i3uu" path="res://assets/stencils/idle.png" id="2_5v7jr"]
+[ext_resource type="FontFile" uid="uid://bphypfln80nsy" path="res://assets/fonts/Pricedown Bl.otf" id="4_nd0uc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v7jr"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -20,6 +21,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fc51g")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1641565595]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 506.5713
+offset_bottom = 293.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+color = Color(0.1764706, 0.1764706, 0.1764706, 1)
 
 [node name="P1Select" type="ItemList" parent="." unique_id=1267913266]
 layout_mode = 1
@@ -168,6 +181,54 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_5v7jr")
+
+[node name="P1Label" type="Label" parent="." unique_id=1136321950]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -331.0
+offset_top = 55.0
+offset_right = -291.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_nd0uc")
+theme_override_font_sizes/font_size = 60
+text = "P1"
+horizontal_alignment = 1
+
+[node name="P2Label" type="Label" parent="." unique_id=1346913439]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 274.0
+offset_top = 55.0
+offset_right = 314.0
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_nd0uc")
+theme_override_font_sizes/font_size = 60
+text = "P2"
+horizontal_alignment = 1
+
+[node name="Versus" type="Label" parent="." unique_id=1497748353]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -36.0
+offset_right = 31.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_nd0uc")
+theme_override_font_sizes/font_size = 60
+text = "VS"
+horizontal_alignment = 1
 
 [connection signal="item_selected" from="P1Select" to="." method="_on_p_1_select_item_selected"]
 [connection signal="item_selected" from="P2Select" to="." method="_on_p_2_select_item_selected"]
