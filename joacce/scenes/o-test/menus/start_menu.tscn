@@ -7,6 +7,8 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrk34"]
 atlas = ExtResource("2_lrk34")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tiw0l"]
+
 [node name="StartMenu" type="Control" unique_id=2137918807]
 layout_mode = 3
 anchors_preset = 15
@@ -109,6 +111,91 @@ autowrap_mode = 2
 layout_mode = 2
 text = "CLOSE"
 
+[node name="Deletion" type="Control" parent="." unique_id=538510874]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Deletion" unique_id=1483338608]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 306.0
+offset_top = 54.0
+offset_right = 806.0
+offset_bottom = 554.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16470589, 0.17254902, 0.30980393, 1)
+
+[node name="Label2" type="Label" parent="Deletion" unique_id=1056585366]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 356.0
+offset_top = 72.5
+offset_right = 756.0
+offset_bottom = 183.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Too Many Characters, Delete One To Continue
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CharList" type="ItemList" parent="Deletion" unique_id=1221639680]
+custom_minimum_size = Vector2(400, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 352.0
+offset_top = 152.0
+offset_right = 752.0
+offset_bottom = 493.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tiw0l")
+allow_search = false
+fixed_icon_size = Vector2i(100, 100)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Deletion" unique_id=1381578273]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 489.5
+offset_top = 511.5
+offset_right = 622.5
+offset_bottom = 542.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ConfirmButton" type="Button" parent="Deletion/HBoxContainer" unique_id=1989210216]
+layout_mode = 2
+text = "Confirm"
+
+[node name="DismissButton" type="Button" parent="Deletion/HBoxContainer" unique_id=130417916]
+layout_mode = 2
+text = "CLOSE"
+
 [connection signal="mouse_entered" from="TextureRect" to="." method="_on_texture_rect_mouse_entered"]
 [connection signal="mouse_entered" from="VBoxContainer/Fight" to="." method="_on_fight_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/Fight" to="." method="_on_fight_pressed"]
@@ -118,3 +205,5 @@ text = "CLOSE"
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="CenterContainer/VBoxContainer/DismissButton" to="." method="_on_dismiss_button_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/DismissButton" to="." method="_on_dismiss_button_pressed"]
+[connection signal="pressed" from="Deletion/HBoxContainer/ConfirmButton" to="." method="_on_del_confirm_button_pressed"]
+[connection signal="pressed" from="Deletion/HBoxContainer/DismissButton" to="." method="_on_del_dismiss_button_pressed"]

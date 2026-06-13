@@ -46,6 +46,20 @@ func get_all_characters()->Array:
 			filename = dir.get_next()
 	return characters
 
+func get_customs()->Array:
+	var characters = []
+	var dir = DirAccess.open(SAVE_PATH)
+	
+	if dir:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		while filename != "":
+			if filename.ends_with(".res"):
+				var fighter = ResourceLoader.load(SAVE_PATH + filename)
+				characters.append(fighter)
+			filename = dir.get_next()
+	return characters
+
 func get_char(id):
 	var char_name = char1 if id == 1 else char2
 	char_name = char_name.replace(" ", "_")
@@ -104,9 +118,20 @@ func create_character(char_name, buffers):
 		else:
 			print("Save failed with error: ", error)
 
-func char_select(player, char):
+func delete(character_name):
+	var dir = DirAccess.open(SAVE_PATH)
+	
+	if dir:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		while filename != "":
+			if filename.ends_with(".res") and filename == character_name+".res":
+				dir.remove(filename)
+			filename = dir.get_next()
+
+func char_select(player, character):
 	if player == 1:
-		char1 = char
+		char1 = character
 	else:
-		char2 = char
-	print("Player ", player, " chose ", char)
+		char2 = character
+	print("Player ", player, " chose ", character)

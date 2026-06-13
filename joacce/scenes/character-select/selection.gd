@@ -69,6 +69,10 @@ func select(player: int) -> void:
 func deselect(player: int) -> void:
 	_get_display(player).modulate.a = 0
 	_get_select(player).visible = true
+	if player == 1:
+		CharacterManager.char1 = null
+	else:
+		CharacterManager.char2 = null
 
 
 func move(player: int, dir: Vector2i) -> void:

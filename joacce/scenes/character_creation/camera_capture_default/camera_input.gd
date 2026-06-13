@@ -132,7 +132,6 @@ func _capture_screen() -> Image:
 	
 	return img
 
-
 ##
 ## Capture a screenshot of the player and extracts
 ## the character from the screenshot
